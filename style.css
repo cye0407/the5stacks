@@ -1,16 +1,19 @@
 /* ============================================
    Five Stacks — Landing Page
+   Light theme, esgforsuppliers aesthetic
    ============================================ */
 
 :root {
-  --color-bg: #0a0a0a;
-  --color-bg-alt: #111111;
-  --color-surface: #1a1a1a;
-  --color-text: #e8e8e8;
-  --color-text-muted: #888888;
-  --color-accent: #c8a84e;
-  --color-accent-dim: #a68a3a;
-  --color-border: #2a2a2a;
+  --color-bg: #FDFBF7;
+  --color-bg-alt: #F4F1EB;
+  --color-surface: #FFFFFF;
+  --color-ink: #1A1A1A;
+  --color-text: #333333;
+  --color-text-muted: #6B6B6B;
+  --color-accent: #2E7D5E;
+  --color-accent-hover: #245F49;
+  --color-accent-light: #E8F3ED;
+  --color-border: #E5E3DE;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
 }
@@ -48,7 +51,6 @@ body {
   justify-content: center;
   text-align: center;
   padding: 80px 24px;
-  background: radial-gradient(ellipse at 50% 0%, #1a1a1a 0%, var(--color-bg) 70%);
 }
 
 .eyebrow {
@@ -67,6 +69,7 @@ body {
   margin-bottom: 20px;
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: var(--color-ink);
 }
 
 .tagline {
@@ -88,7 +91,7 @@ body {
   display: inline-block;
   padding: 14px 40px;
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #FFFFFF;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -99,7 +102,7 @@ body {
 }
 
 .cta-button:hover {
-  background: var(--color-accent-dim);
+  background: var(--color-accent-hover);
 }
 
 /* ---- Sections ---- */
@@ -108,7 +111,7 @@ body {
   padding: 100px 24px;
 }
 
-.section-dark {
+.section-alt {
   background: var(--color-bg-alt);
 }
 
@@ -118,6 +121,7 @@ body {
   margin-bottom: 20px;
   text-align: center;
   letter-spacing: -0.01em;
+  color: var(--color-ink);
 }
 
 .lead {
@@ -158,6 +162,11 @@ body {
 
 .col-highlight {
   border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.col-highlight h3 {
+  color: var(--color-accent);
 }
 
 .col-highlight p {
@@ -193,7 +202,7 @@ body {
   width: 36px;
   height: 36px;
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #FFFFFF;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -205,6 +214,7 @@ body {
 .stack h3 {
   font-size: 1.15rem;
   margin-bottom: 6px;
+  color: var(--color-ink);
 }
 
 .stack-quote {
@@ -290,7 +300,7 @@ body {
   border: 1px solid var(--color-border);
   border-right: none;
   background: var(--color-surface);
-  color: var(--color-text);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: 0.95rem;
   outline: none;
@@ -300,10 +310,14 @@ body {
   border-color: var(--color-accent);
 }
 
+.waitlist-form input::placeholder {
+  color: #aaa;
+}
+
 .waitlist-form button {
   padding: 14px 28px;
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #FFFFFF;
   border: 1px solid var(--color-accent);
   font-family: var(--font-sans);
   font-weight: 600;
@@ -314,7 +328,7 @@ body {
 }
 
 .waitlist-form button:hover {
-  background: var(--color-accent-dim);
+  background: var(--color-accent-hover);
 }
 
 .waitlist-form button:disabled {
@@ -328,11 +342,11 @@ body {
 }
 
 .form-message.success {
-  color: #6ec86e;
+  color: var(--color-accent);
 }
 
 .form-message.error {
-  color: #e86060;
+  color: #c44040;
 }
 
 .small-print {

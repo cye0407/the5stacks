@@ -233,26 +233,49 @@ body {
 
 /* ---- Four Properties ---- */
 
+.section-properties {
+  background: #EBF2ED;
+}
+
 .grid-4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .prop {
-  text-align: center;
-  padding: 24px 16px;
+  text-align: left;
+  padding: 28px 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.prop-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-accent);
+  margin-bottom: 14px;
 }
 
 .prop h3 {
   font-size: 0.95rem;
   margin-bottom: 8px;
   color: var(--color-accent);
+  font-weight: 600;
 }
 
 .prop p {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 450;
+  line-height: 1.6;
+}
+
+.prop-closer {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
 }
 
 /* ---- Persona Cards ---- */
@@ -407,10 +430,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .grid-4 {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .persona-cards {
     grid-template-columns: 1fr;
   }
@@ -420,11 +439,13 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .grid-4 {
     grid-template-columns: 1fr;
   }
+}
 
+@media (max-width: 480px) {
   .waitlist-form {
     flex-direction: column;
   }

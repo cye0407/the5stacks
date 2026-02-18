@@ -7,8 +7,8 @@
   --color-bg: #FDFBF7;
   --color-bg-alt: #F4F1EB;
   --color-surface: #FFFFFF;
-  --color-ink: #1A1A1A;
-  --color-text: #333333;
+  --color-ink: #2A2A2A;
+  --color-text: #3A3A3A;
   --color-text-muted: #6B6B6B;
   --color-accent: #2E7D5E;
   --color-accent-hover: #245F49;
@@ -68,7 +68,7 @@ body {
   line-height: 1.1;
   margin-bottom: 20px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   color: var(--color-ink);
 }
 
@@ -76,7 +76,8 @@ body {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: var(--color-accent);
+  color: #257050;
+  font-weight: 500;
   margin-bottom: 16px;
 }
 

@@ -107,7 +107,7 @@ That's what this book shows you how to build.
 
 What if sustainability wasn't the goal — but the lens?
 
-What if the same practices that reduce your environmental footprint also reduced your costs? What if building resilience against climate volatility also protected you from supply chain shocks? What if the data you need for Scope 3 reporting also showed you where you're bleeding margin?
+What if the same practices that reduce your environmental footprint also reduced your costs? What if building resilience against climate volatility also protected you from supply chain shocks? What if the data you need for Scope 3 reporting (see Glossary) also showed you where you're bleeding margin?
 
 This isn't hypothetical. It's how sustainability works when you build it into operations instead of bolting it onto marketing.
 
@@ -328,7 +328,9 @@ Diversify your operational value streams so a single market shift, regulatory ch
 **Stack 5: The Compounding Engine**
 *Create compound returns.*
 
-"Build systems that improve as they operate." The final stack is a feedback loop. Your business doesn't just "sustain" — it gets more efficient and more profitable with every cycle.
+"Build systems that improve as they operate."
+
+The final stack is a feedback loop. Your business doesn't just "sustain" — it gets more efficient, more profitable, and more capable with every cycle. New markets open. Certifications become achievable. Each year's results unlock opportunities that weren't available the year before.
 
 Each stack creates the conditions for the next. Follow the sequence and each investment funds the next.
 
@@ -596,7 +598,9 @@ Stack 2 fixed the leaks. Stack 3 monetizes what remains.
 
 Even after you've optimized your operations for efficiency, there are outputs leaving your business that aren't products. Scrap material. Processing residues. Byproducts. Packaging waste. Heat. Water. Organic matter. In the old model, these are costs — disposal fees, hauling contracts, landfill charges. In the Five Stacks model, they're unrealized margin.
 
-This isn't circular economy theory. It's practical margin recovery. Every waste stream has a cost. Some of those waste streams also have a value — to someone else, or recirculated back into your own operation. The gap between what you're paying to dispose of them and what they're worth is margin you're leaving on the ground.
+But margin recovery isn't limited to physical waste. It applies to anything latent in your operation that's going unused. Equipment running below capacity. Staff skills that never get deployed. Data you're collecting but not acting on. Relationships with suppliers or partners that could open new value but haven't been explored. Circularity isn't just about materials — it's about recognizing underutilized assets wherever they sit.
+
+This isn't circular economy theory. It's practical margin recovery. Every waste stream has a cost. Every idle asset has an opportunity cost. The gap between what you're paying to maintain them and what they could be worth is margin you're leaving on the ground.
 
 Stack 3 picks it up.
 

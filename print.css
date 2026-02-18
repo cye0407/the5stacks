@@ -1,0 +1,357 @@
+/* Five Stacks — Print-ready HTML Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+@page {
+  size: A5;
+  margin: 2cm 1.8cm 2.5cm 1.8cm;
+}
+
+@page :first {
+  margin-top: 0;
+}
+
+body {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.75;
+  color: #2A2A2A;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Title Page === */
+.title-page {
+  page-break-after: always;
+  text-align: center;
+  padding-top: 35%;
+}
+
+.title-page h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28pt;
+  font-weight: 700;
+  color: #1A1A1A;
+  border: none;
+  margin-bottom: 0.2em;
+  page-break-before: avoid;
+}
+
+.title-page .tp-subtitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 14pt;
+  color: #2E7D5E;
+  margin-bottom: 0.5em;
+}
+
+.title-page .tp-tagline {
+  font-size: 9.5pt;
+  color: #6B6B6B;
+  font-style: italic;
+  margin-bottom: 3em;
+}
+
+.title-page .tp-author {
+  font-size: 12pt;
+  font-weight: 600;
+  color: #3A3A3A;
+  margin-bottom: 0.3em;
+}
+
+.title-page .tp-url {
+  font-size: 9pt;
+  color: #2E7D5E;
+}
+
+/* === Table of Contents === */
+nav#TOC {
+  page-break-after: always;
+  padding-top: 2em;
+}
+
+nav#TOC::before {
+  content: "Contents";
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18pt;
+  font-weight: 700;
+  color: #1A1A1A;
+  display: block;
+  margin-bottom: 1.5em;
+  border-bottom: 2px solid #2E7D5E;
+  padding-bottom: 0.3em;
+}
+
+nav#TOC ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+nav#TOC > ul > li {
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+nav#TOC > ul > li > ul {
+  margin-top: 0.2em;
+}
+
+nav#TOC > ul > li > ul > li {
+  font-weight: 400;
+  margin-left: 1.5em;
+  font-size: 9pt;
+  color: #555;
+  margin-bottom: 0.15em;
+}
+
+nav#TOC a {
+  color: #2A2A2A;
+  text-decoration: none;
+}
+
+/* === Headings === */
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20pt;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  line-height: 1.2;
+  page-break-before: always;
+  border-bottom: 2px solid #2E7D5E;
+  padding-bottom: 0.3em;
+  padding-top: 1em;
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 13pt;
+  font-weight: 700;
+  color: #2E7D5E;
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #2A2A2A;
+  margin-top: 1.4em;
+  margin-bottom: 0.3em;
+  page-break-after: avoid;
+}
+
+/* === Body text === */
+p {
+  margin-bottom: 0.7em;
+  text-align: left;
+  orphans: 3;
+  widows: 3;
+}
+
+strong {
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+em {
+  font-style: italic;
+}
+
+/* === Blockquotes === */
+blockquote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  color: #2E7D5E;
+  border-left: 2.5pt solid #2E7D5E;
+  margin: 1.2em 0;
+  padding: 0.4em 0 0.4em 1em;
+  font-size: 10.5pt;
+  page-break-inside: avoid;
+}
+
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* === Horizontal rules — hidden === */
+hr {
+  display: none;
+}
+
+/* === Part Headers === */
+h1.part-header {
+  text-align: center;
+  font-size: 16pt;
+  color: #2E7D5E;
+  border-bottom: none;
+  padding-top: 30%;
+  padding-bottom: 0;
+  letter-spacing: 0.05em;
+}
+
+/* === Self-Assessment Boxes === */
+.assessment-box {
+  background: #EBF2ED;
+  border: 1.5pt solid #2E7D5E;
+  padding: 1.2em 1.4em;
+  margin: 1.5em 0;
+  page-break-inside: avoid;
+}
+
+.assessment-box h2 {
+  font-size: 11pt;
+  color: #2E7D5E;
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 1pt solid #2E7D5E;
+}
+
+.assessment-box p {
+  font-size: 9.5pt;
+}
+
+.assessment-box ol, .assessment-box ul {
+  font-size: 9.5pt;
+}
+
+.assessment-box table {
+  background: white;
+}
+
+/* === ROI Case Boxes === */
+.roi-box {
+  background: #F9F7F2;
+  border-left: 3pt solid #2E7D5E;
+  padding: 1em 1.4em;
+  margin: 1.5em 0;
+  page-break-inside: avoid;
+}
+
+.roi-box h2 {
+  font-size: 11pt;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: #2E7D5E;
+}
+
+.roi-box h2::before {
+  content: "$ ";
+  font-style: normal;
+}
+
+.roi-box p {
+  font-size: 9.5pt;
+}
+
+/* === Common Pitfalls Boxes === */
+.pitfalls-box {
+  background: #FDF8F3;
+  border-left: 3pt solid #C4793A;
+  padding: 1em 1.4em;
+  margin: 1.5em 0;
+  page-break-inside: avoid;
+}
+
+.pitfalls-box h2 {
+  font-size: 11pt;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: #C4793A;
+}
+
+.pitfalls-box h2::before {
+  content: "! ";
+  font-weight: 700;
+}
+
+.pitfalls-box p {
+  font-size: 9.5pt;
+}
+
+.pitfalls-box strong {
+  color: #C4793A;
+}
+
+/* === Lists === */
+ul, ol {
+  margin: 0.7em 0;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+/* === Tables === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+
+th {
+  background: #EBF2ED;
+  color: #2E7D5E;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5em 0.6em;
+  border-bottom: 1.5pt solid #2E7D5E;
+}
+
+td {
+  padding: 0.4em 0.6em;
+  border-bottom: 0.5pt solid #E5E3DE;
+  vertical-align: top;
+}
+
+tr:last-child td {
+  border-bottom: 1.5pt solid #2E7D5E;
+}
+
+/* === Links === */
+a {
+  color: #2E7D5E;
+  text-decoration: none;
+}
+
+/* === Print specifics === */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .title-page {
+    padding-top: 40%;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+}
+
+/* === Screen preview === */
+@media screen {
+  body {
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 0 1.5em;
+    background: #FDFBF7;
+  }
+
+  .title-page {
+    padding-top: 4em;
+    padding-bottom: 4em;
+    border-bottom: 2px solid #E5E3DE;
+    margin-bottom: 2em;
+  }
+}

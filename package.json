@@ -1,0 +1,11 @@
+{
+  "name": "five-stacks",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.0"
+  }
+}

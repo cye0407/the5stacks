@@ -11,7 +11,7 @@
   "rewrites": [
     {
       "source": "/baseline/:path*",
-      "destination": "https://five-stacks-baseline.vercel.app/baseline/:path*"
+      "destination": "https://baseline-orpin.vercel.app/baseline/:path*"
     }
   ]
 }

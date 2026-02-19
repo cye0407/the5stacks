@@ -153,6 +153,18 @@ body {
   background: #333;
 }
 
+.cta-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  margin-left: 12px;
+}
+
+.cta-secondary:hover {
+  background: transparent;
+  border-color: var(--muted);
+}
+
 .hero-band {
   background: var(--ink);
   color: white;

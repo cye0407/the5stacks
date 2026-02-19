@@ -7,5 +7,11 @@
         { "key": "X-Frame-Options", "value": "DENY" }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/baseline/:path*",
+      "destination": "https://five-stacks-baseline.vercel.app/baseline/:path*"
+    }
   ]
 }

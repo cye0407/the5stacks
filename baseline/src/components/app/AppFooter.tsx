@@ -8,7 +8,7 @@ export function AppFooter() {
           &copy; {new Date().getFullYear()} Five Stacks Framework&trade;
         </p>
         <div className="flex items-center gap-4 text-xs text-gray-400">
-          <span>Your data stays in your browser</span>
+          <span>Secure cloud storage</span>
           <a href="https://the5stacks.com" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
             the5stacks.com
           </a>

@@ -43,8 +43,8 @@ export function CookieConsent() {
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <div className="flex-1">
           <p className="text-sm text-gray-700">
-            We use local storage to save your data. Your ESG data never leaves your browser — we don&apos;t
-            sell it, share it, or send it to third parties.{' '}
+            We use cookies and secure cloud storage to keep your account and data safe. We don&apos;t
+            sell, share, or send your data to third parties.{' '}
             <Link href="/privacy" className="text-primary underline hover:text-primary-dark">
               Privacy Policy
             </Link>

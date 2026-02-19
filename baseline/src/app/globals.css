@@ -1,0 +1,224 @@
+/* Custom font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+/* Explicitly tell Tailwind where to scan for classes */
+@source "../**/*.{js,ts,jsx,tsx}";
+
+/* Tailwind CSS v4 - Ecosystems United Brand Colors */
+@theme {
+  /* Primary - Teal */
+  --color-primary: #4AA88C;
+  --color-primary-dark: #3d8f77;
+  --color-primary-light: #6dbfa6;
+  --color-primary-100: #e0f5ed;
+
+  /* Accent - Purple */
+  --color-accent: #5B5FC7;
+  --color-accent-dark: #4a4eb0;
+  --color-accent-light: #7a7dd4;
+
+  /* Stack Colors (Purple Gradient) */
+  --color-stack-1: #3D2E7C;
+  --color-stack-2: #5B4A9E;
+  --color-stack-3: #7B6BB8;
+  --color-stack-4: #9A8CD0;
+  --color-stack-5: #B8ADE3;
+
+  /* Forest colors - mapped for compatibility */
+  --color-forest-900: #3d8f77;
+  --color-forest-700: #4AA88C;
+  --color-forest-500: #6dbfa6;
+  --color-forest-300: #a8dcc9;
+  --color-forest-100: #e0f5ed;
+  --color-deep-forest: #3d8f77;
+
+  /* Backgrounds */
+  --color-cream: #F9FAFB;
+
+  /* Status */
+  --color-warning: #D97706;
+  --color-warning-light: #FEF3C7;
+  --color-error: #DC2626;
+  --color-error-light: #FEE2E2;
+  --color-info: #5B5FC7;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* CSS Variables for JavaScript access */
+:root {
+  --foreground: #1a1a1a;
+  --background: #ffffff;
+  --muted: #6b7280;
+  --color-primary: #4AA88C;
+  --color-primary-dark: #3d8f77;
+  --color-accent: #5B5FC7;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+}
+
+/* Base styles */
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--foreground);
+  background-color: var(--background);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid #4AA88C;
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F9FAFB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a8dcc9;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4AA88C;
+}
+
+/* Animation utilities */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+/* Progress bar gradient - Purple stack gradient */
+.progress-gradient {
+  background: linear-gradient(90deg, #3D2E7C 0%, #7B6BB8 50%, #B8ADE3 100%);
+}
+
+/* Tabular numbers for data */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Prose styling for article content */
+.prose h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: #4AA88C;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  color: #6BC4A6;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.625;
+}
+
+.prose ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose li::marker {
+  color: #374151;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: var(--color-primary-dark);
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1rem 0;
+  color: #374151;
+}

@@ -77,7 +77,7 @@ export default function ForgotPasswordPage() {
         </Card>
       </div>
 
-      <p className="mt-8 text-xs text-gray-400">Ecosystems United</p>
+      <p className="mt-8 text-xs text-gray-400">Five Stacks Framework™</p>
     </div>
   );
 }

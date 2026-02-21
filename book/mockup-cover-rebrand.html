@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Cover — Rebranded</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E5E5E5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 60px 20px;
+    gap: 80px;
+  }
+
+  .option-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .option-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #525252;
+    letter-spacing: 0.02em;
+  }
+  .cover {
+    width: 540px;
+    height: 810px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* ── Stacking visual ── */
+  .stacks-tower {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 3px;
+    width: 120px;
+  }
+  .stacks-tower .layer {
+    width: 100%;
+    height: 10px;
+    border-radius: 2px;
+  }
+  .stacks-tower .layer:nth-child(5) { opacity: 0.15; }
+  .stacks-tower .layer:nth-child(4) { opacity: 0.30; }
+  .stacks-tower .layer:nth-child(3) { opacity: 0.50; }
+  .stacks-tower .layer:nth-child(2) { opacity: 0.70; }
+  .stacks-tower .layer:nth-child(1) { opacity: 1.0; }
+  .stacks-tower.dark .layer { background: #171717; }
+  .stacks-tower.light .layer { background: #FAFAFA; }
+
+  /* ═══════════════════════════════════════════ */
+  /* FRONT — White top + Black bottom            */
+  /* ═══════════════════════════════════════════ */
+  .front {
+    display: flex;
+    flex-direction: column;
+  }
+  .front .top {
+    flex: 1;
+    background: #FAFAFA;
+    color: #171717;
+    padding: 52px 48px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+  }
+  .front .presents {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #737373;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .front .presents .mark {
+    width: 32px; height: 32px;
+    background: #171717; color: #FAFAFA;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+  .front .title-group {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .front .title {
+    font-size: 50px; font-weight: 700;
+    line-height: 1.06; letter-spacing: -0.03em;
+    color: #171717;
+  }
+  .front .subtitle {
+    font-size: 17px; font-weight: 400;
+    line-height: 1.5; color: #525252;
+    max-width: 380px;
+  }
+  .front .tagline {
+    font-size: 14px; font-weight: 400;
+    color: #737373; font-style: italic; line-height: 1.5;
+  }
+  .front .band {
+    background: #171717;
+    color: #FAFAFA;
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .front .band-left { display: flex; flex-direction: column; gap: 4px; }
+  .front .author {
+    font-size: 15px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #FAFAFA;
+  }
+  .front .url { font-size: 12px; font-weight: 400; color: #737373; }
+  .front .tm {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #525252;
+  }
+
+  /* ═══════════════════════════════════════════ */
+  /* BACK COVER                                  */
+  /* ═══════════════════════════════════════════ */
+  .spread-wrap {
+    display: flex;
+    align-items: stretch;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25), 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .back {
+    width: 540px;
+    height: 810px;
+    background: #171717;
+    color: #FAFAFA;
+    padding: 64px 48px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .back .content { display: flex; flex-direction: column; gap: 32px; }
+
+  .back .quote {
+    font-size: 20px; font-weight: 400;
+    line-height: 1.55; color: #D4D4D4;
+    font-style: italic;
+    max-width: 420px;
+  }
+
+  .back .divider { width: 40px; height: 2px; background: #333; }
+
+  .back .body-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .back .body-text p {
+    font-size: 15px; font-weight: 400;
+    line-height: 1.65; color: #A3A3A3;
+    max-width: 440px;
+  }
+
+  .back .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .back .properties {
+    display: flex; gap: 8px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #525252;
+  }
+  .back .properties span:not(:last-child)::after {
+    content: '·';
+    margin-left: 8px;
+  }
+
+  .back .cta {
+    font-size: 14px; font-weight: 400; color: #A3A3A3;
+  }
+  .back .cta strong {
+    color: #FAFAFA; font-weight: 600;
+  }
+
+  .back .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .back .footer-left { display: flex; flex-direction: column; gap: 3px; }
+  .back .author {
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #FAFAFA;
+  }
+  .back .url { font-size: 11px; font-weight: 400; color: #525252; }
+  .back .tm {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #404040;
+  }
+
+  /* ── Spine ── */
+  .spine {
+    width: 40px;
+    height: 810px;
+    background: #171717;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .spine .spine-mark {
+    width: 22px; height: 22px;
+    background: #FAFAFA; color: #171717;
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 10px; letter-spacing: -0.02em;
+  }
+  .spine .spine-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #A3A3A3;
+    transform: rotate(180deg);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FRONT COVER — Standalone                    -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="option-wrap">
+  <span class="option-label">Front Cover</span>
+  <div class="cover front">
+    <div class="top">
+      <div class="presents">
+        <div class="mark">5S</div>
+        The Five Stacks Framework Presents
+      </div>
+      <div class="title-group">
+        <div class="title">The Modern<br>Sustainability<br>Playbook</div>
+        <div class="subtitle">Turn Sustainability into Competitive Advantage</div>
+        <div class="stacks-tower dark" style="margin-top: 4px;">
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+        </div>
+      </div>
+      <div class="tagline">Talk is cheap. Systems compound.</div>
+    </div>
+    <div class="band">
+      <div class="band-left">
+        <div class="author">Cat Yeldi</div>
+        <div class="url">the5stacks.com</div>
+      </div>
+      <div class="tm">Five Stacks Framework™</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FULL SPREAD — Back + Spine + Front          -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="option-wrap">
+  <span class="option-label">Full Spread — Back + Spine + Front</span>
+  <div class="spread-wrap">
+
+    <!-- Back cover -->
+    <div class="back">
+      <div class="content">
+        <div class="quote">"Stop making sustainability a performance. Start building systems that pay for themselves."</div>
+        <div class="divider"></div>
+        <div class="body-text">
+          <p>Most sustainability programs don't survive the next budget review. Not because sustainability doesn't matter — because it was positioned as an obligation instead of an advantage.</p>
+          <p>A modern take on sustainability fixes that.</p>
+          <p>Five stacks. Built in sequence. Each one funds the next. No evangelism, no aspirational checklists — just operational infrastructure that compounds.</p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="properties">
+          <span>Systematic</span>
+          <span>Stackable</span>
+          <span>Scalable</span>
+          <span>Profitable</span>
+        </div>
+        <div class="cta">Start your baseline: <strong>the5stacks.com/baseline</strong></div>
+        <div class="footer-bottom">
+          <div class="footer-left">
+            <div class="author">Cat Yeldi</div>
+            <div class="url">the5stacks.com</div>
+          </div>
+          <div class="tm">Five Stacks Framework™</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spine -->
+    <div class="spine">
+      <div class="spine-mark">5S</div>
+      <div class="spine-text">The Modern Sustainability Playbook — Cat Yeldi</div>
+    </div>
+
+    <!-- Front cover -->
+    <div class="cover front" style="box-shadow: none;">
+      <div class="top">
+        <div class="presents">
+          <div class="mark">5S</div>
+          The Five Stacks Framework Presents
+        </div>
+        <div class="title-group">
+          <div class="title">The Modern<br>Sustainability<br>Playbook</div>
+          <div class="subtitle">Turn Sustainability into Competitive Advantage</div>
+          <div class="stacks-tower dark" style="margin-top: 4px;">
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+          </div>
+        </div>
+        <div class="tagline">Talk is cheap. Systems compound.</div>
+      </div>
+      <div class="band">
+        <div class="band-left">
+          <div class="author">Cat Yeldi</div>
+          <div class="url">the5stacks.com</div>
+        </div>
+        <div class="tm">Five Stacks Framework™</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

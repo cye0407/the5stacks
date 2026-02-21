@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cover Render</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1600px; height: 2560px; overflow: hidden; }
+
+  .cover {
+    width: 1600px;
+    height: 2560px;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    background: #FAFAFA;
+  }
+
+  /* White top area — absolute positioning */
+  .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 280px;
+    background: #FAFAFA;
+    color: #171717;
+    padding: 0 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 56px;
+  }
+
+  .title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 128px;
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: #171717;
+  }
+
+  .subtitle {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #525252;
+  }
+
+  .stacks-tower {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 7px;
+    width: 280px;
+    margin-top: 4px;
+  }
+
+  .stacks-tower .layer {
+    width: 100%;
+    height: 20px;
+    border-radius: 3px;
+    background: #171717;
+  }
+
+  .stacks-tower .layer:nth-child(5) { opacity: 0.12; }
+  .stacks-tower .layer:nth-child(4) { opacity: 0.28; }
+  .stacks-tower .layer:nth-child(3) { opacity: 0.50; }
+  .stacks-tower .layer:nth-child(2) { opacity: 0.72; }
+  .stacks-tower .layer:nth-child(1) { opacity: 1.0; }
+
+  .presents {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #737373;
+  }
+
+  .author-line {
+    font-size: 32px;
+    font-weight: 500;
+    color: #525252;
+  }
+
+  .tagline {
+    font-size: 30px;
+    font-weight: 400;
+    color: #A3A3A3;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Black bottom band — pinned to bottom */
+  .band {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 280px;
+    background: #171717;
+    color: #FAFAFA;
+    padding: 0 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .band-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .author {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #FAFAFA;
+  }
+
+  .url {
+    font-size: 24px;
+    font-weight: 400;
+    color: #737373;
+  }
+
+  .tm {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #525252;
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="top">
+    <div class="presents">The 5 Stacks Framework Presents</div>
+    <div class="title-group">
+      <div class="title">The Modern<br>Sustainability<br>Playbook</div>
+      <div class="subtitle">Good business is sustainable.<br>This is the operating manual.</div>
+    </div>
+    <div class="author-line">By Cat Yeldi</div>
+    <div class="stacks-tower">
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+    </div>
+    <div class="tagline">Five stacks. Each one funds the next.</div>
+  </div>
+  <div class="band">
+    <div class="band-left">
+      <div class="author">Cat Yeldi</div>
+      <div class="url">the5stacks.com</div>
+    </div>
+    <div class="tm">Five Stacks Framework&trade;</div>
+  </div>
+</div>
+</body>
+</html>

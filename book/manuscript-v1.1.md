@@ -1,35 +1,10 @@
-# The Modern Sustainability Playbook
-
-## Talk Is Cheap. Systems Compound.
-
-*Five stacks, built in sequence, that turn compliance into infrastructure.*
-
-**By Cat Yeldi**
-
----
-
-**Ready to find your starting point?**
-**the5stacks.com/baseline**
-
----
-
-## About the Author
-
-Cat Yeldi has spent over fifteen years helping small and medium-sized businesses close the gap between sustainability ambition and operational reality. She is the creator of the Five Stacks Framework™ and works with manufacturing, consumer goods, agriculture, and food companies across Europe.
-
-She built this framework because she watched too many companies announce sustainability goals they had no system to achieve. The Five Stacks exist because talk without infrastructure is just noise — and SMEs deserve an approach that pays for itself.
-
-Based in Germany. Working across Europe.
-
----
-
 ## Who This Book Is For
 
 This book is for business owners who know sustainability is coming but want it to pay for itself.
 
 It's for operations leaders looking for margin improvements, not compliance checklists.
 
-It's for anyone tired of sustainability theater who wants something that actually works.
+It's for anyone tired of sustainability theatrics and wants something that actually works.
 
 If you're looking for someone to tell you to save the planet, you won't find that here.
 
@@ -45,9 +20,9 @@ If you're looking for a system that makes your business stronger — and produce
 
 Sustainability has a reputation problem. You already know this.
 
-It's the initiative that gets announced with fanfare and cut when your margins tighten. The report nobody in your company reads. The checkbox that satisfies auditors but changes nothing in your operation.
+It's the initiative that gets announced with fanfare and cut when your margins tighten. The report nobody in your company actually reads. The checkbox that satisfies auditors but changes nothing in your operation. The shiny (and very expensive) seal of approval.
 
-You've watched it happen. A sustainability officer gets hired. Glossy reports get published. Nothing actually changes. "Green" becomes a marketing term that has nothing to do with how your operation runs or where your money goes. Real investments get shelved because the ROI wasn't obvious enough, fast enough.
+You've watched it happen. A sustainability officer gets hired or even worse, chosen. Glossy reports get published. Nothing really changes. "Green" becomes a marketing term that has nothing to do with how your operation runs or where your money goes. Real investments get shelved because the ROI wasn't obvious enough, fast enough.
 
 And you've drawn the reasonable conclusion.
 
@@ -65,19 +40,19 @@ You know the pattern.
 
 It starts with ambition: "We'll be carbon neutral by 2030." Someone in your meeting room is genuinely excited. A press release goes out. The commitment gets added to the website.
 
-Then it becomes a department. One person. Small budget. Lots of PowerPoints. Maybe a consultant comes in, produces a thick report full of recommendations and acronyms, and leaves. You never see them again.
+Then it becomes a department. One person. Small budget. Lots of PowerPoints. Maybe a consultant comes in, produces a thick report ripe with recommendations and acronyms, and leaves. You never see them again.
 
-Then it hits reality. The costs are higher than you expected. The returns are unclear. Other priorities are more urgent. Your board starts asking harder questions. The sustainability person starts getting fewer meeting invites.
+Then it hits reality. The costs are higher than you expected. The returns are unclear. Customers don't seem to care as much as expected. Other priorities become more urgent. Your board starts asking harder questions. The sustainability person starts getting fewer meeting invites.
 
 Then it becomes theater. The report still gets published. The language stays on the website. The commitment is technically still there. But your operations run exactly as they did before.
 
 This is sustainability as a tax. Something you pay because you have to. Something that competes with your actual business for attention, budget, and time.
 
-No wonder you cut it.
+It's no wonder you cut it.
 
-And no wonder you're skeptical about trying again. You should be. You've lived this pattern — in your own company, in your competitors, in the brands that market themselves as green while changing nothing that matters.
+And it's not surprising you're skeptical about trying again. You should be. You've lived this pattern — in your own company, in your competitors, in the brands that market themselves as green while changing nothing that matters. It was expensive, both in terms of time and capital, and you're not keen to repeat the process.
 
-The vast majority of SMEs set sustainability goals. A tiny fraction achieve measurable results. That's not a commitment gap. That's a systems failure.
+You're not alone — studies consistently show that while most small and mid-sized businesses (SMEs) set sustainability goals, only a small fraction achieve measurable results. That's not a commitment gap, it's a systems failure.
 
 Your ambition was never the problem. The infrastructure was.
 
@@ -107,7 +82,7 @@ That's what this book shows you how to build.
 
 What if sustainability wasn't the goal — but the lens?
 
-What if the same practices that reduce your environmental footprint also reduced your costs? What if building resilience against climate volatility also protected you from supply chain shocks? What if the data you need for Scope 3 reporting also showed you where you're bleeding margin?
+What if the same practices that reduce your environmental footprint also reduced your costs? What if building resilience against climate volatility also protected you from supply chain shocks? What if the data you need for Scope 3 reporting (see Glossary) also showed you where you're bleeding margin?
 
 This isn't hypothetical. It's how sustainability works when you build it into operations instead of bolting it onto marketing.
 
@@ -115,7 +90,7 @@ This isn't hypothetical. It's how sustainability works when you build it into op
 
 The old model is sustainability as virtue. You do it because it's the right thing to do. The ROI is moral clarity and maybe some PR value. The business case is... vague.
 
-The new model is sustainability as competitive advantage. You do it because it makes your business better. The environmental benefits are real and measurable, but they're the output of better operations, not the input.
+The new model is simpler: sustainability as competitive advantage. You do it because it makes your business better. The environmental benefits are real — but they're the result of better operations, not the reason you started.
 
 This book moves sustainability out of your marketing department and into your engine room.
 
@@ -129,7 +104,7 @@ Not because being green is good PR — though it can be. Because the operational
 
 **Resilience to shocks.** When you diversify your supply chain, reduce single-source dependencies, and build adaptive capacity, you survive disruptions that shut down your competitors. The pandemic, the energy crisis, supply chain collapses — resilient businesses didn't just survive these. They gained market share.
 
-**Positioning for premium markets.** When you can prove your sustainability credentials with hard data — not marketing claims, but defensible baselines and verified outcomes — you access buyers and markets that pay more. Premium positioning isn't about what you say. It's about what you can prove.
+**Positioning for premium markets.** When you can prove your sustainability credentials with hard data (not marketing claims, but defensible baselines and verified outcomes), you access buyers and markets that pay more. Premium positioning isn't about what you say. It's about what you can prove.
 
 The environmental benefits are real. Emissions go down. Waste goes down. Resource consumption goes down. But these aren't the reasons you build the system. They're the evidence that the system is working.
 
@@ -182,6 +157,8 @@ The system doesn't require your motivation to be noble. It requires your executi
 Here's what's not optional: the regulations are coming.
 
 CSRD — the Corporate Sustainability Reporting Directive — is expanding its scope. Even if your company isn't directly covered, your customers increasingly are. And when a large company needs Scope 3 data, they're going to ask their entire supply chain for numbers. That includes you.
+
+But it's not just regulation. End consumers are asking harder questions too. They want to know where products come from, how they're made, and whether the claims on the label hold up. That pressure flows through every link in the chain — from the shelf, through the brand, to you.
 
 Supply chain due diligence requirements are tightening across Europe and beyond. Buyers are asking for data they never asked for before. Sustainability questionnaires that used to be optional are becoming prerequisites for keeping contracts.
 
@@ -281,7 +258,7 @@ Sequence is not optional. It's structural.
 
 The Five Stacks Framework is built on a simple principle: each layer creates the conditions for the next.
 
-You can't optimize what you don't measure. So measurement comes first.
+You can't optimize what you don't measure, which means measurement comes first.
 
 You can't recover margin from waste streams you haven't mapped. So efficiency — which maps those streams — comes before margin recovery.
 
@@ -298,27 +275,37 @@ This is how the system compounds. Not through motivation or ambition, but throug
 **Stack 1: The Defensible Baseline**
 *Baseline your operational data.*
 
-"If it can't be measured, it can't be defended." Establish a hard-data foundation for emissions, energy, and resource use. This is your source of truth — the foundation that protects you against audit scrutiny, buyer questions, and your own blind spots.
+"If it can't be measured, it can't be defended."
+
+Establish a hard-data foundation for emissions, energy, and resource use. This is your source of truth — the foundation that protects you against audit scrutiny, buyer questions, and your own blind spots.
 
 **Stack 2: Operational Efficiency**
 *Fix the leaks in your operation.*
 
-"Fix leaks before adding initiatives." Your baseline showed you where the money is going. Now you stop it from leaving. Use the data to identify exactly where inputs are being wasted and where processes are underperforming.
+"Fix leaks before adding initiatives."
+
+Your baseline showed you where the money is going. Now you stop it from leaving. Use the data to identify exactly where inputs are being wasted and where processes are underperforming.
 
 **Stack 3: Margin Recovery**
 *Turn waste into value.*
 
-"What you discard is lost margin." Identify waste streams that can be converted into revenue or cost savings. This turns an environmental "problem" into a line item on your P&L.
+"What you discard is lost margin."
+
+Identify waste streams that can be converted into revenue or cost savings. This turns an environmental "problem" into a line item on your P&L.
 
 **Stack 4: Structural Resilience**
 *Build adaptive capacity.*
 
-"Systems must absorb shocks without breaking." Diversify your operational value streams so a single market shift, regulatory change, or climate event doesn't tank the business.
+"Systems must absorb shocks without breaking."
+
+Diversify your operational value streams so a single market shift, regulatory change, or climate event doesn't tank the business.
 
 **Stack 5: The Compounding Engine**
 *Create compound returns.*
 
-"Build systems that improve as they operate." The final stack is a feedback loop. Your business doesn't just "sustain" — it gets more efficient and more profitable with every cycle.
+"Build systems that improve as they operate."
+
+The final stack is a feedback loop. Your business doesn't just "sustain" — it gets more efficient, more profitable, and more capable with every cycle. New markets open. Certifications become achievable. Each year's results unlock opportunities that weren't available the year before.
 
 Each stack creates the conditions for the next. Follow the sequence and each investment funds the next.
 
@@ -460,7 +447,7 @@ Rate each practice from 1 (not implemented) to 5 (fully implemented with documen
 4. Do you collect sustainability data from your key suppliers?
 5. Do you produce any form of sustainability report (internal or external)?
 
-**Your score: ___/25**
+**Your score: \_\_\_/25**
 
 - **5-10:** Start here. This is your highest-priority stack. See "How to Start" above.
 - **11-17:** You have foundations in place. Focus on making your data defensible and actionable.
@@ -488,7 +475,7 @@ This is the first stack that directly hits your profit margin. And for most SMEs
 
 **Costs are rising.** Energy prices, water prices, material prices, waste disposal costs — the trend line is up across the board. Efficiency isn't optional in a rising-cost environment. It's your first line of defense.
 
-**The waste is hidden.** Most SMEs have 15-30% waste hidden in their operations that nobody is tracking — not because anyone is negligent, but because nobody had the data to see it. Compressed air leaking from aging systems. Lighting running in unoccupied spaces. Overproduction that ends up as scrap. Water flowing longer than necessary. These aren't dramatic failures. They're slow drains that compound into significant costs over a year.
+**The waste is hidden.** Industry benchmarks suggest most SMEs have 15-30% waste hidden in their operations that nobody is tracking — not because anyone is negligent, but because nobody had the data to see it. Compressed air leaking from aging systems. Lighting running in unoccupied spaces. Overproduction that ends up as scrap. Water flowing longer than necessary. These aren't dramatic failures. They're slow drains that compound into significant costs over a year.
 
 **Efficiency funds everything else.** The savings you generate in Stack 2 create the budget headroom for Stacks 3, 4, and 5. This is where the flywheel starts. If your baseline is the map, efficiency is the first return on the investment of building that map.
 
@@ -564,7 +551,7 @@ Rate each practice from 1 (not implemented) to 5 (fully implemented with documen
 4. Do you have reduction targets for your key resource inputs?
 5. Do you engage staff in identifying and implementing efficiency improvements?
 
-**Your score: ___/25**
+**Your score: \_\_\_/25**
 
 - **5-10:** Major opportunity. Your Stack 1 data likely reveals significant efficiency gains waiting to be captured.
 - **11-17:** Foundations in place. Look for the next tier of optimization and engage your team more broadly.
@@ -586,7 +573,9 @@ Stack 2 fixed the leaks. Stack 3 monetizes what remains.
 
 Even after you've optimized your operations for efficiency, there are outputs leaving your business that aren't products. Scrap material. Processing residues. Byproducts. Packaging waste. Heat. Water. Organic matter. In the old model, these are costs — disposal fees, hauling contracts, landfill charges. In the Five Stacks model, they're unrealized margin.
 
-This isn't circular economy theory. It's practical margin recovery. Every waste stream has a cost. Some of those waste streams also have a value — to someone else, or recirculated back into your own operation. The gap between what you're paying to dispose of them and what they're worth is margin you're leaving on the ground.
+But margin recovery isn't limited to physical waste. It applies to anything latent in your operation that's going unused. Equipment running below capacity. Staff skills that never get deployed. Data you're collecting but not acting on. Relationships with suppliers or partners that could open new value but haven't been explored. Circularity isn't just about materials — it's about recognizing underutilized assets wherever they sit.
+
+This isn't circular economy theory. It's practical margin recovery. Every waste stream has a cost. Every idle asset has an opportunity cost. The gap between what you're paying to maintain them and what they could be worth is margin you're leaving on the ground.
 
 Stack 3 picks it up.
 
@@ -666,7 +655,7 @@ Rate each practice from 1 (not implemented) to 5 (fully implemented with documen
 4. Have you redesigned any process or product to reduce waste at source?
 5. Do you track the financial value recovered from waste streams?
 
-**Your score: ___/25**
+**Your score: \_\_\_/25**
 
 - **5-10:** Significant margin recovery opportunity. Your Stack 2 data already shows you where to look.
 - **11-17:** Some recovery in place. Map the remaining opportunities and quantify the financial potential.
@@ -746,7 +735,7 @@ Resilience ROI is measured differently from efficiency or margin recovery. It's 
 
 **Rigid plans instead of adaptive capacity.** A disaster recovery plan that specifies exactly what to do in scenario X is less valuable than an organization that can assess novel situations and respond effectively. Build adaptive capacity — the ability to read conditions and act appropriately — not just contingency scripts.
 
-**Underestimating regulatory speed.** "We'll deal with it when it arrives" is the most expensive sentence in sustainability. By the time a regulation is announced, the leading companies have been preparing for years. By the time it's enforced, the leaders are compliant and the laggards are scrambling. Start earlier than you think you need to.
+**Underestimating regulatory speed.** "We'll deal with it when it arrives" is the most expensive sentence in operations. By the time a regulation is announced, the leading companies have been preparing for years. By the time it's enforced, the leaders are compliant and the laggards are scrambling. Start earlier than you think you need to.
 
 ## How Stack 4 Enables Stack 5
 
@@ -770,7 +759,7 @@ Rate each practice from 1 (not implemented) to 5 (fully implemented with documen
 4. Do you have a response plan for supply chain disruptions?
 5. Do you integrate environmental and regulatory risk into business planning?
 
-**Your score: ___/25**
+**Your score: \_\_\_/25**
 
 - **5-10:** Significant exposure. Use Stacks 1-3 results to identify and prioritize your key vulnerabilities.
 - **11-17:** Some resilience in place. Formalize your risk register and close the gaps in your response capacity.
@@ -832,7 +821,7 @@ This is the moat. And it widens every year.
 
 ## The ROI Case
 
-**Premium market positioning.** Verified regenerative or sustainability-positive practices can command 10-30% price premiums in markets that value impact. This isn't universal, but in sectors where buyers evaluate sustainability (food, consumer goods, B2B procurement with sustainability criteria), it's real and growing.
+**Premium market positioning.** Verified regenerative or sustainability-positive practices can command price premiums — often in the range of 10-30% — in markets that value impact. This isn't universal, but in sectors where buyers evaluate sustainability (food, consumer goods, B2B procurement with sustainability criteria), it's real and growing.
 
 **Long-term cost reduction.** Systems that improve their operating environment reduce input costs over time. This is most visible in agriculture (regenerative soil management reduces fertilizer and irrigation costs year over year) but the principle applies in manufacturing (equipment that runs on increasingly efficient processes), services (operations that generate less waste to manage), and any sector where operational improvement compounds.
 
@@ -882,7 +871,7 @@ Rate each practice from 1 (not implemented) to 5 (fully implemented with documen
 4. Do you have buyers or partners who value your sustainability practices?
 5. Is compounding, regenerative thinking part of your business strategy?
 
-**Your score: ___/25**
+**Your score: \_\_\_/25**
 
 - **5-10:** Focus on building Stacks 1-4 first. Stack 5 becomes accessible once the infrastructure is in place.
 - **11-17:** You're approaching readiness. Identify one area to push from "less harm" to "positive impact."
@@ -925,6 +914,7 @@ You now have enough data to see patterns. Where are your highest resource costs?
 Complete your Five Stacks Self-Assessment (Appendix A) to confirm your priority stacks.
 
 **Phase 1 outputs:**
+
 - Populated Five Stacks Baseline tool with three months of data
 - Documented methodology for each metric
 - Ranked list of efficiency opportunities
@@ -953,6 +943,7 @@ By now you should have measurable cost reductions from your efficiency improveme
 Review your waste stream map. Identify the one or two streams with the highest margin recovery potential. Plan your first Stack 3 initiative.
 
 **Phase 2 outputs:**
+
 - Two to four efficiency measures implemented with measured results
 - Frontline engagement process established
 - Detailed waste stream map with cost data
@@ -982,6 +973,7 @@ By now, sustainability isn't a side project — it's becoming operational infras
 Explore certification pathways relevant to your market. With six months of data and demonstrated improvements, you're in a credible position to begin certification conversations.
 
 **Phase 3 outputs:**
+
 - First margin recovery initiative operational with tracked financial results
 - Risk register created and reviewed
 - At least one supply chain alternative identified
@@ -1009,6 +1001,7 @@ Review your full year of data. Calculate total cost savings from efficiency. Cal
 Set Year 2 targets that build on Year 1 results. Identify one area where you can push from "less harm" to "positive impact" — the beginning of Stack 5. Begin telling your story to customers, buyers, and partners — backed by a year of hard data.
 
 **Phase 4 outputs:**
+
 - Resilience measures implemented, risk register updated
 - Internal sustainability report compiled
 - Full-year ROI calculated and documented
@@ -1036,7 +1029,7 @@ Every framework meets resistance. Here are the most common objections — and th
 
 ## "We're Too Small for This"
 
-The Five Stacks Framework was designed for SMEs. It wasn't scaled down from an enterprise system. It was built from the ground up for companies with ten to five hundred employees, limited budgets, and no dedicated sustainability department.
+The Five Stacks Framework was designed for SMEs. It wasn't scaled down from an enterprise system. It was built from the ground up for companies with one to five hundred employees, limited budgets, and no dedicated sustainability department.
 
 Stack 1 — the defensible baseline — can be started with a free tracker and two hours a month. Stack 2 — efficiency — requires nothing more than acting on what the data shows you. These aren't enterprise programs. They're operational basics that every business can implement, regardless of size.
 
@@ -1125,9 +1118,10 @@ Rate your current practices for each question on a scale of 1 to 5. Calculate yo
 | Do you have a baseline for your greenhouse gas emissions? | |
 | Do you collect sustainability data from your key suppliers? | |
 | Do you produce any form of sustainability report (internal or external)? | |
-| **TOTAL** | **___/25** |
+| **TOTAL** | **\_\_\_/25** |
 
 **Quick wins to get started:**
+
 - Download the free Five Stacks Baseline tool at the5stacks.com/baseline
 - Gather your last 12 months of utility bills and waste invoices
 - Enter what you have — estimated data beats no data
@@ -1142,9 +1136,10 @@ Rate your current practices for each question on a scale of 1 to 5. Calculate yo
 | Have you implemented specific efficiency improvement measures? | |
 | Do you have reduction targets for your key resource inputs? | |
 | Do you engage staff in identifying and implementing efficiency improvements? | |
-| **TOTAL** | **___/25** |
+| **TOTAL** | **\_\_\_/25** |
 
 **Quick wins to get started:**
+
 - Ask your utility provider about a free energy audit
 - Rank your resource costs from highest to lowest using your tracker data
 - Ask three frontline staff: "Where do you see waste in our operation?"
@@ -1159,9 +1154,10 @@ Rate your current practices for each question on a scale of 1 to 5. Calculate yo
 | Have you identified potential markets or partners for your byproducts? | |
 | Have you redesigned any process or product to reduce waste at source? | |
 | Do you track the financial value recovered from waste streams? | |
-| **TOTAL** | **___/25** |
+| **TOTAL** | **\_\_\_/25** |
 
 **Quick wins to get started:**
+
 - List your top three waste streams by disposal cost
 - For each: ask your waste hauler "Is anyone buying this material?"
 - Separate one recyclable stream you're currently sending to general waste
@@ -1176,9 +1172,10 @@ Rate your current practices for each question on a scale of 1 to 5. Calculate yo
 | Are you actively preparing for upcoming sustainability regulations? | |
 | Do you have a response plan for supply chain disruptions? | |
 | Do you integrate environmental and regulatory risk into business planning? | |
-| **TOTAL** | **___/25** |
+| **TOTAL** | **\_\_\_/25** |
 
 **Quick wins to get started:**
+
 - List every input where you have only one supplier
 - For the most critical one: identify one alternative and request a quote
 - Look up which sustainability regulations apply to your sector in the next 2 years
@@ -1193,9 +1190,10 @@ Rate your current practices for each question on a scale of 1 to 5. Calculate yo
 | Are you pursuing or holding sustainability certifications? | |
 | Do you have buyers or partners who value your sustainability practices? | |
 | Is compounding, regenerative thinking part of your business strategy? | |
-| **TOTAL** | **___/25** |
+| **TOTAL** | **\_\_\_/25** |
 
 **Quick wins to get started:**
+
 - Identify one area where you're already performing well on sustainability
 - Document the improvement trajectory over the past year (using your tracker data)
 - Research one certification relevant to your sector and market
@@ -1336,7 +1334,9 @@ The system compounds. But only if you start.
 # Connect
 
 **Website:** the5stacks.com
+
 **Start Your Baseline:** the5stacks.com/baseline
+
 **Email:** hello@the5stacks.com
 
 ---
@@ -1354,6 +1354,16 @@ Talk is cheap. Systems compound.
 Start building yours.
 
 — Cat Yeldi
+
+---
+
+## About the Author
+
+Cat Yeldi has worked across the full chain of sustainability — from building EU ecolabel legislation to advising startup cooperatives, from the shop floor to senior operations management. She holds an MSc in Natural Resource Management and has spent her career in the gap between sustainability ambition and operational reality, working across B2B and B2C in food, consumer goods, agriculture, and manufacturing.
+
+She built this framework because she's seen what happens at every level: the reports nobody reads, the certifications that change nothing, the goals that don't survive the next budget review. The Five Stacks exist because talk without infrastructure is just noise — and small and mid-sized businesses deserve an approach that pays for itself.
+
+Working across North America and Europe.
 
 ---
 

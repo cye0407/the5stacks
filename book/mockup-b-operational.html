@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option B: Clean Operational Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --bg-alt: #F1F5F9;
+      --surface: #FFFFFF;
+      --ink: #0F172A;
+      --text: #334155;
+      --muted: #64748B;
+      --subtle: #94A3B8;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-light: #EFF6FF;
+      --border: #E2E8F0;
+      --border-subtle: #F1F5F9;
+      --success: #059669;
+      --success-light: #ECFDF5;
+      --warning: #D97706;
+      --warning-light: #FFFBEB;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.5; font-size: 14px; }
+
+    /* Layout */
+    .sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 240px; background: var(--ink); display: flex; flex-direction: column; z-index: 40; }
+    .main { margin-left: 240px; padding: 24px 32px; }
+
+    /* Sidebar */
+    .sidebar-header { padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .sidebar-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .sidebar-mark { width: 28px; height: 28px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 11px; letter-spacing: -0.02em; }
+    .sidebar-name { font-weight: 600; color: #F8FAFC; font-size: 14px; letter-spacing: -0.01em; }
+    .sidebar-sub { font-size: 11px; color: var(--subtle); margin-top: 1px; }
+
+    .sidebar-nav { flex: 1; padding: 12px 8px; }
+    .sidebar-nav a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--subtle); font-size: 13px; font-weight: 500; transition: all 0.1s; margin-bottom: 1px; }
+    .sidebar-nav a:hover { background: rgba(255,255,255,0.06); color: #E2E8F0; }
+    .sidebar-nav a.active { background: rgba(37,99,235,0.15); color: #93BBFD; }
+    .sidebar-nav svg { width: 16px; height: 16px; opacity: 0.7; }
+    .sidebar-nav a.active svg { opacity: 1; }
+
+    .sidebar-section { padding: 0 12px; margin-top: 16px; margin-bottom: 6px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); }
+
+    /* Page header */
+    .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .page-header h1 { font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    .page-header p { color: var(--muted); font-size: 13px; margin-top: 2px; }
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .filters select { padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); font-family: var(--font); font-size: 13px; color: var(--text); cursor: pointer; }
+    .btn-secondary { padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); font-family: var(--font); font-size: 13px; color: var(--text); cursor: pointer; font-weight: 500; }
+
+    /* Stat cards */
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; }
+    .stat-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .stat-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .stat-icon { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .stat-icon svg { width: 16px; height: 16px; }
+    .stat-icon-blue { background: var(--accent-light); color: var(--accent); }
+    .stat-icon-green { background: var(--success-light); color: var(--success); }
+    .stat-icon-amber { background: var(--warning-light); color: var(--warning); }
+    .stat-value { font-size: 24px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+    .stat-value small { font-size: 13px; color: var(--muted); font-weight: 400; }
+    .stat-bar { height: 3px; background: var(--bg-alt); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+    .stat-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+
+    /* Section nav */
+    .section-nav { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--border); margin: 0 -32px 24px; padding: 0 32px; display: flex; gap: 0; overflow-x: auto; }
+    .section-nav a { padding: 10px 14px; font-size: 12px; font-weight: 500; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.1s; letter-spacing: 0.01em; }
+    .section-nav a:hover { color: var(--text); }
+    .section-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* Section header */
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 8px; }
+    .section-dot { width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+    .section-title { font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .section-count { font-size: 11px; background: var(--bg-alt); color: var(--muted); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+
+    /* Table */
+    .data-table { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; border-spacing: 0; margin-bottom: 40px; }
+    .data-table thead { background: var(--bg-alt); }
+    .data-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+    .data-table td { padding: 10px 14px; font-size: 13px; color: var(--text); border-bottom: 1px solid var(--border-subtle); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: #FAFBFD; }
+    .data-table .num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink); }
+    .data-table .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 4px; }
+    .badge-green { background: var(--success-light); color: var(--success); }
+    .badge-amber { background: var(--warning-light); color: var(--warning); }
+
+    /* Empty state */
+    .empty { text-align: center; padding: 40px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 40px; }
+    .empty svg { width: 32px; height: 32px; color: var(--border); margin-bottom: 8px; }
+    .empty p { font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a class="sidebar-logo" href="#">
+        <div class="sidebar-mark">5S</div>
+        <div>
+          <div class="sidebar-name">Five Stacks</div>
+          <div class="sidebar-sub">Baseline</div>
+        </div>
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Overview</div>
+      <a href="#" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        360 View
+      </a>
+
+      <div class="sidebar-section">Data</div>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Energy
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Materials
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Workforce
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/></svg>
+        Outputs
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Transport
+      </a>
+
+      <div class="sidebar-section">System</div>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Exports
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+    <!-- Header -->
+    <div class="page-header">
+      <div>
+        <h1>360 View</h1>
+        <p>All operational data &mdash; read only</p>
+      </div>
+      <div class="header-actions">
+        <select class="filters"><option>All Sites</option><option>HQ Berlin</option><option>Warehouse Munich</option></select>
+        <select class="filters"><option>2025</option><option>2024</option></select>
+        <button class="btn-secondary">Export</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Total Records</span>
+          <div class="stat-icon stat-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        </div>
+        <div class="stat-value">247</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Domains Covered</span>
+          <div class="stat-icon stat-icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        </div>
+        <div class="stat-value">6 <small>/ 8</small></div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width: 75%"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Sites Tracked</span>
+          <div class="stat-icon stat-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        </div>
+        <div class="stat-value">3</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Completeness</span>
+          <div class="stat-icon stat-icon-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        </div>
+        <div class="stat-value">75%</div>
+      </div>
+    </div>
+
+    <!-- Section nav -->
+    <div class="section-nav">
+      <a href="#" class="active">Company</a>
+      <a href="#">Infrastructure</a>
+      <a href="#">Outputs</a>
+      <a href="#">Materials</a>
+      <a href="#">Energy</a>
+      <a href="#">Transport</a>
+      <a href="#">Workforce</a>
+      <a href="#">Packaging</a>
+      <a href="#">Context</a>
+    </div>
+
+    <!-- Energy section -->
+    <div class="section-header">
+      <div class="section-dot"></div>
+      <span class="section-title">Energy</span>
+      <span class="section-count">42 records</span>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Site</th>
+          <th>Period</th>
+          <th>Type</th>
+          <th>Consumption</th>
+          <th>Unit</th>
+          <th>Cost</th>
+          <th>Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HQ Berlin</td>
+          <td>2025-01</td>
+          <td>Grid Electricity</td>
+          <td class="num">12,450</td>
+          <td>kWh</td>
+          <td class="num">&euro;3,112</td>
+          <td><span class="badge badge-green">High</span></td>
+        </tr>
+        <tr>
+          <td>HQ Berlin</td>
+          <td>2025-01</td>
+          <td>Natural Gas</td>
+          <td class="num">8,200</td>
+          <td>kWh</td>
+          <td class="num">&euro;984</td>
+          <td><span class="badge badge-green">High</span></td>
+        </tr>
+        <tr>
+          <td>Warehouse Munich</td>
+          <td>2025-01</td>
+          <td>Grid Electricity</td>
+          <td class="num">6,890</td>
+          <td>kWh</td>
+          <td class="num">&euro;1,722</td>
+          <td><span class="badge badge-amber">Medium</span></td>
+        </tr>
+        <tr>
+          <td>Factory Leipzig</td>
+          <td>2025-01</td>
+          <td>Grid Electricity</td>
+          <td class="num">34,100</td>
+          <td>kWh</td>
+          <td class="num">&euro;8,525</td>
+          <td><span class="badge badge-green">High</span></td>
+        </tr>
+        <tr>
+          <td>Factory Leipzig</td>
+          <td>2025-01</td>
+          <td>Diesel</td>
+          <td class="num">2,400</td>
+          <td>litres</td>
+          <td class="num">&euro;3,840</td>
+          <td><span class="badge badge-amber">Medium</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Workforce section -->
+    <div class="section-header">
+      <div class="section-dot" style="background: var(--success);"></div>
+      <span class="section-title">Workforce</span>
+      <span class="section-count">18 records</span>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Site</th>
+          <th>Period</th>
+          <th>Total FTE</th>
+          <th>Permanent</th>
+          <th>Temporary</th>
+          <th>Female %</th>
+          <th>Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HQ Berlin</td>
+          <td>2025-Q1</td>
+          <td class="num">42</td>
+          <td class="num">38</td>
+          <td class="num">4</td>
+          <td class="num">45%</td>
+          <td><span class="badge badge-green">High</span></td>
+        </tr>
+        <tr>
+          <td>Warehouse Munich</td>
+          <td>2025-Q1</td>
+          <td class="num">15</td>
+          <td class="num">12</td>
+          <td class="num">3</td>
+          <td class="num">33%</td>
+          <td><span class="badge badge-green">High</span></td>
+        </tr>
+        <tr>
+          <td>Factory Leipzig</td>
+          <td>2025-Q1</td>
+          <td class="num">87</td>
+          <td class="num">78</td>
+          <td class="num">9</td>
+          <td class="num">28%</td>
+          <td><span class="badge badge-amber">Medium</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Empty state -->
+    <div class="section-header">
+      <div class="section-dot" style="background: var(--subtle);"></div>
+      <span class="section-title">Packaging</span>
+      <span class="section-count">0 records</span>
+    </div>
+    <div class="empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/></svg>
+      <p>No packaging data recorded yet</p>
+    </div>
+
+  </main>
+
+</body>
+</html>

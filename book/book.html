@@ -1,37 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Cat Yeldi" />
+  <meta name="description" content="Turn sustainability into competitive advantage. Move beyond sustainability evangelism and into operational discipline with the Five Stacks Framework. Five stacks, built in sequence, that turn compliance into infrastructure." />
   <title>The Modern Sustainability Playbook</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="print.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="print.css" />
+  <style>
+    /* Copyright page */
+    .copyright-page {
+      page-break-before: always;
+      page-break-after: always;
+      padding-top: 60%;
+      font-size: 8pt;
+      color: #737373;
+      text-align: center;
+      line-height: 1.8;
+    }
+    .copyright-page p {
+      margin-bottom: 0.3em;
+    }
+  </style>
 </head>
 <body>
-
-  <div class="title-page">
-    <h1>The Modern<br>Sustainability<br>Playbook</h1>
-    <p class="tp-subtitle">Talk Is Cheap. Systems Compound.</p>
-    <p class="tp-tagline">Five stacks, built in sequence, that turn compliance into infrastructure.</p>
-    <p class="tp-author">By Cat Yeldi</p>
-    <p class="tp-url">the5stacks.com</p>
-  </div>
-
-<h2 id="about-the-author">About the Author</h2>
-<p>Cat Yeldi has worked across the full chain of sustainability — from
-building EU ecolabel legislation to advising startup cooperatives, from
-the shop floor to senior operations management. She holds an MSc in
-Natural Resource Management and has spent her career in the gap between
-sustainability ambition and operational reality, working across B2B and
-B2C in food, consumer goods, agriculture, and manufacturing.</p>
-<p>She built this framework because she’s seen what happens at every
-level: the reports nobody reads, the certifications that change nothing,
-the goals that don’t survive the next budget review. The Five Stacks
-exist because talk without infrastructure is just noise — and small and
-mid-sized businesses deserve an approach that pays for itself.</p>
-<p>Based in Germany. Working across Europe.</p>
+<header id="title-block-header">
+<p class="presents">The 5 Stacks Framework Presents</p>
+<div class="title-hook">
+  <h1 class="title">The Modern Sustainability Playbook</h1>
+  <p class="subtitle">Good business is sustainable.<br>This is the operating manual.</p>
+</div>
+<div class="graphic-block">
+  <div class="stacks-graphic"><div class="sl"></div><div class="sl"></div><div class="sl"></div><div class="sl"></div><div class="sl"></div></div>
+  <p class="tagline">Five stacks. Each one funds the next.</p>
+</div>
+<p class="author">By Cat Yeldi</p>
+</header>
+<div class="copyright-page">
+<p>Copyright &copy; 2026 Cat Yeldi. All rights reserved.</p>
+<p>No part of this publication may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of the author, except for brief quotations in reviews and certain non-commercial uses permitted by copyright law.</p>
+<p>Published by The 5 Stacks Framework</p>
+<p>First edition, 2026.</p>
+<p>For permissions, contact: hello@the5stacks.com</p>
+<p>the5stacks.com</p>
+</div>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#who-this-book-is-for" id="toc-who-this-book-is-for">Who
+This Book Is For</a></li>
+<li><a href="#part-i-modern-sustainability"
+id="toc-part-i-modern-sustainability">Part I: Modern
+Sustainability</a></li>
+<li><a href="#chapter-1-sustainability-has-a-reputation-problem"
+id="toc-chapter-1-sustainability-has-a-reputation-problem">Chapter 1:
+Sustainability Has a Reputation Problem</a>
+<ul>
+<li><a href="#the-old-sustainability"
+id="toc-the-old-sustainability">The Old Sustainability</a></li>
+<li><a href="#whats-actually-broken"
+id="toc-whats-actually-broken">What’s Actually Broken</a></li>
+</ul></li>
+<li><a href="#chapter-2-the-shift" id="toc-chapter-2-the-shift">Chapter
+2: The Shift</a>
+<ul>
+<li><a href="#from-virtue-to-advantage"
+id="toc-from-virtue-to-advantage">From Virtue to Advantage</a></li>
+<li><a href="#two-definitions-no-conflation"
+id="toc-two-definitions-no-conflation">Two Definitions, No
+Conflation</a></li>
+</ul></li>
+<li><a href="#chapter-3-the-honest-position"
+id="toc-chapter-3-the-honest-position">Chapter 3: The Honest
+Position</a>
+<ul>
+<li><a href="#the-regulatory-reality"
+id="toc-the-regulatory-reality">The Regulatory Reality</a></li>
+<li><a href="#two-ways-to-deal-with-it"
+id="toc-two-ways-to-deal-with-it">Two Ways to Deal With It</a></li>
+<li><a href="#the-competitive-pivot" id="toc-the-competitive-pivot">The
+Competitive Pivot</a></li>
+<li><a href="#efficacy-over-efficiency"
+id="toc-efficacy-over-efficiency">Efficacy Over Efficiency</a></li>
+</ul></li>
+<li><a href="#part-ii-the-framework" id="toc-part-ii-the-framework">Part
+II: The Framework</a></li>
+<li><a href="#chapter-4-why-sequence-matters"
+id="toc-chapter-4-why-sequence-matters">Chapter 4: Why Sequence
+Matters</a>
+<ul>
+<li><a href="#sustainability-without-sequence-is-just-expense"
+id="toc-sustainability-without-sequence-is-just-expense">Sustainability
+Without Sequence Is Just Expense</a></li>
+<li><a href="#the-compounding-principle"
+id="toc-the-compounding-principle">The Compounding Principle</a></li>
+<li><a href="#the-five-stacks" id="toc-the-five-stacks">The Five
+Stacks</a></li>
+<li><a href="#the-four-properties" id="toc-the-four-properties">The Four
+Properties</a></li>
+<li><a href="#how-the-stacks-compound"
+id="toc-how-the-stacks-compound">How the Stacks Compound</a></li>
+</ul></li>
+<li><a href="#part-iii-the-five-stacks"
+id="toc-part-iii-the-five-stacks">Part III: The Five Stacks</a></li>
+<li><a href="#chapter-5-the-defensible-baseline"
+id="toc-chapter-5-the-defensible-baseline">Chapter 5: The Defensible
+Baseline</a>
+<ul>
+<li><a href="#why-this-stack-matters"
+id="toc-why-this-stack-matters">Why This Stack Matters</a></li>
+<li><a href="#what-youre-baselining" id="toc-what-youre-baselining">What
+You’re Baselining</a></li>
+<li><a href="#how-to-start" id="toc-how-to-start">How to Start</a></li>
+<li><a href="#common-pitfalls" id="toc-common-pitfalls">Common
+Pitfalls</a></li>
+<li><a href="#how-stack-1-feeds-stack-2"
+id="toc-how-stack-1-feeds-stack-2">How Stack 1 Feeds Stack 2</a></li>
+<li><a href="#self-assessment-stack-1-readiness"
+id="toc-self-assessment-stack-1-readiness">Self-Assessment: Stack 1
+Readiness</a></li>
+</ul></li>
+<li><a href="#chapter-6-operational-efficiency"
+id="toc-chapter-6-operational-efficiency">Chapter 6: Operational
+Efficiency</a>
+<ul>
+<li><a href="#why-this-stack-matters-1"
+id="toc-why-this-stack-matters-1">Why This Stack Matters</a></li>
+<li><a href="#key-focus-areas" id="toc-key-focus-areas">Key Focus
+Areas</a></li>
+<li><a href="#how-to-start-1" id="toc-how-to-start-1">How to
+Start</a></li>
+<li><a href="#the-roi-case" id="toc-the-roi-case">The ROI Case</a></li>
+<li><a href="#common-pitfalls-1" id="toc-common-pitfalls-1">Common
+Pitfalls</a></li>
+<li><a href="#how-stack-2-enables-stack-3"
+id="toc-how-stack-2-enables-stack-3">How Stack 2 Enables Stack
+3</a></li>
+<li><a href="#self-assessment-stack-2-readiness"
+id="toc-self-assessment-stack-2-readiness">Self-Assessment: Stack 2
+Readiness</a></li>
+</ul></li>
+<li><a href="#chapter-7-margin-recovery"
+id="toc-chapter-7-margin-recovery">Chapter 7: Margin Recovery</a>
+<ul>
+<li><a href="#why-this-stack-matters-2"
+id="toc-why-this-stack-matters-2">Why This Stack Matters</a></li>
+<li><a href="#key-focus-areas-1" id="toc-key-focus-areas-1">Key Focus
+Areas</a></li>
+<li><a href="#how-to-start-2" id="toc-how-to-start-2">How to
+Start</a></li>
+<li><a href="#the-roi-case-1" id="toc-the-roi-case-1">The ROI
+Case</a></li>
+<li><a href="#common-pitfalls-2" id="toc-common-pitfalls-2">Common
+Pitfalls</a></li>
+<li><a href="#how-stack-3-funds-stack-4"
+id="toc-how-stack-3-funds-stack-4">How Stack 3 Funds Stack 4</a></li>
+<li><a href="#self-assessment-stack-3-readiness"
+id="toc-self-assessment-stack-3-readiness">Self-Assessment: Stack 3
+Readiness</a></li>
+</ul></li>
+<li><a href="#chapter-8-structural-resilience"
+id="toc-chapter-8-structural-resilience">Chapter 8: Structural
+Resilience</a>
+<ul>
+<li><a href="#why-this-stack-matters-3"
+id="toc-why-this-stack-matters-3">Why This Stack Matters</a></li>
+<li><a href="#key-focus-areas-2" id="toc-key-focus-areas-2">Key Focus
+Areas</a></li>
+<li><a href="#how-to-start-3" id="toc-how-to-start-3">How to
+Start</a></li>
+<li><a href="#the-roi-case-2" id="toc-the-roi-case-2">The ROI
+Case</a></li>
+<li><a href="#common-pitfalls-3" id="toc-common-pitfalls-3">Common
+Pitfalls</a></li>
+<li><a href="#how-stack-4-enables-stack-5"
+id="toc-how-stack-4-enables-stack-5">How Stack 4 Enables Stack
+5</a></li>
+<li><a href="#self-assessment-stack-4-readiness"
+id="toc-self-assessment-stack-4-readiness">Self-Assessment: Stack 4
+Readiness</a></li>
+</ul></li>
+<li><a href="#chapter-9-the-compounding-engine"
+id="toc-chapter-9-the-compounding-engine">Chapter 9: The Compounding
+Engine</a>
+<ul>
+<li><a href="#why-this-stack-matters-4"
+id="toc-why-this-stack-matters-4">Why This Stack Matters</a></li>
+<li><a href="#what-compounding-looks-like-in-practice"
+id="toc-what-compounding-looks-like-in-practice">What Compounding Looks
+Like in Practice</a></li>
+<li><a href="#how-to-start-4" id="toc-how-to-start-4">How to
+Start</a></li>
+<li><a href="#the-roi-case-3" id="toc-the-roi-case-3">The ROI
+Case</a></li>
+<li><a href="#common-pitfalls-4" id="toc-common-pitfalls-4">Common
+Pitfalls</a></li>
+<li><a href="#the-compounding-effect"
+id="toc-the-compounding-effect">The Compounding Effect</a></li>
+<li><a href="#self-assessment-stack-5-readiness"
+id="toc-self-assessment-stack-5-readiness">Self-Assessment: Stack 5
+Readiness</a></li>
+</ul></li>
+<li><a href="#part-iv-implementation"
+id="toc-part-iv-implementation">Part IV: Implementation</a></li>
+<li><a href="#chapter-10-your-12-month-roadmap"
+id="toc-chapter-10-your-12-month-roadmap">Chapter 10: Your 12-Month
+Roadmap</a>
+<ul>
+<li><a href="#phase-1-the-baseline-months-1-3"
+id="toc-phase-1-the-baseline-months-1-3">Phase 1: The Baseline (Months
+1-3)</a></li>
+<li><a href="#phase-2-fix-the-leaks-months-3-6"
+id="toc-phase-2-fix-the-leaks-months-3-6">Phase 2: Fix the Leaks (Months
+3-6)</a></li>
+<li><a href="#phase-3-build-the-structure-months-6-9"
+id="toc-phase-3-build-the-structure-months-6-9">Phase 3: Build the
+Structure (Months 6-9)</a></li>
+<li><a href="#phase-4-start-the-engine-months-9-12"
+id="toc-phase-4-start-the-engine-months-9-12">Phase 4: Start the Engine
+(Months 9-12)</a></li>
+<li><a href="#adapting-the-pace" id="toc-adapting-the-pace">Adapting the
+Pace</a></li>
+</ul></li>
+<li><a href="#chapter-11-common-objections"
+id="toc-chapter-11-common-objections">Chapter 11: Common Objections</a>
+<ul>
+<li><a href="#were-too-small-for-this"
+id="toc-were-too-small-for-this">“We’re Too Small for This”</a></li>
+<li><a href="#we-cant-afford-it" id="toc-we-cant-afford-it">“We Can’t
+Afford It”</a></li>
+<li><a href="#our-industry-is-different"
+id="toc-our-industry-is-different">“Our Industry Is Different”</a></li>
+<li><a href="#we-dont-have-the-expertise"
+id="toc-we-dont-have-the-expertise">“We Don’t Have the
+Expertise”</a></li>
+<li><a href="#our-customers-dont-care-about-sustainability"
+id="toc-our-customers-dont-care-about-sustainability">“Our Customers
+Don’t Care About Sustainability”</a></li>
+<li><a href="#we-tried-sustainability-before-and-it-didnt-work"
+id="toc-we-tried-sustainability-before-and-it-didnt-work">“We Tried
+Sustainability Before and It Didn’t Work”</a></li>
+</ul></li>
+<li><a href="#appendices" id="toc-appendices">Appendices</a></li>
+<li><a href="#appendix-a-five-stacks-quick-start-self-assessment"
+id="toc-appendix-a-five-stacks-quick-start-self-assessment">Appendix A:
+Five Stacks Quick-Start Self-Assessment</a>
+<ul>
+<li><a href="#instructions" id="toc-instructions">Instructions</a></li>
+<li><a href="#scoring-guide" id="toc-scoring-guide">Scoring
+Guide</a></li>
+<li><a href="#stack-1-the-defensible-baseline"
+id="toc-stack-1-the-defensible-baseline">Stack 1: The Defensible
+Baseline</a></li>
+<li><a href="#stack-2-operational-efficiency"
+id="toc-stack-2-operational-efficiency">Stack 2: Operational
+Efficiency</a></li>
+<li><a href="#stack-3-margin-recovery"
+id="toc-stack-3-margin-recovery">Stack 3: Margin Recovery</a></li>
+<li><a href="#stack-4-structural-resilience"
+id="toc-stack-4-structural-resilience">Stack 4: Structural
+Resilience</a></li>
+<li><a href="#stack-5-the-compounding-engine"
+id="toc-stack-5-the-compounding-engine">Stack 5: The Compounding
+Engine</a></li>
+<li><a href="#your-results" id="toc-your-results">Your Results</a></li>
+</ul></li>
+<li><a href="#appendix-b-glossary-of-key-terms"
+id="toc-appendix-b-glossary-of-key-terms">Appendix B: Glossary of Key
+Terms</a></li>
+<li><a href="#appendix-c-recommended-resources"
+id="toc-appendix-c-recommended-resources">Appendix C: Recommended
+Resources</a>
+<ul>
+<li><a href="#frameworks-and-standards"
+id="toc-frameworks-and-standards">Frameworks and Standards</a></li>
+<li><a href="#tools" id="toc-tools">Tools</a></li>
+<li><a href="#industry-networks" id="toc-industry-networks">Industry
+Networks</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further
+Reading</a></li>
+</ul></li>
+<li><a href="#appendix-d-the-five-stacks-for-specific-sectors"
+id="toc-appendix-d-the-five-stacks-for-specific-sectors">Appendix D: The
+Five Stacks for Specific Sectors</a>
+<ul>
+<li><a href="#manufacturing"
+id="toc-manufacturing">Manufacturing</a></li>
+<li><a href="#agriculture-food" id="toc-agriculture-food">Agriculture
+&amp; Food</a></li>
+<li><a href="#consumer-goods" id="toc-consumer-goods">Consumer
+Goods</a></li>
+<li><a href="#professional-services"
+id="toc-professional-services">Professional Services</a></li>
+</ul></li>
+<li><a href="#whats-next" id="toc-whats-next">What’s Next?</a></li>
+<li><a href="#connect" id="toc-connect">Connect</a></li>
+<li><a href="#a-note-from-cat" id="toc-a-note-from-cat">A Note from
+Cat</a>
+<ul>
+<li><a href="#about-the-author" id="toc-about-the-author">About the
+Author</a></li>
+</ul></li>
+</ul>
+</nav>
 <h2 id="who-this-book-is-for">Who This Book Is For</h2>
 <p>This book is for business owners who know sustainability is coming
 but want it to pay for itself.</p>
@@ -43,7 +332,9 @@ that actually works.</p>
 won’t find that here.</p>
 <p>If you’re looking for a system that makes your business stronger —
 and produces environmental proof as a byproduct — keep reading.</p>
-<h1 id="part-i-modern-sustainability" class="part-header">Part I: Modern Sustainability</h1>
+<hr />
+<h1 id="part-i-modern-sustainability">Part I: Modern Sustainability</h1>
+<hr />
 <h1 id="chapter-1-sustainability-has-a-reputation-problem">Chapter 1:
 Sustainability Has a Reputation Problem</h1>
 <p>Sustainability has a reputation problem. You already know this.</p>
@@ -92,10 +383,10 @@ should be. You’ve lived this pattern — in your own company, in your
 competitors, in the brands that market themselves as green while
 changing nothing that matters. It was expensive, both in terms of time
 and capital, and you’re not keen to repeat the process.</p>
-<p>You’re not alone — the vast majority of small and mid-sized
-businesses (SMEs) set sustainability goals. Only a tiny fraction achieve
-measurable results. That’s not a commitment gap, it’s a systems
-failure.</p>
+<p>You’re not alone — studies consistently show that while most small
+and mid-sized businesses (SMEs) set sustainability goals, only a small
+fraction achieve measurable results. That’s not a commitment gap, it’s a
+systems failure.</p>
 <p>Your ambition was never the problem. The infrastructure was.</p>
 <h2 id="whats-actually-broken">What’s Actually Broken</h2>
 <p>The problem isn’t that you don’t care. You might. The problem isn’t
@@ -122,6 +413,7 @@ efficient, more resilient, and more profitable — and that produce
 measurable environmental improvements as proof?”</p>
 <p>Same outcomes. Fundamentally different architecture.</p>
 <p>That’s what this book shows you how to build.</p>
+<hr />
 <h1 id="chapter-2-the-shift">Chapter 2: The Shift</h1>
 <p>What if sustainability wasn’t the goal — but the lens?</p>
 <p>What if the same practices that reduce your environmental footprint
@@ -204,6 +496,7 @@ them. By the time the regulations arrive at your door, you’ve already
 built the infrastructure to meet them — not because you were trying to
 comply, but because you were trying to run a better business.</p>
 <p>That’s the shift.</p>
+<hr />
 <h1 id="chapter-3-the-honest-position">Chapter 3: The Honest
 Position</h1>
 <p>This book is not here to make you care about the planet.</p>
@@ -327,7 +620,9 @@ conditions shift — which they will.</p>
 capable business in a changing environment wins on survival.</p>
 <p>You’re building for a changing environment. Because that’s the one
 you’re in.</p>
-<h1 id="part-ii-the-framework" class="part-header">Part II: The Framework</h1>
+<hr />
+<h1 id="part-ii-the-framework">Part II: The Framework</h1>
+<hr />
 <h1 id="chapter-4-why-sequence-matters">Chapter 4: Why Sequence
 Matters</h1>
 <p>Most sustainability initiatives fail for the same reason most diets
@@ -476,12 +771,15 @@ narrow.</p>
 resilience. Resilience enables compounding.</p>
 <p>That’s the architecture. Part III walks you through each stack in
 detail.</p>
-<h1 id="part-iii-the-five-stacks" class="part-header">Part III: The Five Stacks</h1>
+<hr />
+<h1 id="part-iii-the-five-stacks">Part III: The Five Stacks</h1>
+<hr />
 <h1 id="chapter-5-the-defensible-baseline">Chapter 5: The Defensible
 Baseline</h1>
 <p><em>Stack 1</em></p>
 <p><em>“If it can’t be measured, it can’t be defended.”</em></p>
 <p><em>Baseline your operational data.</em></p>
+<hr />
 <p>Everything starts here.</p>
 <p>Not with ambition. Not with a certification target. Not with a
 sustainability strategy document. With data. Specifically, with a
@@ -600,7 +898,7 @@ you’re measuring it, where the data comes from, and any assumptions or
 estimates you’re using. When someone asks how you calculated a number,
 you can show them. That’s the difference between “defensible” and
 “approximate.”</p>
-<div class="pitfalls-box"><h2 id="common-pitfalls">Common Pitfalls</h2>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
 <p><strong>Over-engineering the system.</strong> The perfect data
 platform is the enemy of the free tracker you can start using today. You
 can upgrade your tools later. Start collecting data now.</p>
@@ -624,7 +922,7 @@ context is a number that can’t be defended. Record how you calculated
 it. Record your assumptions. Record your data sources. This takes ten
 minutes per metric and saves hours when someone asks you to justify your
 numbers.</p>
-</div><h2 id="how-stack-1-feeds-stack-2">How Stack 1 Feeds Stack 2</h2>
+<h2 id="how-stack-1-feeds-stack-2">How Stack 1 Feeds Stack 2</h2>
 <p>Your baseline isn’t an end product. It’s a starting gun.</p>
 <p>Once you can see your energy consumption by process, you can see
 which processes are inefficient. Once you can see your waste outputs by
@@ -639,7 +937,7 @@ patterns create optimization opportunities.</p>
 <p>Without the baseline, Stack 2 is guessing. With it, Stack 2 becomes
 targeted, measurable, and fast.</p>
 <p>You’ve built the map. Now you fix the leaks.</p>
-<div class="assessment-box"><h2 id="self-assessment-stack-1-readiness">Self-Assessment: Stack 1
+<h2 id="self-assessment-stack-1-readiness">Self-Assessment: Stack 1
 Readiness</h2>
 <p>Rate each practice from 1 (not implemented) to 5 (fully implemented
 with documented results):</p>
@@ -651,7 +949,7 @@ with documented results):</p>
 <li>Do you produce any form of sustainability report (internal or
 external)?</li>
 </ol>
-<p>**Your score: ___/25**</p>
+<p><strong>Your score: ___/25</strong></p>
 <ul>
 <li><strong>5-10:</strong> Start here. This is your highest-priority
 stack. See “How to Start” above.</li>
@@ -660,11 +958,13 @@ making your data defensible and actionable.</li>
 <li><strong>18-25:</strong> Your baseline is strong. Advance to Stack 2
 and start using this data for efficiency gains.</li>
 </ul>
-</div><h1 id="chapter-6-operational-efficiency">Chapter 6: Operational
+<hr />
+<h1 id="chapter-6-operational-efficiency">Chapter 6: Operational
 Efficiency</h1>
 <p><em>Stack 2</em></p>
 <p><em>“Fix leaks before adding initiatives.”</em></p>
 <p><em>Fix the leaks in your operation.</em></p>
+<hr />
 <p>Your baseline showed you where the money is going. Now you stop it
 from leaving.</p>
 <p>Stack 1 gave you the map — a clear picture of your energy
@@ -681,13 +981,14 @@ closely at their resource flows before.</p>
 material prices, waste disposal costs — the trend line is up across the
 board. Efficiency isn’t optional in a rising-cost environment. It’s your
 first line of defense.</p>
-<p><strong>The waste is hidden.</strong> Most SMEs have 15-30% waste
-hidden in their operations that nobody is tracking — not because anyone
-is negligent, but because nobody had the data to see it. Compressed air
-leaking from aging systems. Lighting running in unoccupied spaces.
-Overproduction that ends up as scrap. Water flowing longer than
-necessary. These aren’t dramatic failures. They’re slow drains that
-compound into significant costs over a year.</p>
+<p><strong>The waste is hidden.</strong> Industry benchmarks suggest
+most SMEs have 15-30% waste hidden in their operations that nobody is
+tracking — not because anyone is negligent, but because nobody had the
+data to see it. Compressed air leaking from aging systems. Lighting
+running in unoccupied spaces. Overproduction that ends up as scrap.
+Water flowing longer than necessary. These aren’t dramatic failures.
+They’re slow drains that compound into significant costs over a
+year.</p>
 <p><strong>Efficiency funds everything else.</strong> The savings you
 generate in Stack 2 create the budget headroom for Stacks 3, 4, and 5.
 This is where the flywheel starts. If your baseline is the map,
@@ -753,7 +1054,7 @@ maintenance routines. These aren’t glamorous. They’re profitable.</p>
 aspirational targets. Data-driven targets. Your baseline tells you what
 you’re consuming. Your efficiency analysis tells you what’s avoidable.
 The gap between the two is your target. Set it, track it, report it.</p>
-<div class="roi-box"><h2 id="the-roi-case">The ROI Case</h2>
+<h2 id="the-roi-case">The ROI Case</h2>
 <p>Efficiency is the most predictable ROI in this framework.</p>
 <p>Typical energy efficiency improvements deliver 10-25% cost reduction,
 depending on your starting point and sector. Companies that have never
@@ -772,7 +1073,7 @@ schedules — are effectively immediate.</p>
 <p>This isn’t speculative. It’s arithmetic. You know what you’re
 spending (Stack 1). You know what’s avoidable (Stack 2 analysis). The
 difference is your return.</p>
-</div><div class="pitfalls-box"><h2 id="common-pitfalls-1">Common Pitfalls</h2>
+<h2 id="common-pitfalls-1">Common Pitfalls</h2>
 <p><strong>Technology before basics.</strong> Companies invest in
 expensive monitoring systems, IoT sensors, and automation platforms
 before fixing the leak in the compressed air line that’s costing them
@@ -795,7 +1096,7 @@ continuously. The biggest risk is running an efficiency blitz, capturing
 the easy wins, and then stopping. Build efficiency into monthly reviews.
 Track it on your dashboard. Make it visible. Celebrate improvements. The
 culture matters more than any single initiative.</p>
-</div><h2 id="how-stack-2-enables-stack-3">How Stack 2 Enables Stack 3</h2>
+<h2 id="how-stack-2-enables-stack-3">How Stack 2 Enables Stack 3</h2>
 <p>As you track and optimize your resource flows, something becomes
 visible that wasn’t visible before: waste streams with hidden value.</p>
 <p>Efficiency tracking doesn’t just show you what you’re wasting. It
@@ -810,7 +1111,7 @@ processes. Consistency enables circularity.</p>
 longer asking for new money to fund margin recovery initiatives. You’re
 reinvesting savings that the system already generated.</p>
 <p>You’ve fixed the leaks. Now you turn what’s left into revenue.</p>
-<div class="assessment-box"><h2 id="self-assessment-stack-2-readiness">Self-Assessment: Stack 2
+<h2 id="self-assessment-stack-2-readiness">Self-Assessment: Stack 2
 Readiness</h2>
 <p>Rate each practice from 1 (not implemented) to 5 (fully implemented
 with documented results):</p>
@@ -822,7 +1123,7 @@ with documented results):</p>
 <li>Do you engage staff in identifying and implementing efficiency
 improvements?</li>
 </ol>
-<p>**Your score: ___/25**</p>
+<p><strong>Your score: ___/25</strong></p>
 <ul>
 <li><strong>5-10:</strong> Major opportunity. Your Stack 1 data likely
 reveals significant efficiency gains waiting to be captured.</li>
@@ -831,10 +1132,12 @@ of optimization and engage your team more broadly.</li>
 <li><strong>18-25:</strong> Strong efficiency culture. Advance to Stack
 3 and start recovering margin from your remaining waste streams.</li>
 </ul>
-</div><h1 id="chapter-7-margin-recovery">Chapter 7: Margin Recovery</h1>
+<hr />
+<h1 id="chapter-7-margin-recovery">Chapter 7: Margin Recovery</h1>
 <p><em>Stack 3</em></p>
 <p><em>“What you discard is lost margin.”</em></p>
 <p><em>Turn waste into value.</em></p>
+<hr />
 <p>Stack 2 fixed the leaks. Stack 3 monetizes what remains.</p>
 <p>Even after you’ve optimized your operations for efficiency, there are
 outputs leaving your business that aren’t products. Scrap material.
@@ -928,7 +1231,7 @@ Small, simple, proven. Build from there.</p>
 monthly reporting. Track the financial value recovered from waste
 streams — disposal costs avoided plus revenue earned. This makes the
 value visible and builds the case for expanding the program.</p>
-<div class="roi-box"><h2 id="the-roi-case-1">The ROI Case</h2>
+<h2 id="the-roi-case-1">The ROI Case</h2>
 <p>Margin recovery ROI varies significantly by sector and waste profile,
 but the pattern is consistent: the returns are real and they’re
 immediate.</p>
@@ -946,7 +1249,7 @@ avoided plus the disposal cost avoided.</p>
 Not transformative in isolation, but as a contributor to the system —
 generating surplus that funds Stacks 4 and 5 — it’s an essential part of
 the compounding engine.</p>
-</div><div class="pitfalls-box"><h2 id="common-pitfalls-2">Common Pitfalls</h2>
+<h2 id="common-pitfalls-2">Common Pitfalls</h2>
 <p><strong>Trying to monetize everything at once.</strong> Pick the
 biggest opportunity. Prove it works. Build the process. Then move to the
 next stream. Spreading effort across ten waste streams simultaneously
@@ -966,7 +1269,7 @@ jurisdictions, waste reclassification — treating a “waste” as a
 “product” or “byproduct” — has specific regulatory requirements. Check
 before you sell. The compliance is usually manageable, but ignoring it
 creates risk.</p>
-</div><h2 id="how-stack-3-funds-stack-4">How Stack 3 Funds Stack 4</h2>
+<h2 id="how-stack-3-funds-stack-4">How Stack 3 Funds Stack 4</h2>
 <p>Recovered margin creates real budget for the next phase. The money
 you save on disposal and earn from byproduct sales isn’t theoretical —
 it’s on your P&amp;L. That surplus funds the resilience investments in
@@ -983,7 +1286,7 @@ to source externally. Every closed loop is one less supply chain
 vulnerability.</p>
 <p>You’ve recovered the margin. Now you build the structure that holds
 under stress.</p>
-<div class="assessment-box"><h2 id="self-assessment-stack-3-readiness">Self-Assessment: Stack 3
+<h2 id="self-assessment-stack-3-readiness">Self-Assessment: Stack 3
 Readiness</h2>
 <p>Rate each practice from 1 (not implemented) to 5 (fully implemented
 with documented results):</p>
@@ -998,7 +1301,7 @@ byproducts?</li>
 source?</li>
 <li>Do you track the financial value recovered from waste streams?</li>
 </ol>
-<p>**Your score: ___/25**</p>
+<p><strong>Your score: ___/25</strong></p>
 <ul>
 <li><strong>5-10:</strong> Significant margin recovery opportunity. Your
 Stack 2 data already shows you where to look.</li>
@@ -1007,11 +1310,13 @@ opportunities and quantify the financial potential.</li>
 <li><strong>18-25:</strong> Strong circular practices. Advance to Stack
 4 and use the recovered margin to build resilience.</li>
 </ul>
-</div><h1 id="chapter-8-structural-resilience">Chapter 8: Structural
+<hr />
+<h1 id="chapter-8-structural-resilience">Chapter 8: Structural
 Resilience</h1>
 <p><em>Stack 4</em></p>
 <p><em>“Systems must absorb shocks without breaking.”</em></p>
 <p><em>Build adaptive capacity.</em></p>
+<hr />
 <p>You’ve baselined your data. You’ve fixed the leaks. You’ve recovered
 margin from waste streams. Stacks 1 through 3 built the operational
 foundation and freed up the resources to invest.</p>
@@ -1109,7 +1414,7 @@ highest-value-per-hour activities in the framework.</p>
 you where you’re concentrated — in energy sources, material suppliers,
 waste disposal routes. Concentration is the opposite of resilience. Use
 the data to guide diversification.</p>
-<div class="roi-box"><h2 id="the-roi-case-2">The ROI Case</h2>
+<h2 id="the-roi-case-2">The ROI Case</h2>
 <p>Resilience ROI is measured differently from efficiency or margin
 recovery. It’s partly cost avoidance and partly competitive
 advantage.</p>
@@ -1136,7 +1441,7 @@ can’t — you gain market share, you fulfill orders they can’t, you retain
 customers they lose. This isn’t theoretical. It happened during the
 pandemic. It happened during the energy crisis. It will happen
 again.</p>
-</div><div class="pitfalls-box"><h2 id="common-pitfalls-3">Common Pitfalls</h2>
+<h2 id="common-pitfalls-3">Common Pitfalls</h2>
 <p><strong>Treating resilience as insurance.</strong> Insurance is a
 cost you hope never to use. Resilience is a capability that produces
 value continuously — through better risk management, more informed
@@ -1159,7 +1464,7 @@ time a regulation is announced, the leading companies have been
 preparing for years. By the time it’s enforced, the leaders are
 compliant and the laggards are scrambling. Start earlier than you think
 you need to.</p>
-</div><h2 id="how-stack-4-enables-stack-5">How Stack 4 Enables Stack 5</h2>
+<h2 id="how-stack-4-enables-stack-5">How Stack 4 Enables Stack 5</h2>
 <p>Structural resilience creates the stability from which compounding
 becomes possible.</p>
 <p>You can’t invest in long-term systems — systems that take two, three,
@@ -1176,7 +1481,7 @@ operation can survive disruptions, you start making decisions on a
 multi-year horizon instead of a quarterly one. That longer time horizon
 is where compounding lives.</p>
 <p>You’ve built the stable foundation. Now you start the engine.</p>
-<div class="assessment-box"><h2 id="self-assessment-stack-4-readiness">Self-Assessment: Stack 4
+<h2 id="self-assessment-stack-4-readiness">Self-Assessment: Stack 4
 Readiness</h2>
 <p>Rate each practice from 1 (not implemented) to 5 (fully implemented
 with documented results):</p>
@@ -1190,7 +1495,7 @@ regulations?</li>
 <li>Do you integrate environmental and regulatory risk into business
 planning?</li>
 </ol>
-<p>**Your score: ___/25**</p>
+<p><strong>Your score: ___/25</strong></p>
 <ul>
 <li><strong>5-10:</strong> Significant exposure. Use Stacks 1-3 results
 to identify and prioritize your key vulnerabilities.</li>
@@ -1199,11 +1504,13 @@ risk register and close the gaps in your response capacity.</li>
 <li><strong>18-25:</strong> Strong resilience posture. Advance to Stack
 5 and start building compounding systems.</li>
 </ul>
-</div><h1 id="chapter-9-the-compounding-engine">Chapter 9: The Compounding
+<hr />
+<h1 id="chapter-9-the-compounding-engine">Chapter 9: The Compounding
 Engine</h1>
 <p><em>Stack 5</em></p>
 <p><em>“Build systems that improve as they operate.”</em></p>
 <p><em>Create compound returns.</em></p>
+<hr />
 <p>Stacks 1 through 4 built the infrastructure. The defensible baseline
 gives you visibility. Operational efficiency stops the bleeding. Margin
 recovery turns waste into revenue. Structural resilience holds the
@@ -1308,12 +1615,13 @@ but “reduce emissions by X% in year one, Y% in year two, Z% in year
 three” — with each year’s target building on the previous year’s
 improvements. That’s what compounding looks like in a target
 framework.</p>
-<div class="roi-box"><h2 id="the-roi-case-3">The ROI Case</h2>
+<h2 id="the-roi-case-3">The ROI Case</h2>
 <p><strong>Premium market positioning.</strong> Verified regenerative or
-sustainability-positive practices can command 10-30% price premiums in
-markets that value impact. This isn’t universal, but in sectors where
-buyers evaluate sustainability (food, consumer goods, B2B procurement
-with sustainability criteria), it’s real and growing.</p>
+sustainability-positive practices can command price premiums — often in
+the range of 10-30% — in markets that value impact. This isn’t
+universal, but in sectors where buyers evaluate sustainability (food,
+consumer goods, B2B procurement with sustainability criteria), it’s real
+and growing.</p>
 <p><strong>Long-term cost reduction.</strong> Systems that improve their
 operating environment reduce input costs over time. This is most visible
 in agriculture (regenerative soil management reduces fertilizer and
@@ -1335,7 +1643,7 @@ growing. Companies with systematic sustainability infrastructure — not
 just policies, but implemented frameworks with measurable results —
 access better financing terms, more investment interest, and smoother
 due diligence processes.</p>
-</div><div class="pitfalls-box"><h2 id="common-pitfalls-4">Common Pitfalls</h2>
+<h2 id="common-pitfalls-4">Common Pitfalls</h2>
 <p><strong>Skipping Stacks 1-4.</strong> This is where greenwashing
 happens. Companies jump straight to marketing their sustainability
 credentials without building the operational infrastructure. They claim
@@ -1359,7 +1667,7 @@ two’s will be better. Year three’s will be significantly better. If you
 abandon the system because year one’s returns weren’t dramatic enough,
 you lose the compounding entirely. Stay the course. The math is on your
 side.</p>
-</div><h2 id="the-compounding-effect">The Compounding Effect</h2>
+<h2 id="the-compounding-effect">The Compounding Effect</h2>
 <p>Each year of systematic operation builds on the last. Returns don’t
 plateau — they accelerate.</p>
 <p>In year one, you build the baseline and capture the easy efficiency
@@ -1387,7 +1695,7 @@ compounding advantage.</p>
 <p>Early movers build advantages that compound. Late movers pay the
 premium to catch up.</p>
 <p>Start building.</p>
-<div class="assessment-box"><h2 id="self-assessment-stack-5-readiness">Self-Assessment: Stack 5
+<h2 id="self-assessment-stack-5-readiness">Self-Assessment: Stack 5
 Readiness</h2>
 <p>Rate each practice from 1 (not implemented) to 5 (fully implemented
 with documented results):</p>
@@ -1401,7 +1709,7 @@ practices?</li>
 <li>Is compounding, regenerative thinking part of your business
 strategy?</li>
 </ol>
-<p>**Your score: ___/25**</p>
+<p><strong>Your score: ___/25</strong></p>
 <ul>
 <li><strong>5-10:</strong> Focus on building Stacks 1-4 first. Stack 5
 becomes accessible once the infrastructure is in place.</li>
@@ -1410,7 +1718,9 @@ area to push from “less harm” to “positive impact.”</li>
 <li><strong>18-25:</strong> You’re building the engine. Document the
 trajectory and start leveraging it for market positioning.</li>
 </ul>
-</div><h1 id="part-iv-implementation" class="part-header">Part IV: Implementation</h1>
+<hr />
+<h1 id="part-iv-implementation">Part IV: Implementation</h1>
+<hr />
 <h1 id="chapter-10-your-12-month-roadmap">Chapter 10: Your 12-Month
 Roadmap</h1>
 <p>You have the framework. You understand the logic. You’ve assessed
@@ -1456,10 +1766,13 @@ opportunities. Identify the top three efficiency improvements you could
 make based on what the data shows.</p>
 <p>Complete your Five Stacks Self-Assessment (Appendix A) to confirm
 your priority stacks.</p>
-<p><strong>Phase 1 outputs:</strong> - Populated Five Stacks Baseline
-tool with three months of data - Documented methodology for each metric
-- Ranked list of efficiency opportunities - Completed self-assessment
-with priority stacks identified</p>
+<p><strong>Phase 1 outputs:</strong></p>
+<ul>
+<li>Populated Five Stacks Baseline tool with three months of data</li>
+<li>Documented methodology for each metric</li>
+<li>Ranked list of efficiency opportunities</li>
+<li>Completed self-assessment with priority stacks identified</li>
+</ul>
 <h2 id="phase-2-fix-the-leaks-months-3-6">Phase 2: Fix the Leaks (Months
 3-6)</h2>
 <p><em>Goal: First measurable cost reductions and margin
@@ -1493,10 +1806,15 @@ justify further investment, and they build internal support.</p>
 <p>Review your waste stream map. Identify the one or two streams with
 the highest margin recovery potential. Plan your first Stack 3
 initiative.</p>
-<p><strong>Phase 2 outputs:</strong> - Two to four efficiency measures
-implemented with measured results - Frontline engagement process
-established - Detailed waste stream map with cost data - Documented cost
-savings versus baseline - First margin recovery initiative planned</p>
+<p><strong>Phase 2 outputs:</strong></p>
+<ul>
+<li>Two to four efficiency measures implemented with measured
+results</li>
+<li>Frontline engagement process established</li>
+<li>Detailed waste stream map with cost data</li>
+<li>Documented cost savings versus baseline</li>
+<li>First margin recovery initiative planned</li>
+</ul>
 <h2 id="phase-3-build-the-structure-months-6-9">Phase 3: Build the
 Structure (Months 6-9)</h2>
 <p><em>Goal: Systems in place, team engaged, margin funding further
@@ -1529,11 +1847,16 @@ ownership of existing activities.</p>
 <p>Explore certification pathways relevant to your market. With six
 months of data and demonstrated improvements, you’re in a credible
 position to begin certification conversations.</p>
-<p><strong>Phase 3 outputs:</strong> - First margin recovery initiative
-operational with tracked financial results - Risk register created and
-reviewed - At least one supply chain alternative identified - Team roles
-formalized for ongoing tracker maintenance and monitoring -
-Certification pathways researched</p>
+<p><strong>Phase 3 outputs:</strong></p>
+<ul>
+<li>First margin recovery initiative operational with tracked financial
+results</li>
+<li>Risk register created and reviewed</li>
+<li>At least one supply chain alternative identified</li>
+<li>Team roles formalized for ongoing tracker maintenance and
+monitoring</li>
+<li>Certification pathways researched</li>
+</ul>
 <h2 id="phase-4-start-the-engine-months-9-12">Phase 4: Start the Engine
 (Months 9-12)</h2>
 <p><em>Goal: All five stacks initiated, system compounding, Year 2
@@ -1567,11 +1890,15 @@ plan.</p>
 where you can push from “less harm” to “positive impact” — the beginning
 of Stack 5. Begin telling your story to customers, buyers, and partners
 — backed by a year of hard data.</p>
-<p><strong>Phase 4 outputs:</strong> - Resilience measures implemented,
-risk register updated - Internal sustainability report compiled -
-Full-year ROI calculated and documented - Year 2 plan with targets that
-build on Year 1 results - First Stack 5 initiative identified -
-Compounding story ready for external communication</p>
+<p><strong>Phase 4 outputs:</strong></p>
+<ul>
+<li>Resilience measures implemented, risk register updated</li>
+<li>Internal sustainability report compiled</li>
+<li>Full-year ROI calculated and documented</li>
+<li>Year 2 plan with targets that build on Year 1 results</li>
+<li>First Stack 5 initiative identified</li>
+<li>Compounding story ready for external communication</li>
+</ul>
 <h2 id="adapting-the-pace">Adapting the Pace</h2>
 <p>This roadmap assumes you’re starting from roughly zero and working
 with limited resources. If your starting point is different, adjust
@@ -1593,6 +1920,7 @@ enough” means the data is defensible, the decisions are data-driven, and
 the results are documented. It doesn’t mean perfect. Don’t let
 perfection stall progress. A good system that’s running beats a perfect
 system that’s still being designed.</p>
+<hr />
 <h1 id="chapter-11-common-objections">Chapter 11: Common Objections</h1>
 <p>Every framework meets resistance. Here are the most common objections
 — and the honest responses to each.</p>
@@ -1692,8 +2020,10 @@ sustainability — it depends on the system running consistently.</p>
 reports, certifications with no operational change — then you didn’t try
 what this book describes. This is sustainability as infrastructure.
 Different architecture. Different outcomes.</p>
+<hr />
 <h1 id="appendices">Appendices</h1>
-<h1 id="appendix-a-five-stacks-quick-start-self-assessment" class="appendix-header">Appendix A:
+<hr />
+<h1 id="appendix-a-five-stacks-quick-start-self-assessment">Appendix A:
 Five Stacks Quick-Start Self-Assessment</h1>
 <p>This assessment helps you identify your current position across all
 five stacks and prioritize your starting point. Complete it honestly —
@@ -1781,15 +2111,18 @@ external)?</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td>**___/25**</td>
+<td><strong>___/25</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Quick wins to get started:</strong> - Download the free Five
-Stacks Baseline tool at the5stacks.com/baseline - Gather your last 12
-months of utility bills and waste invoices - Enter what you have —
-estimated data beats no data - Set a monthly calendar reminder for data
-collection (2 hours)</p>
+<p><strong>Quick wins to get started:</strong></p>
+<ul>
+<li>Download the free Five Stacks Baseline tool at
+the5stacks.com/baseline</li>
+<li>Gather your last 12 months of utility bills and waste invoices</li>
+<li>Enter what you have — estimated data beats no data</li>
+<li>Set a monthly calendar reminder for data collection (2 hours)</li>
+</ul>
 <h2 id="stack-2-operational-efficiency">Stack 2: Operational
 Efficiency</h2>
 <table>
@@ -1827,15 +2160,20 @@ improvements?</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td>**___/25**</td>
+<td><strong>___/25</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Quick wins to get started:</strong> - Ask your utility
-provider about a free energy audit - Rank your resource costs from
-highest to lowest using your tracker data - Ask three frontline staff:
-“Where do you see waste in our operation?” - Fix one thing this month —
-the smallest, cheapest efficiency improvement you can find</p>
+<p><strong>Quick wins to get started:</strong></p>
+<ul>
+<li>Ask your utility provider about a free energy audit</li>
+<li>Rank your resource costs from highest to lowest using your tracker
+data</li>
+<li>Ask three frontline staff: “Where do you see waste in our
+operation?”</li>
+<li>Fix one thing this month — the smallest, cheapest efficiency
+improvement you can find</li>
+</ul>
 <h2 id="stack-3-margin-recovery">Stack 3: Margin Recovery</h2>
 <table>
 <colgroup>
@@ -1875,15 +2213,20 @@ source?</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td>**___/25**</td>
+<td><strong>___/25</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Quick wins to get started:</strong> - List your top three
-waste streams by disposal cost - For each: ask your waste hauler “Is
-anyone buying this material?” - Separate one recyclable stream you’re
-currently sending to general waste - Calculate what you’re paying per
-year in disposal costs for your largest stream</p>
+<p><strong>Quick wins to get started:</strong></p>
+<ul>
+<li>List your top three waste streams by disposal cost</li>
+<li>For each: ask your waste hauler “Is anyone buying this
+material?”</li>
+<li>Separate one recyclable stream you’re currently sending to general
+waste</li>
+<li>Calculate what you’re paying per year in disposal costs for your
+largest stream</li>
+</ul>
 <h2 id="stack-4-structural-resilience">Stack 4: Structural
 Resilience</h2>
 <table>
@@ -1923,15 +2266,20 @@ planning?</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td>**___/25**</td>
+<td><strong>___/25</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Quick wins to get started:</strong> - List every input where
-you have only one supplier - For the most critical one: identify one
-alternative and request a quote - Look up which sustainability
-regulations apply to your sector in the next 2 years - Create a one-page
-risk register: risk, exposure, planned response</p>
+<p><strong>Quick wins to get started:</strong></p>
+<ul>
+<li>List every input where you have only one supplier</li>
+<li>For the most critical one: identify one alternative and request a
+quote</li>
+<li>Look up which sustainability regulations apply to your sector in the
+next 2 years</li>
+<li>Create a one-page risk register: risk, exposure, planned
+response</li>
+</ul>
 <h2 id="stack-5-the-compounding-engine">Stack 5: The Compounding
 Engine</h2>
 <table>
@@ -1971,15 +2319,19 @@ strategy?</td>
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td>**___/25**</td>
+<td><strong>___/25</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Quick wins to get started:</strong> - Identify one area where
-you’re already performing well on sustainability - Document the
-improvement trajectory over the past year (using your tracker data) -
-Research one certification relevant to your sector and market - Talk to
-one buyer about their sustainability requirements</p>
+<p><strong>Quick wins to get started:</strong></p>
+<ul>
+<li>Identify one area where you’re already performing well on
+sustainability</li>
+<li>Document the improvement trajectory over the past year (using your
+tracker data)</li>
+<li>Research one certification relevant to your sector and market</li>
+<li>Talk to one buyer about their sustainability requirements</li>
+</ul>
 <h2 id="your-results">Your Results</h2>
 <table>
 <thead>
@@ -2033,7 +2385,8 @@ for market positioning.</li>
 </ul>
 <p><strong>Schedule a follow-up assessment in 6 months:</strong>
 ____/____/______</p>
-<h1 id="appendix-b-glossary-of-key-terms" class="appendix-header">Appendix B: Glossary of Key
+<hr />
+<h1 id="appendix-b-glossary-of-key-terms">Appendix B: Glossary of Key
 Terms</h1>
 <p><strong>CBAM (Carbon Border Adjustment Mechanism)</strong> — An EU
 mechanism that puts a carbon price on imports of certain goods, ensuring
@@ -2091,7 +2444,8 @@ emissions and increasingly required in reporting.</p>
 assessing and managing sustainability risks within a company’s supply
 chain. Increasingly required by regulation (e.g., the EU Corporate
 Sustainability Due Diligence Directive).</p>
-<h1 id="appendix-c-recommended-resources" class="appendix-header">Appendix C: Recommended
+<hr />
+<h1 id="appendix-c-recommended-resources">Appendix C: Recommended
 Resources</h1>
 <h2 id="frameworks-and-standards">Frameworks and Standards</h2>
 <ul>
@@ -2125,7 +2479,8 @@ business as a force for good (bcorporation.net)</li>
 <li>Sector-specific editions of this playbook are in development. Visit
 the5stacks.com for updates.</li>
 </ul>
-<h1 id="appendix-d-the-five-stacks-for-specific-sectors" class="appendix-header">Appendix D: The
+<hr />
+<h1 id="appendix-d-the-five-stacks-for-specific-sectors">Appendix D: The
 Five Stacks for Specific Sectors</h1>
 <p>The framework you’ve just read is industry-agnostic. The five stacks
 — baseline, efficiency, margin recovery, resilience, compounding — apply
@@ -2190,6 +2545,7 @@ capability, B Corp certification, client sustainability support</li>
 </ul>
 <p><em>Sector-specific editions are in development. Visit the5stacks.com
 for updates.</em></p>
+<hr />
 <h1 id="whats-next">What’s Next?</h1>
 <p>You’ve read the playbook. You understand the framework. You’ve
 assessed your starting point.</p>
@@ -2205,10 +2561,12 @@ Start” section and do it in the next two weeks.</li>
 support.</li>
 </ol>
 <p>The system compounds. But only if you start.</p>
+<hr />
 <h1 id="connect">Connect</h1>
-<p><strong>Website:</strong> the5stacks.com <strong>Start Your
-Baseline:</strong> the5stacks.com/baseline <strong>Email:</strong>
-hello@the5stacks.com</p>
+<p><strong>Website:</strong> the5stacks.com</p>
+<p><strong>Start Your Baseline:</strong> the5stacks.com/baseline</p>
+<p><strong>Email:</strong> hello@the5stacks.com</p>
+<hr />
 <h1 id="a-note-from-cat">A Note from Cat</h1>
 <p>I built this framework because I watched too many good businesses
 waste time and money on sustainability approaches that were never going
@@ -2224,9 +2582,22 @@ aren’t luckier. They aren’t more virtuous. They have better systems.</p>
 <p>Talk is cheap. Systems compound.</p>
 <p>Start building yours.</p>
 <p>— Cat Yeldi</p>
+<hr />
+<h2 id="about-the-author">About the Author</h2>
+<p>Cat Yeldi has worked across the full chain of sustainability — from
+building EU ecolabel legislation to advising startup cooperatives, from
+the shop floor to senior operations management. She holds an MSc in
+Natural Resource Management and has spent her career in the gap between
+sustainability ambition and operational reality, working across B2B and
+B2C in food, consumer goods, agriculture, and manufacturing.</p>
+<p>She built this framework because she’s seen what happens at every
+level: the reports nobody reads, the certifications that change nothing,
+the goals that don’t survive the next budget review. The Five Stacks
+exist because talk without infrastructure is just noise — and small and
+mid-sized businesses deserve an approach that pays for itself.</p>
+<p>Working across North America and Europe.</p>
+<hr />
 <p><strong>Ready to find your starting point?</strong>
 <strong>the5stacks.com/baseline</strong></p>
-
-
 </body>
 </html>

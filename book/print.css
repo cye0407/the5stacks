@@ -1,6 +1,7 @@
-/* Five Stacks — Print-ready HTML Stylesheet */
+/* Five Stacks — Print-ready HTML Stylesheet
+   Monochrome rebrand: DM Sans · Black/Zinc · No green */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 @page {
   size: A5;
@@ -12,57 +13,100 @@
 }
 
 body {
-  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
   font-size: 10pt;
   line-height: 1.75;
-  color: #2A2A2A;
+  color: #404040;
   max-width: 100%;
   margin: 0;
   padding: 0;
 }
 
 /* === Title Page === */
-.title-page {
+header#title-block-header {
   page-break-after: always;
   text-align: center;
-  padding-top: 35%;
+  padding-top: 1.5cm;
 }
 
-.title-page h1 {
-  font-family: 'Playfair Display', Georgia, serif;
+header#title-block-header p,
+header#title-block-header h1 {
+  text-align: center;
+}
+
+header#title-block-header .presents {
+  font-size: 7.5pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #A3A3A3;
+  margin: 0 0 2cm 0;
+}
+
+header#title-block-header .title-hook {
+  margin: 0 0 2cm 0;
+}
+
+header#title-block-header h1.title {
   font-size: 28pt;
   font-weight: 700;
-  color: #1A1A1A;
+  color: #171717;
   border: none;
-  margin-bottom: 0.2em;
+  margin: 0 0 0.4em 0;
   page-break-before: avoid;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
-.title-page .tp-subtitle {
-  font-family: 'Playfair Display', Georgia, serif;
+header#title-block-header .subtitle {
+  font-size: 11pt;
+  font-weight: 400;
   font-style: italic;
-  font-size: 14pt;
-  color: #2E7D5E;
-  margin-bottom: 0.5em;
+  color: #525252;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.title-page .tp-tagline {
-  font-size: 9.5pt;
-  color: #6B6B6B;
+header#title-block-header .graphic-block {
+  margin: 0 0 2cm 0;
+}
+
+header#title-block-header .stacks-graphic {
+  margin: 0 auto 0.6em;
+  width: 80px;
+}
+
+header#title-block-header .stacks-graphic .sl {
+  height: 7px;
+  margin-bottom: 3px;
+  border-radius: 2px;
+  background: #171717;
+}
+
+header#title-block-header .stacks-graphic .sl:nth-child(5) { opacity: 0.12; }
+header#title-block-header .stacks-graphic .sl:nth-child(4) { opacity: 0.28; }
+header#title-block-header .stacks-graphic .sl:nth-child(3) { opacity: 0.50; }
+header#title-block-header .stacks-graphic .sl:nth-child(2) { opacity: 0.72; }
+header#title-block-header .stacks-graphic .sl:nth-child(1) { opacity: 1.0; }
+
+header#title-block-header .tagline {
+  font-size: 10pt;
   font-style: italic;
-  margin-bottom: 3em;
+  color: #A3A3A3;
+  margin-top: 0.5em;
 }
 
-.title-page .tp-author {
-  font-size: 12pt;
-  font-weight: 600;
-  color: #3A3A3A;
-  margin-bottom: 0.3em;
-}
-
-.title-page .tp-url {
+header#title-block-header .author {
   font-size: 9pt;
-  color: #2E7D5E;
+  font-weight: 600;
+  color: #404040;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+header#title-block-header .date {
+  display: none;
 }
 
 /* === Table of Contents === */
@@ -73,14 +117,15 @@ nav#TOC {
 
 nav#TOC::before {
   content: "Contents";
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
   font-size: 18pt;
   font-weight: 700;
-  color: #1A1A1A;
+  color: #171717;
   display: block;
   margin-bottom: 1.5em;
-  border-bottom: 2px solid #2E7D5E;
+  border-bottom: 2px solid #171717;
   padding-bottom: 0.3em;
+  letter-spacing: -0.02em;
 }
 
 nav#TOC ul {
@@ -102,45 +147,47 @@ nav#TOC > ul > li > ul > li {
   font-weight: 400;
   margin-left: 1.5em;
   font-size: 9pt;
-  color: #555;
+  color: #737373;
   margin-bottom: 0.15em;
 }
 
 nav#TOC a {
-  color: #2A2A2A;
+  color: #404040;
   text-decoration: none;
 }
 
 /* === Headings === */
 h1 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
   font-size: 20pt;
   font-weight: 700;
-  color: #1A1A1A;
+  color: #171717;
   margin-top: 0;
   margin-bottom: 0.6em;
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   page-break-before: always;
-  border-bottom: 2px solid #2E7D5E;
+  border-bottom: 2px solid #171717;
   padding-bottom: 0.3em;
   padding-top: 1em;
 }
 
 h2 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
   font-size: 13pt;
   font-weight: 700;
-  color: #2E7D5E;
+  color: #171717;
   margin-top: 1.8em;
   margin-bottom: 0.5em;
   line-height: 1.3;
+  letter-spacing: -0.02em;
   page-break-after: avoid;
 }
 
 h3 {
   font-size: 10.5pt;
   font-weight: 600;
-  color: #2A2A2A;
+  color: #404040;
   margin-top: 1.4em;
   margin-bottom: 0.3em;
   page-break-after: avoid;
@@ -156,7 +203,7 @@ p {
 
 strong {
   font-weight: 600;
-  color: #1A1A1A;
+  color: #171717;
 }
 
 em {
@@ -165,10 +212,9 @@ em {
 
 /* === Blockquotes === */
 blockquote {
-  font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
-  color: #2E7D5E;
-  border-left: 2.5pt solid #2E7D5E;
+  color: #525252;
+  border-left: 2.5pt solid #171717;
   margin: 1.2em 0;
   padding: 0.4em 0 0.4em 1em;
   font-size: 10.5pt;
@@ -188,7 +234,7 @@ hr {
 h1.part-header {
   text-align: center;
   font-size: 16pt;
-  color: #2E7D5E;
+  color: #171717;
   border-bottom: none;
   padding-top: 30%;
   padding-bottom: 0;
@@ -197,8 +243,8 @@ h1.part-header {
 
 /* === Self-Assessment Boxes === */
 .assessment-box {
-  background: #EBF2ED;
-  border: 1.5pt solid #2E7D5E;
+  background: #F5F5F5;
+  border: 1.5pt solid #171717;
   padding: 1.2em 1.4em;
   margin: 1.5em 0;
   page-break-inside: avoid;
@@ -206,11 +252,11 @@ h1.part-header {
 
 .assessment-box h2 {
   font-size: 11pt;
-  color: #2E7D5E;
+  color: #171717;
   margin-top: 0;
   margin-bottom: 0.6em;
   padding-bottom: 0.3em;
-  border-bottom: 1pt solid #2E7D5E;
+  border-bottom: 1pt solid #171717;
 }
 
 .assessment-box p {
@@ -227,8 +273,8 @@ h1.part-header {
 
 /* === ROI Case Boxes === */
 .roi-box {
-  background: #F9F7F2;
-  border-left: 3pt solid #2E7D5E;
+  background: #FAFAFA;
+  border-left: 3pt solid #171717;
   padding: 1em 1.4em;
   margin: 1.5em 0;
   page-break-inside: avoid;
@@ -238,7 +284,7 @@ h1.part-header {
   font-size: 11pt;
   margin-top: 0;
   margin-bottom: 0.5em;
-  color: #2E7D5E;
+  color: #171717;
 }
 
 .roi-box h2::before {
@@ -252,8 +298,8 @@ h1.part-header {
 
 /* === Common Pitfalls Boxes === */
 .pitfalls-box {
-  background: #FDF8F3;
-  border-left: 3pt solid #C4793A;
+  background: #FAFAFA;
+  border-left: 3pt solid #525252;
   padding: 1em 1.4em;
   margin: 1.5em 0;
   page-break-inside: avoid;
@@ -263,7 +309,7 @@ h1.part-header {
   font-size: 11pt;
   margin-top: 0;
   margin-bottom: 0.5em;
-  color: #C4793A;
+  color: #525252;
 }
 
 .pitfalls-box h2::before {
@@ -276,7 +322,7 @@ h1.part-header {
 }
 
 .pitfalls-box strong {
-  color: #C4793A;
+  color: #525252;
 }
 
 /* === Lists === */
@@ -299,27 +345,27 @@ table {
 }
 
 th {
-  background: #EBF2ED;
-  color: #2E7D5E;
+  background: #F5F5F5;
+  color: #171717;
   font-weight: 600;
   text-align: left;
   padding: 0.5em 0.6em;
-  border-bottom: 1.5pt solid #2E7D5E;
+  border-bottom: 1.5pt solid #171717;
 }
 
 td {
   padding: 0.4em 0.6em;
-  border-bottom: 0.5pt solid #E5E3DE;
+  border-bottom: 0.5pt solid #E5E5E5;
   vertical-align: top;
 }
 
 tr:last-child td {
-  border-bottom: 1.5pt solid #2E7D5E;
+  border-bottom: 1.5pt solid #171717;
 }
 
 /* === Links === */
 a {
-  color: #2E7D5E;
+  color: #171717;
   text-decoration: none;
 }
 
@@ -345,13 +391,13 @@ a {
     max-width: 600px;
     margin: 2em auto;
     padding: 0 1.5em;
-    background: #FDFBF7;
+    background: #FAFAFA;
   }
 
   .title-page {
     padding-top: 4em;
     padding-bottom: 4em;
-    border-bottom: 2px solid #E5E3DE;
+    border-bottom: 2px solid #E5E5E5;
     margin-bottom: 2em;
   }
 }

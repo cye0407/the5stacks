@@ -22,7 +22,7 @@ export default function Home() {
             href="/signup"
             className="text-sm bg-gray-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors"
           >
-            Start Free
+            Build Your Baseline
           </Link>
         </div>
       </nav>
@@ -44,7 +44,7 @@ export default function Home() {
               href="/signup"
               className="inline-block bg-gray-900 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-center"
             >
-              Start Your Baseline
+              Build Your Baseline
             </Link>
             <a
               href="https://the5stacks.com"
@@ -129,7 +129,7 @@ export default function Home() {
             href="/signup"
             className="inline-block bg-white text-gray-900 px-8 py-3.5 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            Start Your Baseline
+            Build Your Baseline
           </Link>
         </div>
       </section>

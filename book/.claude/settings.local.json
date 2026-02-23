@@ -7,7 +7,8 @@
       "Bash(grep:*)",
       "Bash(pandoc:*)",
       "Bash(python3:*)",
-      "Bash(\"C:/Program Files/Google/Chrome/Application/chrome.exe\":*)"
+      "Bash(\"C:/Program Files/Google/Chrome/Application/chrome.exe\":*)",
+      "Bash(cd:*)"
     ]
   }
 }

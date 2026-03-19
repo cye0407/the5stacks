@@ -41,6 +41,65 @@ body {
 }
 
 /* ═══════════════════════════════════════════ */
+/* Nav                                         */
+/* ═══════════════════════════════════════════ */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--ink);
+  color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.15s;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════════════ */
 /* Hero — White top + Black band              */
 /* ═══════════════════════════════════════════ */
 
@@ -56,7 +115,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 24px 60px;
+  padding: 120px 24px 60px;
   background: var(--bg);
 }
 
@@ -570,6 +629,117 @@ body {
   color: var(--ink);
 }
 
+/* ── Workshop ── */
+
+.workshop-card {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 240px;
+}
+
+.workshop-details {
+  padding: 32px;
+}
+
+.workshop-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.workshop-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.workshop-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.workshop-meta-item {
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.workshop-meta-item strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.workshop-outcomes-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.workshop-outcomes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.workshop-outcomes li {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 3px 0 3px 16px;
+  position: relative;
+}
+
+.workshop-outcomes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 6px;
+  height: 6px;
+  background: var(--ink);
+  border-radius: 1px;
+}
+
+.workshop-cta-area {
+  background: var(--ink);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.workshop-price {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.workshop-price-note {
+  font-size: 0.75rem;
+  color: var(--subtle);
+  margin-bottom: 24px;
+}
+
+.workshop-cta-area .cta-button {
+  background: white;
+  color: var(--ink);
+}
+
+.workshop-cta-area .cta-button:hover {
+  background: #E5E5E5;
+}
+
 /* ── CTA / Waitlist ── */
 
 .section-cta {
@@ -623,6 +793,10 @@ body {
   }
 
   .app-preview-body {
+    grid-template-columns: 1fr;
+  }
+
+  .workshop-card {
     grid-template-columns: 1fr;
   }
 

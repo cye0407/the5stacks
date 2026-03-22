@@ -22,7 +22,7 @@ And then, in 1713, a Saxon mining administrator in Germany named Hans Carl von C
 
 The word he coined was "Nachhaltigkeit." Sustainability.
 
-That's not environmentalism. That's operational resource management. That's a language Jim understands.
+That's not environmentalism. That's operational resource management.
 
 For most of human history, sustainability was just good management. It became something else entirely when industrialisation broke the feedback loops that kept extraction in check.
 
@@ -54,13 +54,13 @@ And at the bottom of the chain? Jim. With a 47-page questionnaire from his bigge
 
 Here's what makes sustainability so confusing: different groups see it completely differently, and they're all talking past each other.
 
-Academia sees research, models, peer review. Important work. Also largely disconnected from the reality of running a 15-person business. When a professor publishes a paper on Scope 3 methodology, it doesn't help Svenja figure out what to put in the form her customer sent her.
+Academia sees research, models, peer review. Important work. Also largely disconnected from the reality of running a 15-person business. When a professor publishes a paper on Scope 3 methodology, it doesn't help the owner of a 15-person sewing company figure out what to put in the form her customer sent her.
 
 The haters say ESG is woke, that sustainability kills shareholder value, that it's all a scam. They're often funded by industries that benefit from no regulation. But here's the uncomfortable truth: they have a point when they say the current system is performative. They just draw the wrong conclusion. The answer isn't to abandon environmental responsibility. The answer is to fix the delivery system.
 
 The corporate world sees sustainability as reporting plus compliance plus brand positioning. A department, not a practice. Something you do in your annual report, not something that changes how you run your factory.
 
-And then there's the alphabet soup — ESG, CSR, CSRD, CDP, GRI, SASB, TCFD, SFDR, VSME. Every framework adds a layer. Each layer needs software, consultants, auditors. Nobody asks whether Jim needs all of them. They just keep adding letters.
+And then there's the alphabet soup — ESG, CSR, CSRD, CDP, GRI, SASB, TCFD, SFDR, VSME. Every framework adds a layer. Each layer needs software, consultants, auditors. Nobody asks whether a small business needs all of them. They just keep adding letters.
 
 Since someone will ask — the scopes, in plain language. Scope 1 is what comes out of your building and vehicles. The gas you burn, the diesel in your trucks. Scope 2 is your electricity — indirect emissions from the power grid. Scope 3 is everything else. Your entire supply chain. Your customers' use of your product. This is where it gets genuinely absurd for a small business.
 

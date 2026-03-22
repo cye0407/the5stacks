@@ -4,11 +4,11 @@
 
 ---
 
-The word sustainability is German. It's over 300 years old. And it had nothing to do with environmentalism.
+The word sustainability is German. It's over 300 years old. It was coined by a mining administrator who was running out of trees. And it had nothing to do with environmentalism.
 
-Let's talk about where this actually came from — and how it became a $30 billion industry that somehow still can't tell Jim, who owns three tire shops, what he's supposed to do with that questionnaire his biggest customer just sent him.
+Three centuries later, it's a $30 billion industry of spreadsheets, software, carbon credits, and questionnaires landing in the inboxes of small business owners across the world. How it got from there to here is worth understanding — because the gap between what sustainability meant and what it's become explains a lot about why the current system doesn't work.
 
-## Before the Industry
+## Pragmatic Beginnings
 
 For most of human history, sustainability wasn't a concept. It was just how you survived.
 
@@ -26,7 +26,7 @@ That's not environmentalism. That's operational resource management. That's a la
 
 For most of human history, sustainability was just good management. It became something else entirely when industrialisation broke the feedback loops that kept extraction in check.
 
-## Industrialisation Breaks It
+## Scaling Without Common Sense
 
 Fossil fuels removed the natural limits. Suddenly you could extract faster than systems could replenish. You could produce more than markets could absorb. You could pollute more than ecosystems could process.
 
@@ -36,7 +36,7 @@ And the costs got externalised. The company profits, the community downstream ge
 
 For 200 years, this was just called "progress."
 
-## The Rediscovery
+## Public Relations and the Rebrand
 
 The environment came back into focus in the 1960s, and not gently. Rachel Carson published *Silent Spring* in 1962. The Cuyahoga River in Ohio caught fire in 1969. People could physically see the damage — dead birds, burning rivers, smog you could taste. The response was regulation. Clean Air Act. Clean Water Act. The EPA. The approach was straightforward: stop poisoning things. And for the visible stuff — the rivers, the air, the obvious pollution — it largely worked.
 
@@ -50,7 +50,7 @@ By the 2020s, what had been voluntary became legal requirement. CSRD. EU Taxonom
 
 And at the bottom of the chain? Jim. With a 47-page questionnaire from his biggest customer. No sustainability team. No budget. A deadline. And the vague sense that if he doesn't figure this out, he loses the contract.
 
-## The Lenses
+## Ten-Dollar Labels and Letters
 
 Here's what makes sustainability so confusing: different groups see it completely differently, and they're all talking past each other.
 

@@ -36,11 +36,11 @@ These questionnaires weren't designed for your business. They were designed for 
 
 ## The Cost-Shifting Problem
 
-Here's what's actually happening beneath the surface of "supply chain engagement."
+This is what's actually happening beneath the surface of "supply chain engagement."
 
 The companies with the biggest sustainability budgets are outsourcing the hardest, most labour-intensive part of sustainability — actual operational data collection — to the companies with the smallest budgets. The SME with fourteen employees and one electricity meter is being asked to produce the same granularity of data as a corporation with a dedicated reporting team.
 
-The cost of compliance doesn't scale. A questionnaire takes roughly the same amount of time whether you're a 15-person manufacturer or a 15,000-person enterprise. But one of those businesses has a team for it. The other has Svenja — and Svenja has a real job to do.
+The cost of compliance doesn't scale. A questionnaire takes roughly the same amount of time whether you're a 15-person manufacturer or a 15,000-person enterprise. But one of those businesses has a team for it. The other has one person — and she has a real job to do.
 
 This isn't partnership. It's cost-shifting. The reporting burden flows downhill. The resources to handle it don't.
 
@@ -58,9 +58,7 @@ The supplier who can answer keeps the business. The one who can't gets replaced 
 
 This is the structural squeeze: it's no longer about whether you're sustainable. It's about whether you can prove it, on someone else's timeline, in someone else's format, using terminology someone else chose.
 
-## The Part Nobody Tells You
-
-Here's what changes the calculation.
+## What Changes the Calculation
 
 The data these questionnaires are asking for isn't exotic. It's not locked behind expensive software or specialist consultants. It's sitting in documents you already have:
 

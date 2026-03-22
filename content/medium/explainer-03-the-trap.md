@@ -56,7 +56,7 @@ It covers everything. Energy consumption. Waste management. Water usage. Supply 
 
 Svenja doesn't have a sustainability department. She doesn't have a compliance team. She has a production floor, an accounting person who also does HR, and a deadline.
 
-But here's the thing the questionnaire doesn't fix: the math.
+But the questionnaire doesn't fix the math.
 
 The questionnaire doesn't change the fact that investing in better operations still costs more than not investing. It doesn't change the competitive dynamics that made Svenja stop investing in the first place. It doesn't make the first mover advantage appear where none exists.
 

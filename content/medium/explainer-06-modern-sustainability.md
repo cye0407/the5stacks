@@ -46,7 +46,7 @@ The average SME loses 5-15% of its operating costs to invisible inefficiencies. 
 
 Bills on auto-pay that nobody ever reviewed. Contracts that haven't been renegotiated in three years — even though rates have changed. Equipment running when nobody's using it. Lights on in rooms nobody enters. Heating systems that haven't been serviced since installation.
 
-Svenja found equipment running 24/7 on her production floor. Four hundred euros a month. That's nearly five thousand euros a year, walking out of her building while everyone was at home. She fixed it with timers and shutdown procedures. Cost: almost nothing.
+One company found equipment running 24/7 on the production floor. Four hundred euros a month. That's nearly five thousand euros a year, walking out of the building while everyone was at home. Fixed with timers and shutdown procedures. Cost: almost nothing.
 
 This step doesn't cost money. It makes money. Not eventually. Now.
 

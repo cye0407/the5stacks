@@ -42,7 +42,7 @@ It just happens to also be sustainability.
 
 ## The Questionnaire Is a Byproduct
 
-Here's what changes once you've done the operational work: the questionnaire stops being scary.
+Once you've done the operational work, the questionnaire stops being scary.
 
 "What's your energy consumption?" You know. It's in your baseline. You can give them exact numbers.
 

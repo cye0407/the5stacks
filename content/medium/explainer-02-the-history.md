@@ -42,7 +42,7 @@ The environment came back into focus in the 1960s, and not gently. Rachel Carson
 
 By the 1980s, companies realised regulation was coming whether they liked it or not. Better to self-regulate than be regulated. "Corporate Social Responsibility" emerged — voluntary reporting, sustainability statements, environmental pledges. The Brundtland Report in 1987 put "sustainable development" into the global vocabulary: *"development that meets the needs of the present without compromising the ability of future generations to meet their own needs."* This is where sustainability starts its transformation. It stops being a practice and starts becoming an industry.
 
-The 2000s brought the frameworks. The Global Reporting Initiative. The UN Global Compact. CDP launched in 2000. Reporting became standardised — which meant it became a product. Companies started hiring sustainability teams. But here's the thing: most of those teams weren't hired to change operations. They were hired to fill out reports. The gap opened between what companies reported and what they actually did. The reporting became an end in itself.
+The 2000s brought the frameworks. The Global Reporting Initiative. The UN Global Compact. CDP launched in 2000. Reporting became standardised — which meant it became a product. Companies started hiring sustainability teams. But most of those teams weren't hired to change operations. They were hired to fill out reports. The gap opened between what companies reported and what they actually did. The reporting became an end in itself.
 
 Then ESG became an investment lens. BlackRock's Larry Fink wrote his annual letters telling CEOs that sustainability matters to investors. Rating agencies emerged — EcoVadis, Sustainalytics, MSCI ESG. Supply chain questionnaires cascaded down. Big companies, under pressure to report on their entire value chain, pushed reporting requirements onto their suppliers. The Paris Agreement arrived in 2015. The Sustainable Development Goals followed. The language became universal. Everyone was talking about sustainability. The question was whether anyone was actually doing it.
 
@@ -56,7 +56,7 @@ Here's what makes sustainability so confusing: different groups see it completel
 
 Academia sees research, models, peer review. Important work. Also largely disconnected from the reality of running a 15-person business. When a professor publishes a paper on Scope 3 methodology, it doesn't help the owner of a 15-person sewing company figure out what to put in the form her customer sent her.
 
-The haters say ESG is woke, that sustainability kills shareholder value, that it's all a scam. They're often funded by industries that benefit from no regulation. But here's the uncomfortable truth: they have a point when they say the current system is performative. They just draw the wrong conclusion. The answer isn't to abandon environmental responsibility. The answer is to fix the delivery system.
+The haters say ESG is woke, that sustainability kills shareholder value, that it's all a scam. They're often funded by industries that benefit from no regulation. But they have a point when they say the current system is performative. They just draw the wrong conclusion. The answer isn't to abandon environmental responsibility. The answer is to fix the delivery system.
 
 The corporate world sees sustainability as reporting plus compliance plus brand positioning. A department, not a practice. Something you do in your annual report, not something that changes how you run your factory.
 

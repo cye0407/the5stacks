@@ -60,13 +60,13 @@ A company with a polished sustainability report and terrible operations will sco
 
 Read that again.
 
-Svenja's sewing company has low waste, efficient energy use, stable local suppliers, and 30-year relationships with her workforce. She runs a tight, well-managed operation. But she doesn't have a sustainability report. She doesn't have a dedicated ESG person. She hasn't paid a rating agency. She can't fill out a 47-page questionnaire because the language is designed for companies with compliance departments.
+A sewing company with low waste, efficient energy use, stable local suppliers, and 30-year relationships with her workforce. A tight, well-managed operation. But no sustainability report. No dedicated ESG person. No rating agency on retainer. She can't fill out a 47-page questionnaire because the language is designed for companies with compliance departments.
 
 Meanwhile, a larger competitor has a beautiful 80-page sustainability report, a Chief Sustainability Officer, an EcoVadis Gold medal — and operations that haven't meaningfully changed in a decade. But they have the report. They have the score. They win the contract.
 
 The system rewards good reports. Not good operations.
 
-The people who designed this system don't suffer when it fails. They're the rating agencies, the consulting firms, the software platforms. They get paid regardless of outcomes. The people at the bottom — Jim, Svenja, every small supplier trying to run an honest business — they carry the cost.
+The people who designed this system don't suffer when it fails. They're the rating agencies, the consulting firms, the software platforms. They get paid regardless of outcomes. The people at the bottom — every small supplier trying to run an honest business — they carry the cost.
 
 ## Follow the Money
 

@@ -54,7 +54,7 @@ This is why "gradual improvement" can be misleading. The system doesn't care abo
 
 Now here's where it gets important for anyone running a business.
 
-None of this is caused by Jim's tire shop. Or Svenja's sewing company. Or your restaurant, your logistics firm, or your manufacturing operation.
+None of this is caused by your tire shop. Or your sewing company. Or your restaurant, your logistics firm, or your manufacturing operation.
 
 The top 100 companies produce 71% of global industrial greenhouse gas emissions. One hundred companies. Out of millions.
 

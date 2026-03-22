@@ -96,7 +96,7 @@ Sustainability is just what you call it when good business practices happen to a
 
 Svenja didn't reduce her carbon emissions because she cares about carbon accounting. She reduced them because she turned off machines that were costing her money. The emission reduction is a side effect of good management.
 
-Jim didn't map his supply chain dependencies because someone told him about Scope 3. He mapped them because his paint supplier went bankrupt and he nearly lost a month of production. The supply chain visibility is a side effect of risk management.
+A tire shop owner didn't map his supply chain dependencies because someone told him about Scope 3. He mapped them because his paint supplier went bankrupt and he nearly lost a month of production. The supply chain visibility is a side effect of risk management.
 
 The sustainability is just what you call it afterward.
 

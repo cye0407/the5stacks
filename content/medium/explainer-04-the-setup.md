@@ -14,7 +14,7 @@ That's not a conspiracy theory. It's just how the incentives work.
 
 You buy the "eco-friendly" product. It costs more. Where does the extra money go?
 
-To the company that stuck a green label on it. To the organisation that certified the label. To the marketing team that designed the packaging. To the retailer who gets a higher margin on "premium" products.
+To the company that stuck a green label on it. To the organization that certified the label. To the marketing team that designed the packaging. To the retailer who gets a higher margin on "premium" products.
 
 Not to the farmer. Not to the factory worker. Not to the environment.
 
@@ -24,7 +24,7 @@ This isn't unique to sustainability. It's how most label-based trust systems wor
 
 ## The Business Version
 
-Your biggest customer has a new regulation to deal with. They need to report on their entire supply chain — carbon emissions, labour practices, governance, environmental impact. Thousands of suppliers across dozens of countries.
+Your biggest customer has a new regulation to deal with. They need to report on their entire supply chain — carbon emissions, labor practices, governance, environmental impact. Thousands of suppliers across dozens of countries.
 
 They have two options. They could build internal capacity, invest in supply chain partnerships, help their suppliers improve, and gather data through genuine collaboration.
 

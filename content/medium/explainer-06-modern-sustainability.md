@@ -54,7 +54,7 @@ You're not doing this for sustainability. You're doing it because you found a le
 
 ## Step 3: That Waste Isn't Waste
 
-Here's a number: the UK's National Industrial Symbiosis Programme (NISP) connected 15,000 companies and generated over 1 billion pounds in cost savings. Forty-seven million tonnes of waste diverted from landfill.
+Here's a number: the UK's National Industrial Symbiosis Program (NISP) connected 15,000 companies and generated over 1 billion pounds in cost savings. Forty-seven million tonnes of waste diverted from landfill.
 
 How? By matching one company's waste to another company's input.
 
@@ -90,7 +90,7 @@ You don't have to fix them all immediately. You just need to see them. Because w
 
 ## Step 5: Now Prove It
 
-Here's a number that should make you pause: 789 billion euros in green financing exists in Europe. Green loans, sustainability-linked credit, transition funding, EU-backed programmes.
+Here's a number that should make you pause: 789 billion euros in green financing exists in Europe. Green loans, sustainability-linked credit, transition funding, EU-backed programs.
 
 2.8% of SMEs apply.
 

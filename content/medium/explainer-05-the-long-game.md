@@ -22,13 +22,13 @@ Every parent knows this. Every small business owner knows this. Some costs aren'
 
 ## The Business Version
 
-"Sustainability doesn't maximise shareholder returns."
+"Sustainability doesn't maximize shareholder returns."
 
 The critics say this. The anti-ESG crowd says this. The hedge fund managers who write op-eds about "woke capitalism" say this.
 
 And they're right. Quarter to quarter, they're absolutely right.
 
-Cut corners. Push costs onto someone else. Squeeze your suppliers. Defer maintenance. Externalise everything you can. On a quarterly earnings call, it looks fantastic. Costs are down. Margins are up. Shareholders are happy.
+Cut corners. Push costs onto someone else. Squeeze your suppliers. Defer maintenance. Externalize everything you can. On a quarterly earnings call, it looks fantastic. Costs are down. Margins are up. Shareholders are happy.
 
 For a while.
 
@@ -56,7 +56,7 @@ That's sustainability. She just didn't call it that.
 
 The critics and the operators are playing two different games. And the confusion comes from pretending they're playing the same one.
 
-**Game 1: The Quarterly Game.** Maximise this quarter's returns. Cut everything that doesn't show up in the next earnings report. Sustainability is a cost. Efficiency improvements take time to pay back. Risk management is theoretical until the risk happens. In this game, the critics are right. Sustainability is overhead.
+**Game 1: The Quarterly Game.** Maximize this quarter's returns. Cut everything that doesn't show up in the next earnings report. Sustainability is a cost. Efficiency improvements take time to pay back. Risk management is theoretical until the risk happens. In this game, the critics are right. Sustainability is overhead.
 
 **Game 2: The Generational Game.** Build something that lasts. Something that doesn't break when one supplier has a problem. Something that doesn't bleed money through invisible leaks. Something that your kids could take over and run. In this game, the critics are dead wrong.
 

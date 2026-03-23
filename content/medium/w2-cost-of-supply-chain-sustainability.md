@@ -28,7 +28,7 @@ Then came the hard part: proving it.
 
 Not just their own operations. Those are manageable when you have a 200-person sustainability department, enterprise software, and consultants on retainer. The hard part is Scope 3 — emissions from the entire value chain. Every supplier, distributor, and service provider in the chain. And Scope 3 is where 70-90% of most companies' emissions actually live.
 
-So they did what large organisations do when they need something done but don't want to fund it at the source. They pushed it downstream.
+So they did what large organizations do when they need something done but don't want to fund it at the source. They pushed it downstream.
 
 They wrote questionnaires. Lengthy, jargon-heavy documents full of terminology that requires specialist knowledge to interpret. They put your company name at the top and sent them out to every significant supplier. Ten-dollar words for questions that boil down to: how much energy do you use? What do you throw away? Where does your water go?
 
@@ -38,7 +38,7 @@ These questionnaires weren't designed for your business. They were designed for 
 
 This is what's actually happening beneath the surface of "supply chain engagement."
 
-The companies with the biggest sustainability budgets are outsourcing the hardest, most labour-intensive part of sustainability — actual operational data collection — to the companies with the smallest budgets. The SME with fourteen employees and one electricity meter is being asked to produce the same granularity of data as a corporation with a dedicated reporting team.
+The companies with the biggest sustainability budgets are outsourcing the hardest, most labor-intensive part of sustainability — actual operational data collection — to the companies with the smallest budgets. The SME with fourteen employees and one electricity meter is being asked to produce the same granularity of data as a corporation with a dedicated reporting team.
 
 The cost of compliance doesn't scale. A questionnaire takes roughly the same amount of time whether you're a 15-person manufacturer or a 15,000-person enterprise. But one of those businesses has a team for it. The other has one person — and she has a real job to do.
 
@@ -68,7 +68,7 @@ The data these questionnaires are asking for isn't exotic. It's not locked behin
 - **Material inputs?** Your purchase orders and supplier invoices.
 - **Transport?** Your logistics contracts and fuel receipts.
 
-You've been generating this data for years. Nobody ever gave you a reason to organise it for environmental reporting. The questionnaire makes it sound like you need a department. You don't. You need your existing records and a structured way to pull the numbers together.
+You've been generating this data for years. Nobody ever gave you a reason to organize it for environmental reporting. The questionnaire makes it sound like you need a department. You don't. You need your existing records and a structured way to pull the numbers together.
 
 Most SMEs can build 80% of a defensible environmental baseline from paperwork they already have. The other 20% takes an afternoon of focused work.
 
@@ -80,7 +80,7 @@ The system is unfair. The reporting burden falls hardest on the businesses least
 
 But here's the practical reality: the data they're asking you to report? You're already sitting on most of it. You just never had a reason to look at it that way.
 
-And once you do organise it — once you have your baseline documented in a way that's structured, traceable, and defensible — something interesting happens. You stop scrambling every time a questionnaire arrives. You answer it in an afternoon instead of a panic. And you become the supplier that's easy to work with, in a market that's increasingly rewarding exactly that.
+And once you do organize it — once you have your baseline documented in a way that's structured, traceable, and defensible — something interesting happens. You stop scrambling every time a questionnaire arrives. You answer it in an afternoon instead of a panic. And you become the supplier that's easy to work with, in a market that's increasingly rewarding exactly that.
 
 The questionnaire was designed for their benefit. The data it forces you to collect turns out to be for yours.
 

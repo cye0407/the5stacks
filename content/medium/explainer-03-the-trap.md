@@ -68,7 +68,7 @@ The problem isn't solved. It's papered over.
 
 ## The Prisoner's Dilemma, Supply Chain Edition
 
-If you studied economics or watched enough YouTube, you might recognise this pattern. It's a version of the Prisoner's Dilemma — the foundational problem in game theory.
+If you studied economics or watched enough YouTube, you might recognize this pattern. It's a version of the Prisoner's Dilemma — the foundational problem in game theory.
 
 Two players. Both would benefit from cooperating. But each one does better individually by not cooperating, regardless of what the other does. So neither cooperates. Both end up worse off.
 

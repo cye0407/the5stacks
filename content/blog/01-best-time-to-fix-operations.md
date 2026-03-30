@@ -80,4 +80,4 @@ Don't wait. Optimize and adapt.
 
 *Next read: [You can't protect margins you can't see](/dispatch/margins-you-cant-see.html) — why cost-per-unit is the number that changes everything.*
 
-*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.* 
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — for optimizers, not optimists.* 

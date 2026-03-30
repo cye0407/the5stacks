@@ -86,4 +86,4 @@ You can't protect what you can't see. Open your eyes.
 
 *Related: [The best time to fix your operations was last year](/dispatch/energy-crisis-operations.html) | [Your supplier's problem is about to become yours](/dispatch/supplier-problem.html)*
 
-*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — for optimizers, not optimists.*

@@ -90,4 +90,4 @@ Don't be a problem. Be the supplier who already has the answers.
 
 *Related: [The best time to fix your operations was last year](/dispatch/energy-crisis-operations.html) | [The businesses that gain ground in a downturn](/dispatch/gain-ground-in-downturn.html)*
 
-*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — for optimizers, not optimists.*

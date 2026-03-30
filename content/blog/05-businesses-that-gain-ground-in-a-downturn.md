@@ -80,4 +80,4 @@ The downturn is here. The question is which group you'll be in when things start
 
 *Related: [You can't protect margins you can't see](/dispatch/margins-you-cant-see.html) | [The best time to fix your operations was last year](/dispatch/energy-crisis-operations.html)*
 
-*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — for optimizers, not optimists.*

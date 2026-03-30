@@ -84,4 +84,4 @@ Your supplier's problem is already forming. The only question is whether you'll 
 
 *Next read: [The regulation isn't coming. It's here.](/dispatch/regulation-is-here.html) — why your customers' compliance requirements are about to become your problem.*
 
-*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — for optimizers, not optimists.*

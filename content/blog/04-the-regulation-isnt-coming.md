@@ -1,6 +1,6 @@
 # The regulation isn't coming. It's here.
 
-*CSRD. CBAM. CSDDD. If those acronyms don't mean anything to you yet, they will — and the businesses that already have their data aren't the ones panicking.*
+*CSRD. CBAM. CSDDD. If those acronyms don't mean anything to you yet, they will and the businesses that already have their data aren't the ones panicking.*
 
 ---
 

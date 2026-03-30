@@ -77,3 +77,11 @@ The businesses that use this moment to map their supply chain — not perfectly,
 The ones that don't will find out what they didn't know at the worst possible time.
 
 Your supplier's problem is already forming. The only question is whether you'll see it before it reaches you.
+
+---
+
+*The full framework for building structural resilience — and the four stacks that come before it — is in the book. It's free: [The Modern Sustainability Playbook](https://esgforsuppliers.lemonsqueezy.com/checkout/buy/58bd0c97-22e1-4335-bd3f-2e854fba86e1)*
+
+*Next read: [The regulation isn't coming. It's here.](/dispatch/regulation-is-here.html) — why your customers' compliance requirements are about to become your problem.*
+
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*

@@ -79,3 +79,11 @@ You need to know what it costs you to produce one unit of what you sell. And the
 Everything else — efficiency improvements, waste reduction, supplier optimization, margin protection — follows from that single number.
 
 You can't protect what you can't see. Open your eyes.
+
+---
+
+*Ready to build your baseline? The tool is free: [Build Your Baseline](https://baseline.the5stacks.com)*
+
+*Related: [The best time to fix your operations was last year](/dispatch/energy-crisis-operations.html) | [Your supplier's problem is about to become yours](/dispatch/supplier-problem.html)*
+
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*

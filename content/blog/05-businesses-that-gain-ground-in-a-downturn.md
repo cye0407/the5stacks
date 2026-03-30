@@ -71,3 +71,13 @@ They're mapping their costs. Building their baseline. Identifying where waste li
 They're not doing it because they're optimists. They're doing it because they've learned that volatility doesn't punish the prepared. It punishes everyone else.
 
 The downturn is here. The question is which group you'll be in when things start looking up.
+
+---
+
+*If you want to build this systematically — with a framework, a process, and support — that's what the [Modern Ops Program](/services.html) is for.*
+
+*Or start with the book. It's free: [The Modern Sustainability Playbook](https://esgforsuppliers.lemonsqueezy.com/checkout/buy/58bd0c97-22e1-4335-bd3f-2e854fba86e1)*
+
+*Related: [You can't protect margins you can't see](/dispatch/margins-you-cant-see.html) | [The best time to fix your operations was last year](/dispatch/energy-crisis-operations.html)*
+
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*

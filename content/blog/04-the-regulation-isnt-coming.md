@@ -83,3 +83,11 @@ Every quarter you wait is a quarter of data you don't have when someone asks for
 The regulation is here. The requirements are live. Your customers are already figuring out who can help them comply and who's going to be a problem.
 
 Don't be a problem. Be the supplier who already has the answers.
+
+---
+
+*Start organizing the data you already have: [Build Your Baseline](https://baseline.the5stacks.com)*
+
+*Related: [The best time to fix your operations was last year](/dispatch/energy-crisis-operations.html) | [The businesses that gain ground in a downturn](/dispatch/gain-ground-in-downturn.html)*
+
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.*

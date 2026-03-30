@@ -72,4 +72,12 @@ The businesses that come out of this stronger won't be the ones who waited for t
 
 There's a lot going on right now. That's exactly why now is the time to move.
 
-Don't wait. Optimize and adapt. 
+Don't wait. Optimize and adapt.
+
+---
+
+*The framework for doing this — stack by stack, starting with what you can see — is in the book. It's free: [The Modern Sustainability Playbook](https://esgforsuppliers.lemonsqueezy.com/checkout/buy/58bd0c97-22e1-4335-bd3f-2e854fba86e1)*
+
+*Next read: [You can't protect margins you can't see](/dispatch/margins-you-cant-see.html) — why cost-per-unit is the number that changes everything.*
+
+*[Subscribe to Modern Ops Dispatch](https://modernops.substack.com/subscribe) — news, analysis, and operational tactics for the time-starved.* 

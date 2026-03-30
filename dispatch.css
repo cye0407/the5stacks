@@ -1,0 +1,299 @@
+/* ============================================
+   Five Stacks — Blog
+   Extends style.css for article pages
+   ============================================ */
+
+/* ── Blog Index ── */
+
+.blog-index-hero {
+  padding: 140px 24px 48px;
+  text-align: center;
+  background: var(--bg);
+}
+
+.blog-index-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.blog-index-subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.blog-index {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.blog-card {
+  display: block;
+  background: var(--surface);
+  padding: 28px 32px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.blog-card:hover {
+  background: var(--bg-alt);
+}
+
+.blog-card-date {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--subtle);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.blog-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.blog-card-excerpt {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── Blog Article ── */
+
+.blog-article {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.blog-header {
+  padding-top: 120px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.blog-date {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--subtle);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.blog-header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.blog-subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ── Blog Body ── */
+
+.blog-body {
+  padding-bottom: 48px;
+}
+
+.blog-body p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 1.4em;
+}
+
+.blog-body h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-top: 2.4em;
+  margin-bottom: 0.8em;
+  text-align: left;
+}
+
+.blog-body em {
+  font-style: italic;
+}
+
+.blog-body strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.blog-body blockquote {
+  border-left: 3px solid var(--ink);
+  padding: 4px 0 4px 20px;
+  margin: 2em 0;
+}
+
+.blog-body blockquote p {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.blog-body ul,
+.blog-body ol {
+  margin: 1em 0 1.4em 1.5em;
+}
+
+.blog-body li {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 0.4em;
+}
+
+/* ── Blog Footer CTA ── */
+
+.blog-footer-cta {
+  background: var(--ink);
+  color: white;
+  padding: 40px 32px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.blog-footer-cta p {
+  font-size: 0.95rem;
+  color: var(--subtle);
+  margin-bottom: 20px;
+}
+
+.blog-footer-cta .cta-button {
+  background: white;
+  color: var(--ink);
+}
+
+.blog-footer-cta .cta-button:hover {
+  background: #E5E5E5;
+}
+
+/* ── Post Navigation ── */
+
+.blog-post-nav {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.blog-post-nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.blog-post-nav-prev,
+.blog-post-nav-next {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.blog-post-nav-prev:hover,
+.blog-post-nav-next:hover {
+  color: var(--ink);
+}
+
+.blog-post-nav-next {
+  text-align: right;
+}
+
+/* ── Subscribe Hero ── */
+
+.blog-subscribe-hero {
+  margin-top: 28px;
+}
+
+.blog-subscribe-hero .cta-button {
+  margin-bottom: 8px;
+}
+
+.blog-subscribe-note {
+  font-size: 0.75rem;
+  color: var(--subtle);
+}
+
+/* ── Subscribe Inline (in articles) ── */
+
+.blog-subscribe-inline {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.blog-subscribe-inline-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.blog-subscribe-inline p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.blog-subscribe-inline .cta-button {
+  font-size: 0.85rem;
+  padding: 10px 28px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 480px) {
+  .blog-header {
+    padding-top: 88px;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+  }
+
+  .blog-body p,
+  .blog-body li {
+    font-size: 1rem;
+  }
+
+  .blog-card {
+    padding: 20px 20px;
+  }
+
+  .blog-footer-cta {
+    padding: 32px 24px;
+    border-radius: 8px;
+  }
+}

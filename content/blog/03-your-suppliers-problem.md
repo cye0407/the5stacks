@@ -1,6 +1,6 @@
 # Your supplier's problem is about to become yours
 
-*Supply chains don't break at the top. They break at the bottom — and by the time you feel it, your options have already narrowed.*
+*Supply chains don't break at the top. They break at the bottom and by the time you feel it, your options have already narrowed.*
 
 ---
 
@@ -10,7 +10,7 @@ A small company somewhere in the middle of the chain gets squeezed. Energy costs
 
 They don't call you about it. They absorb it for as long as they can. They cut corners where they hope you won't notice. They delay investments. They defer maintenance. They stretch their people.
 
-Then one day — their lead time slips. Or their quality drops. Or they call you and say the price is going up 15% effective next month. Or they just don't answer the phone.
+Then one day, their lead time slips. Or their quality drops. Or they call you and say the price is going up 15% effective next month. Or they just don't answer the phone.
 
 And now it's your problem.
 
@@ -28,23 +28,23 @@ This isn't theoretical. It happened at scale in 2020. It happened again with the
 
 ## What resilience actually means
 
-Resilience isn't having a backup plan for everything. That's too expensive and too complicated for any business that operates in the real world.
+Resilience isn't having a backup plan for everything. That's too expensive and too complicated for any business operating in the real world.
 
 Resilience is knowing where you're fragile.
 
-It's understanding which supplier relationships are load-bearing and which are interchangeable. It's knowing which inputs have alternatives and which don't. It's understanding where a single failure upstream cascades into a serious problem for you.
+It's understanding which supplier relationships are load-bearing and which are interchangeable. It's knowing which inputs have alternatives and which don't. It's knowing how a single upstream failure can cascade into a serious problem for you.
 
 You don't need to solve every vulnerability. You need to see them. Because when you can see them, you can make rational decisions about which ones to address and which ones to accept — before the crisis forces the decision for you.
 
 ## The map you probably don't have
 
-Here's a question worth sitting with: if your second-largest supplier went down tomorrow, how long before you'd have an alternative?
+Ask yourself: if your second-largest supplier went down tomorrow, how long would it take to find an alternative?
 
 Not "we'd figure it out." How long, specifically? Who would you call? What's the lead time on qualifying a new source? What happens to your production schedule in the meantime? What happens to your commitments to *your* customers?
 
 Most businesses haven't done this exercise. Not because they don't care, but because when things are running, it feels unnecessary. The supply chain is working. Why poke at it?
 
-Because the time to map your dependencies is before they break. After they break, you're negotiating from weakness with a deadline.
+Because the time to map your dependencies is before they break. After they break, you're negotiating from a position of weakness with a deadline.
 
 ## What this has to do with energy
 
@@ -60,11 +60,11 @@ This is why "just find a cheaper supplier" isn't a resilience strategy. It's a w
 
 The businesses that handle supply chain disruption well — not perfectly, but well — share a few things in common.
 
-They've mapped their critical dependencies. Not all of them — the critical ones. The relationships where a failure creates an outsized problem.
+1. They've mapped their critical dependencies. Not all of them — the critical ones. The relationships where a failure creates an outsized problem.
 
-They've had conversations with those suppliers. Not audits. Not questionnaires. Actual conversations about capacity, constraints, and what's changing. They know which suppliers are investing in efficiency and which ones are running everything to the limit.
+2. They've had conversations with those suppliers. Not audits. Not questionnaires. Actual conversations about capacity, constraints, and what's changing. They know which suppliers are investing in efficiency and which ones are running everything to the limit.
 
-They've identified their concentration risks. Where a single region, a single material, a single route represents a bottleneck that has no ready substitute.
+3. They've identified their concentration risks. Where a single region, a single material, a single route represents a bottleneck that has no ready substitute.
 
 And they've done this work *before* it was urgent. Which means when something breaks — and something always breaks — they already know their options.
 

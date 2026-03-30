@@ -1,6 +1,6 @@
 # The businesses that gain ground in a downturn
 
-*Volatility isn't a phase. The companies that figure this out don't just survive disruption — they use it to pull ahead.*
+*Volatility isn't a phase. The companies that figure this out don't just survive disruption; they use it to pull ahead.*
 
 ---
 
@@ -62,12 +62,12 @@ That ability comes from operational visibility. From knowing your numbers well e
 
 ## The move
 
-There's a lot happening right now. Energy prices, regulation, supply chain restructuring, market uncertainty. It's tempting to treat all of it as noise and wait for clarity.
+There's a lot happening right now. Energy prices, regulation, supply chain restructuring, and market uncertainty. It's tempting to treat it all as noise and wait for clarity.
 
 But the businesses that gain ground in a downturn aren't waiting for clarity. They're using the pressure.
 
-They're mapping their costs. Building their baseline. Identifying where waste lives and where efficiency has room. Making the small, evidence-based decisions that compound over time.
+They're mapping their costs. Building their baseline. Identifying where waste lives and where efficiency has room to grow. Making the small, evidence-based decisions that compound over time.
 
 They're not doing it because they're optimists. They're doing it because they've learned that volatility doesn't punish the prepared. It punishes everyone else.
 
-The downturn is here. The question is which group you'll be in when it ends.
+The downturn is here. The question is which group you'll be in when things start looking up.

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compounding Loop Tracker — The 5 Stacks Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #FAFAFA; --ink: #171717; --text: #404040; --muted: #737373; --subtle: #A3A3A3; --border: #E5E5E5; --surface: #FFFFFF; --font: 'DM Sans', -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+    .page { max-width: 780px; margin: 0 auto; padding: 48px 32px; }
+    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .intro { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; }
+    .loop-entry { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+    .loop-num { background: var(--ink); color: white; padding: 8px 16px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; }
+    .loop-fields { padding: 16px; display: grid; gap: 14px; }
+    .field { display: grid; grid-template-columns: 160px 1fr; gap: 8px; align-items: start; }
+    .field-label { font-size: 0.8rem; font-weight: 600; color: var(--ink); padding-top: 4px; }
+    .field-label small { display: block; font-weight: 400; color: var(--subtle); font-size: 0.75rem; }
+    .field-line { border-bottom: 1px dotted var(--border); min-height: 24px; }
+    .field-line-tall { border-bottom: 1px dotted var(--border); min-height: 48px; }
+    .summary-box { background: var(--ink); color: white; border-radius: 8px; padding: 24px; margin: 28px 0; }
+    .summary-box h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle); margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 6px; }
+    .summary-box p { font-size: 0.88rem; color: #D4D4D4; line-height: 1.6; }
+    .summary-box p + p { margin-top: 8px; }
+    .footer-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--subtle); text-align: center; }
+    .footer-note a { color: var(--muted); }
+    @media print { .page { padding: 16px 0; } }
+    @media (max-width: 600px) { .field { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>Compounding Loop Tracker</h1>
+      <span class="brand">The 5 Stacks Framework</span>
+    </div>
+
+    <p class="intro">Each row captures one decision you made on instinct and converts it into a data-informed process. Over time, this becomes your proof that the system is compounding — every decision gets better because the last one generated data.</p>
+
+    <div class="loop-entry">
+      <div class="loop-num">Loop 1</div>
+      <div class="loop-fields">
+        <div class="field">
+          <div class="field-label">Date</div>
+          <div class="field-line"></div>
+        </div>
+        <div class="field">
+          <div class="field-label">The decision<small>What did you decide?</small></div>
+          <div class="field-line-tall"></div>
+        </div>
+        <div class="field">
+          <div class="field-label">The instinct<small>What was it based on?</small></div>
+          <div class="field-line-tall"></div>
+        </div>
+        <div class="field">
+          <div class="field-label">The missing data<small>What would have made this better?</small></div>
+          <div class="field-line-tall"></div>
+        </div>
+        <div class="field">
+          <div class="field-label">Tracking set up<small>What are you measuring now so next time you have the number?</small></div>
+          <div class="field-line-tall"></div>
+        </div>
+        <div class="field">
+          <div class="field-label">Result<small>Fill in later: was the next decision better?</small></div>
+          <div class="field-line-tall"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loop-entry">
+      <div class="loop-num">Loop 2</div>
+      <div class="loop-fields">
+        <div class="field"><div class="field-label">Date</div><div class="field-line"></div></div>
+        <div class="field"><div class="field-label">The decision<small>What did you decide?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">The instinct<small>What was it based on?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">The missing data<small>What would have made this better?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">Tracking set up<small>What are you measuring now?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">Result<small>Fill in later</small></div><div class="field-line-tall"></div></div>
+      </div>
+    </div>
+
+    <div class="loop-entry">
+      <div class="loop-num">Loop 3</div>
+      <div class="loop-fields">
+        <div class="field"><div class="field-label">Date</div><div class="field-line"></div></div>
+        <div class="field"><div class="field-label">The decision<small>What did you decide?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">The instinct<small>What was it based on?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">The missing data<small>What would have made this better?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">Tracking set up<small>What are you measuring now?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">Result<small>Fill in later</small></div><div class="field-line-tall"></div></div>
+      </div>
+    </div>
+
+    <div class="loop-entry">
+      <div class="loop-num">Loop 4</div>
+      <div class="loop-fields">
+        <div class="field"><div class="field-label">Date</div><div class="field-line"></div></div>
+        <div class="field"><div class="field-label">The decision<small>What did you decide?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">The instinct<small>What was it based on?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">The missing data<small>What would have made this better?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">Tracking set up<small>What are you measuring now?</small></div><div class="field-line-tall"></div></div>
+        <div class="field"><div class="field-label">Result<small>Fill in later</small></div><div class="field-line-tall"></div></div>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <h2>Why this matters</h2>
+      <p>One loop is a fix. Four loops is a pattern. Twelve loops is a system. Each row proves that your decision-making got better because the previous decision generated data you didn't have before.</p>
+      <p>This is what compounding looks like in practice. Not a single transformation — a series of small improvements where each one funds the next.</p>
+    </div>
+
+    <div class="footer-note">
+      <p>Free tool from <a href="https://the5stacks.com">The 5 Stacks Framework</a> &middot; This finds the gap. The <a href="https://the5stacks.com/services.html">Modern Ops Program</a> closes it.</p>
+    </div>
+  </div>
+</body>
+</html>

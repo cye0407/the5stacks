@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breakeven Energy Price Calculator — The 5 Stacks Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAFA; --ink: #171717; --text: #404040; --muted: #737373;
+      --subtle: #A3A3A3; --border: #E5E5E5; --surface: #FFFFFF;
+      --font: 'DM Sans', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+    .page { max-width: 720px; margin: 0 auto; padding: 48px 32px; }
+    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .intro { font-size: 0.92rem; color: var(--muted); margin-bottom: 32px; }
+    .calc-section { margin-bottom: 28px; }
+    .calc-section h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .calc-row { display: grid; grid-template-columns: 1fr 180px 120px; gap: 12px; align-items: center; margin-bottom: 8px; }
+    .calc-row.header-row { font-size: 0.7rem; font-weight: 600; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .calc-label { font-size: 0.88rem; color: var(--text); }
+    .calc-label small { display: block; font-size: 0.78rem; color: var(--subtle); font-weight: 400; }
+    input[type="number"] {
+      width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px;
+      font-family: var(--font); font-size: 0.9rem; color: var(--ink); background: var(--surface);
+    }
+    input[type="number"]:focus { outline: none; border-color: var(--ink); }
+    .calc-result { font-size: 0.9rem; font-weight: 600; color: var(--ink); text-align: right; }
+    .result-box { background: var(--ink); color: white; border-radius: 8px; padding: 24px; margin: 32px 0; }
+    .result-box h3 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle); margin-bottom: 8px; }
+    .result-big { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+    .result-sub { font-size: 0.85rem; color: var(--subtle); margin-top: 4px; }
+    .result-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.12); }
+    .result-item label { display: block; font-size: 0.7rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .result-item span { font-size: 1.1rem; font-weight: 700; }
+    .instructions { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .instructions h2 { font-size: 0.92rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+    .instructions ol { padding-left: 20px; }
+    .instructions li { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+    .footer-note { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--subtle); text-align: center; }
+    .footer-note a { color: var(--muted); }
+    button { background: var(--ink); color: white; border: none; padding: 10px 24px; border-radius: 6px; font-family: var(--font); font-weight: 600; font-size: 0.85rem; cursor: pointer; margin-top: 8px; }
+    button:hover { background: #333; }
+    @media print {
+      .page { padding: 24px 0; }
+      input[type="number"] { border: 1px solid #ccc; }
+      button { display: none; }
+    }
+    @media (max-width: 600px) {
+      .calc-row { grid-template-columns: 1fr; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+      .calc-row.header-row { display: none; }
+      .result-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>Breakeven Energy Price Calculator</h1>
+      <span class="brand">The 5 Stacks Framework</span>
+    </div>
+
+    <p class="intro">At what energy price does this product line stop being profitable? Enter your numbers below to find out. Repeat for each product line to see which ones survive a price spike — and which ones don't.</p>
+
+    <div class="calc-section">
+      <h2>Product Line</h2>
+      <div style="margin-bottom: 16px;">
+        <input type="text" id="productName" placeholder="e.g. Product A — Main line" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-family: var(--font); font-size: 0.9rem;">
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h2>Step 1 — Revenue per unit</h2>
+      <div class="calc-row">
+        <div class="calc-label">Selling price per unit <small>What you charge the customer</small></div>
+        <div><input type="number" id="pricePerUnit" step="0.01" placeholder="0.00"></div>
+        <div class="calc-result">&euro;/unit</div>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h2>Step 2 — Non-energy costs per unit</h2>
+      <div class="calc-row">
+        <div class="calc-label">Materials per unit <small>Raw materials, packaging, components</small></div>
+        <div><input type="number" id="materialsPerUnit" step="0.01" placeholder="0.00"></div>
+        <div class="calc-result">&euro;/unit</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Labor per unit <small>Direct labor allocated to this line</small></div>
+        <div><input type="number" id="laborPerUnit" step="0.01" placeholder="0.00"></div>
+        <div class="calc-result">&euro;/unit</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Other per unit <small>Overhead, logistics, depreciation — whatever applies</small></div>
+        <div><input type="number" id="otherPerUnit" step="0.01" placeholder="0.00"></div>
+        <div class="calc-result">&euro;/unit</div>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <h2>Step 3 — Energy consumption</h2>
+      <div class="calc-row">
+        <div class="calc-label">Monthly energy for this line <small>Total kWh — estimate by shift hours or sub-meter</small></div>
+        <div><input type="number" id="monthlyKwh" step="1" placeholder="0"></div>
+        <div class="calc-result">kWh/month</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Units produced per month <small>On this product line</small></div>
+        <div><input type="number" id="monthlyUnits" step="1" placeholder="0"></div>
+        <div class="calc-result">units/month</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Current energy price <small>What you're paying now per kWh</small></div>
+        <div><input type="number" id="currentRate" step="0.001" placeholder="0.000"></div>
+        <div class="calc-result">&euro;/kWh</div>
+      </div>
+    </div>
+
+    <button onclick="calculate()">Calculate breakeven</button>
+
+    <div class="result-box" id="results" style="display:none;">
+      <h3>Breakeven energy price</h3>
+      <div class="result-big" id="breakevenPrice">—</div>
+      <div class="result-sub" id="breakevenNote"></div>
+      <div class="result-grid">
+        <div class="result-item">
+          <label>Energy cost / unit (current)</label>
+          <span id="currentEnergyCost">—</span>
+        </div>
+        <div class="result-item">
+          <label>Total cost / unit</label>
+          <span id="totalCostPerUnit">—</span>
+        </div>
+        <div class="result-item">
+          <label>Current margin / unit</label>
+          <span id="currentMargin">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <h2>How to use this</h2>
+      <ol>
+        <li><strong>Run it for each product line.</strong> Your highest-volume line first, then work down. The goal is to see which lines are resilient and which are fragile.</li>
+        <li><strong>Step 3 is where most people get stuck.</strong> If you don't have sub-metered data, estimate: what share of your total energy bill does this line use? 50%? 30%? Multiply your total monthly kWh by that percentage.</li>
+        <li><strong>The breakeven number is your decision point.</strong> If current energy prices are close to your breakeven, this line is at risk. If they're well below, you have headroom. If they're above — you're already losing money on every unit.</li>
+        <li><strong>Compare across lines.</strong> The lines with the lowest breakeven are your most vulnerable. The ones with the highest are your safest. Reprice, restructure, or retire accordingly.</li>
+      </ol>
+    </div>
+
+    <div class="footer-note">
+      <p>Free tool from <a href="https://the5stacks.com">The 5 Stacks Framework</a> &middot; This finds the gap. The <a href="https://the5stacks.com/services.html">Modern Ops Program</a> closes it.</p>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      const price = parseFloat(document.getElementById('pricePerUnit').value) || 0;
+      const materials = parseFloat(document.getElementById('materialsPerUnit').value) || 0;
+      const labor = parseFloat(document.getElementById('laborPerUnit').value) || 0;
+      const other = parseFloat(document.getElementById('otherPerUnit').value) || 0;
+      const kwh = parseFloat(document.getElementById('monthlyKwh').value) || 0;
+      const units = parseFloat(document.getElementById('monthlyUnits').value) || 0;
+      const rate = parseFloat(document.getElementById('currentRate').value) || 0;
+
+      if (units === 0 || kwh === 0) { alert('Enter units produced and energy consumption.'); return; }
+
+      const kwhPerUnit = kwh / units;
+      const energyCostPerUnit = kwhPerUnit * rate;
+      const nonEnergyCost = materials + labor + other;
+      const totalCost = nonEnergyCost + energyCostPerUnit;
+      const margin = price - totalCost;
+      const marginAvailable = price - nonEnergyCost;
+      const breakeven = marginAvailable / kwhPerUnit;
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('breakevenPrice').textContent = '€' + breakeven.toFixed(3) + '/kWh';
+      document.getElementById('currentEnergyCost').textContent = '€' + energyCostPerUnit.toFixed(2);
+      document.getElementById('totalCostPerUnit').textContent = '€' + totalCost.toFixed(2);
+      document.getElementById('currentMargin').textContent = '€' + margin.toFixed(2);
+
+      if (rate >= breakeven) {
+        document.getElementById('breakevenNote').textContent = 'Warning: your current energy price (€' + rate.toFixed(3) + '/kWh) is at or above breakeven. This line is losing money.';
+      } else {
+        const headroom = ((breakeven - rate) / rate * 100).toFixed(0);
+        document.getElementById('breakevenNote').textContent = 'Your current rate is €' + rate.toFixed(3) + '/kWh — you have ' + headroom + '% headroom before this line breaks even.';
+      }
+    }
+  </script>
+</body>
+</html>

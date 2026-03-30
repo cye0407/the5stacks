@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Waste Quick-Scan Checklist — The 5 Stacks Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #FAFAFA; --ink: #171717; --text: #404040; --muted: #737373; --subtle: #A3A3A3; --border: #E5E5E5; --surface: #FFFFFF; --font: 'DM Sans', -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+    .page { max-width: 720px; margin: 0 auto; padding: 48px 32px; }
+    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .intro { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; }
+    .section { margin-bottom: 28px; }
+    .section-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .check-item { display: grid; grid-template-columns: 28px 1fr 140px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .check-box { width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 3px; margin-top: 2px; }
+    .check-text { font-size: 0.88rem; color: var(--text); }
+    .check-text small { display: block; font-size: 0.78rem; color: var(--subtle); margin-top: 2px; }
+    .check-cost { font-size: 0.8rem; color: var(--muted); text-align: right; }
+    .check-cost-line { border-bottom: 1px dotted var(--border); display: block; min-width: 100px; min-height: 18px; }
+    .action-box { background: var(--ink); color: white; border-radius: 8px; padding: 24px; margin: 28px 0; }
+    .action-box h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle); margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 6px; }
+    .action-field { margin-bottom: 16px; }
+    .action-label { font-size: 0.82rem; color: var(--subtle); margin-bottom: 4px; }
+    .action-line { border-bottom: 1px solid rgba(255,255,255,0.2); min-height: 24px; }
+    .time-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 28px; }
+    .footer-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--subtle); text-align: center; }
+    .footer-note a { color: var(--muted); }
+    @media print { .page { padding: 16px 0; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>Energy Waste Quick-Scan Checklist</h1>
+      <span class="brand">The 5 Stacks Framework</span>
+    </div>
+
+    <p class="intro">Walk the floor. Check each item. Estimate the monthly cost of any waste you find. Pick the biggest one and fix it this week. At current energy prices, even small fixes pay back fast.</p>
+    <p class="time-note">Time required: ~30 minutes on the floor + 15 minutes calculating.</p>
+
+    <div class="section">
+      <div class="section-title">Equipment running outside production</div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Machines left running overnight or on weekends<small>Check: are any powered up with no one operating them?</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Lights on in unoccupied areas<small>Warehouses, offices, break rooms, parking areas</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">HVAC running in empty spaces<small>Heating/cooling areas nobody's working in</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Compressed air</div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Audible leaks in compressed air lines<small>Walk the line with production stopped. Listen for hissing.</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Compressor running at full pressure when partial would do<small>Check: is the system pressure set higher than equipment requires?</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Heating &amp; cooling</div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Heating and cooling running simultaneously<small>One system fights the other. Common in older buildings with zone overlap.</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Doors/docks left open while conditioned<small>Especially loading docks and warehouse entrances</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Thermostat set beyond necessary range<small>Every degree matters. Check actual vs. needed.</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Idle running &amp; standby</div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Equipment idling between jobs<small>Powered on, consuming energy, producing nothing</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Chillers or ovens cycling too frequently<small>Cycling = energy spikes. Check if insulation or controls need attention.</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">Extraction / ventilation running when not needed<small>Check if it's on a timer or always on</small></div>
+        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+      </div>
+    </div>
+
+    <div class="action-box">
+      <h2>Biggest waste found</h2>
+      <div class="action-field">
+        <div class="action-label">What is it?</div>
+        <div class="action-line"></div>
+      </div>
+      <div class="action-field">
+        <div class="action-label">Estimated monthly cost</div>
+        <div class="action-line"></div>
+      </div>
+      <div class="action-field">
+        <div class="action-label">Fix — what needs to happen?</div>
+        <div class="action-line"></div>
+      </div>
+      <div class="action-field">
+        <div class="action-label">Who owns it? By when?</div>
+        <div class="action-line"></div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p>Free tool from <a href="https://the5stacks.com">The 5 Stacks Framework</a> &middot; This finds the gap. The <a href="https://the5stacks.com/services.html">Modern Ops Program</a> closes it.</p>
+    </div>
+  </div>
+</body>
+</html>

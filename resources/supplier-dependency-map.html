@@ -16,10 +16,66 @@
     .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
     .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .intro { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
+
+    /* Toolbar */
+    .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; align-items: center; }
+    .toolbar button { background: var(--ink); color: #fff; border: none; font-family: var(--font); font-size: 0.85rem; font-weight: 500; padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: opacity 0.15s; }
+    .toolbar button:hover { opacity: 0.85; }
+    .toolbar button.btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .toolbar button.btn-outline:hover { border-color: var(--ink); }
+
+    /* Counter */
+    .counter { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-left: auto; padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; }
+    .counter .count { color: #B91C1C; }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 28px; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
     th { text-align: left; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding: 8px 8px; background: var(--surface); border-bottom: 2px solid var(--ink); }
-    td { padding: 12px 8px; font-size: 0.82rem; border-bottom: 1px solid var(--border); vertical-align: top; min-height: 40px; }
-    .risk-col { width: 80px; text-align: center; }
+    td { padding: 4px 4px; font-size: 0.82rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    td.num-col { padding: 12px 8px; color: var(--muted); font-size: 0.78rem; width: 28px; text-align: center; }
+    .risk-col { width: 100px; text-align: center; }
+
+    /* Inputs */
+    td input[type="text"] {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      background: transparent;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      color: var(--text);
+      padding: 8px 4px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    td input[type="text"]:focus {
+      border-bottom-color: var(--ink);
+    }
+
+    /* Select */
+    td select {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      background: transparent;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      color: var(--text);
+      padding: 8px 4px;
+      outline: none;
+      cursor: pointer;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border-radius: 4px;
+      transition: all 0.15s;
+    }
+    td select:focus { border-bottom-color: var(--ink); }
+    td select.risk-high { background: var(--ink); color: #fff; border-color: var(--ink); }
+    td select.risk-medium { background: transparent; color: var(--text); border: 1px solid var(--ink); }
+    td select.risk-low { background: transparent; color: var(--subtle); border-bottom: 1px solid var(--border); }
+
     .legend { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 28px; }
     .legend-item { padding: 12px; border-radius: 6px; font-size: 0.82rem; }
     .legend-high { background: var(--ink); color: white; }
@@ -33,8 +89,19 @@
     .action-box li { font-size: 0.85rem; color: #D4D4D4; margin-bottom: 6px; }
     .footer-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--subtle); text-align: center; }
     .footer-note a { color: var(--muted); }
-    @media print { .page { padding: 16px 0; max-width: 100%; } th, td { font-size: 0.75rem; padding: 6px 4px; } }
-    @media (max-width: 700px) { .page { padding: 24px 16px; } .legend { grid-template-columns: 1fr; } }
+    @media print {
+      .page { padding: 16px 0; max-width: 100%; }
+      th, td { font-size: 0.75rem; padding: 6px 4px; }
+      .toolbar, .counter { display: none !important; }
+      td input[type="text"] { border: none; padding: 2px 0; }
+      td select { border: none; padding: 2px 0; -webkit-appearance: none; }
+    }
+    @media (max-width: 700px) {
+      .page { padding: 24px 16px; }
+      .legend { grid-template-columns: 1fr; }
+      .toolbar { gap: 6px; }
+      .counter { margin-left: 0; width: 100%; text-align: center; margin-top: 4px; }
+    }
   </style>
 </head>
 <body>
@@ -46,37 +113,36 @@
 
     <p class="intro">List your top 10 suppliers by spend or criticality. For each one, answer the four questions. Mark the risk level. The suppliers with no alternative and high impact are your single points of failure. You don't need to fix them all — you need to see them.</p>
 
+    <div class="toolbar">
+      <button onclick="downloadCSV()">Download CSV</button>
+      <button onclick="window.print()">Print / PDF</button>
+      <button class="btn-outline" onclick="clearAll()">Clear</button>
+      <button class="btn-outline" onclick="addRow()">+ Add row</button>
+      <div class="counter"><span class="count" id="highCount">0</span> high-risk suppliers identified</div>
+    </div>
+
     <div class="legend">
       <div class="legend-item legend-high"><strong>High risk</strong>No alternative + high impact if they fail</div>
       <div class="legend-item legend-med"><strong>Medium risk</strong>Alternative exists but slow to activate, or moderate impact</div>
       <div class="legend-item legend-low"><strong>Low risk</strong>Alternatives ready, limited impact if disrupted</div>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 20px;">#</th>
-          <th>Supplier</th>
-          <th>What they supply</th>
-          <th>Location</th>
-          <th>Alternative?</th>
-          <th>If they're down 4 weeks?</th>
-          <th class="risk-col">Risk</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-        <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td class="risk-col"></td></tr>
-      </tbody>
-    </table>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 28px;">#</th>
+            <th>Supplier</th>
+            <th>What they supply</th>
+            <th>Location</th>
+            <th>Alternative?</th>
+            <th>If they're down 4 weeks?</th>
+            <th class="risk-col">Risk</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
 
     <div class="action-box">
       <h2>What to do with this</h2>
@@ -92,5 +158,156 @@
       <p>Free tool from <a href="https://the5stacks.com">The 5 Stacks Framework</a> &middot; This finds the gap. The <a href="https://the5stacks.com/services.html">Modern Ops Program</a> closes it.</p>
     </div>
   </div>
+
+  <script>
+    const STORAGE_KEY = '5stacks-supplier-map';
+    const FIELDS = ['supplier', 'supply', 'location', 'alternative', 'downtime'];
+    const tbody = document.getElementById('tableBody');
+    let rowCount = 0;
+
+    function createRow(num, data) {
+      data = data || {};
+      const tr = document.createElement('tr');
+      const numTd = document.createElement('td');
+      numTd.className = 'num-col';
+      numTd.textContent = num;
+      tr.appendChild(numTd);
+
+      FIELDS.forEach(function(field) {
+        const td = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.dataset.field = field;
+        input.value = data[field] || '';
+        input.addEventListener('input', save);
+        td.appendChild(input);
+        tr.appendChild(td);
+      });
+
+      const riskTd = document.createElement('td');
+      riskTd.className = 'risk-col';
+      const select = document.createElement('select');
+      select.dataset.field = 'risk';
+      ['', 'High', 'Medium', 'Low'].forEach(function(opt) {
+        const o = document.createElement('option');
+        o.value = opt;
+        o.textContent = opt || '\u2014';
+        select.appendChild(o);
+      });
+      select.value = data.risk || '';
+      styleSelect(select);
+      select.addEventListener('change', function() {
+        styleSelect(this);
+        save();
+        updateCounter();
+      });
+      riskTd.appendChild(select);
+      tr.appendChild(riskTd);
+
+      tbody.appendChild(tr);
+      rowCount = num;
+    }
+
+    function styleSelect(sel) {
+      sel.classList.remove('risk-high', 'risk-medium', 'risk-low');
+      if (sel.value === 'High') sel.classList.add('risk-high');
+      else if (sel.value === 'Medium') sel.classList.add('risk-medium');
+      else if (sel.value === 'Low') sel.classList.add('risk-low');
+    }
+
+    function updateCounter() {
+      var count = document.querySelectorAll('select.risk-high').length;
+      document.getElementById('highCount').textContent = count;
+    }
+
+    function getAll() {
+      var rows = [];
+      var trs = tbody.querySelectorAll('tr');
+      trs.forEach(function(tr) {
+        var row = {};
+        tr.querySelectorAll('input[data-field]').forEach(function(inp) {
+          row[inp.dataset.field] = inp.value;
+        });
+        tr.querySelectorAll('select[data-field]').forEach(function(sel) {
+          row[sel.dataset.field] = sel.value;
+        });
+        rows.push(row);
+      });
+      return rows;
+    }
+
+    function save() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(getAll()));
+      } catch (e) { /* storage full or unavailable */ }
+    }
+
+    function load() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) { /* corrupt data */ }
+      return null;
+    }
+
+    function addRow() {
+      createRow(rowCount + 1, {});
+      save();
+    }
+
+    function clearAll() {
+      if (!confirm('Clear all supplier data? This cannot be undone.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      tbody.innerHTML = '';
+      rowCount = 0;
+      for (var i = 1; i <= 10; i++) createRow(i, {});
+      updateCounter();
+    }
+
+    function downloadCSV() {
+      var rows = getAll();
+      var headers = ['#', 'Supplier', 'What they supply', 'Location', 'Alternative?', 'If they\'re down 4 weeks?', 'Risk'];
+      var lines = [headers.join(',')];
+      rows.forEach(function(r, i) {
+        var vals = [
+          i + 1,
+          csvEscape(r.supplier),
+          csvEscape(r.supply),
+          csvEscape(r.location),
+          csvEscape(r.alternative),
+          csvEscape(r.downtime),
+          csvEscape(r.risk)
+        ];
+        lines.push(vals.join(','));
+      });
+      var blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      var link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'supplier-dependency-map.csv';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    function csvEscape(val) {
+      if (!val) return '';
+      if (val.indexOf(',') > -1 || val.indexOf('"') > -1 || val.indexOf('\n') > -1) {
+        return '"' + val.replace(/"/g, '""') + '"';
+      }
+      return val;
+    }
+
+    // Initialize
+    (function init() {
+      var saved = load();
+      if (saved && saved.length > 0) {
+        saved.forEach(function(row, i) {
+          createRow(i + 1, row);
+        });
+      } else {
+        for (var i = 1; i <= 10; i++) createRow(i, {});
+      }
+      updateCounter();
+    })();
+  </script>
 </body>
 </html>

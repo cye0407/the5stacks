@@ -12,9 +12,15 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
     .page { max-width: 780px; margin: 0 auto; padding: 48px 32px; }
-    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end; }
     .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
     .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .toolbar button { background: var(--ink); color: #fff; border: none; font-family: var(--font); font-size: 0.85rem; font-weight: 500; padding: 7px 16px; border-radius: 6px; cursor: pointer; }
+    .toolbar button:hover { opacity: 0.85; }
+    .toolbar button.btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .toolbar button.btn-clear:hover { color: var(--ink); border-color: var(--subtle); }
+    .loop-counter { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-left: auto; }
     .intro { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; }
     .loop-entry { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
     .loop-num { background: var(--ink); color: white; padding: 8px 16px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; }
@@ -22,15 +28,41 @@
     .field { display: grid; grid-template-columns: 160px 1fr; gap: 8px; align-items: start; }
     .field-label { font-size: 0.8rem; font-weight: 600; color: var(--ink); padding-top: 4px; }
     .field-label small { display: block; font-weight: 400; color: var(--subtle); font-size: 0.75rem; }
-    .field-line { border-bottom: 1px dotted var(--border); min-height: 24px; }
-    .field-line-tall { border-bottom: 1px dotted var(--border); min-height: 48px; }
+    .field input[type="date"],
+    .field input[type="text"],
+    .field textarea {
+      width: 100%;
+      font-family: var(--font);
+      font-size: 0.88rem;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+      outline: none;
+      line-height: 1.5;
+    }
+    .field input[type="date"] { max-width: 200px; }
+    .field input[type="text"]:focus,
+    .field input[type="date"]:focus,
+    .field textarea:focus { border-bottom-color: var(--ink); }
+    .field textarea { resize: vertical; min-height: 48px; }
+    .add-loop-wrap { text-align: center; margin: 20px 0; }
+    .add-loop-wrap button { background: transparent; border: 1px dashed var(--border); color: var(--muted); font-family: var(--font); font-size: 0.85rem; font-weight: 500; padding: 10px 28px; border-radius: 8px; cursor: pointer; }
+    .add-loop-wrap button:hover { border-color: var(--subtle); color: var(--ink); }
     .summary-box { background: var(--ink); color: white; border-radius: 8px; padding: 24px; margin: 28px 0; }
     .summary-box h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle); margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 6px; }
     .summary-box p { font-size: 0.88rem; color: #D4D4D4; line-height: 1.6; }
     .summary-box p + p { margin-top: 8px; }
     .footer-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--subtle); text-align: center; }
     .footer-note a { color: var(--muted); }
-    @media print { .page { padding: 16px 0; } }
+    @media print {
+      .page { padding: 16px 0; }
+      .toolbar, .add-loop-wrap { display: none !important; }
+      .field input[type="date"],
+      .field input[type="text"],
+      .field textarea { border-bottom-style: dotted; }
+    }
     @media (max-width: 600px) { .field { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -41,72 +73,19 @@
       <span class="brand">The 5 Stacks Framework</span>
     </div>
 
+    <div class="toolbar">
+      <button onclick="downloadCSV()">Download CSV</button>
+      <button onclick="window.print()">Print / PDF</button>
+      <button class="btn-clear" onclick="clearAll()">Clear</button>
+      <span class="loop-counter" id="loopCounter">4 loops tracked</span>
+    </div>
+
     <p class="intro">Each row captures one decision you made on instinct and converts it into a data-informed process. Over time, this becomes your proof that the system is compounding — every decision gets better because the last one generated data.</p>
 
-    <div class="loop-entry">
-      <div class="loop-num">Loop 1</div>
-      <div class="loop-fields">
-        <div class="field">
-          <div class="field-label">Date</div>
-          <div class="field-line"></div>
-        </div>
-        <div class="field">
-          <div class="field-label">The decision<small>What did you decide?</small></div>
-          <div class="field-line-tall"></div>
-        </div>
-        <div class="field">
-          <div class="field-label">The instinct<small>What was it based on?</small></div>
-          <div class="field-line-tall"></div>
-        </div>
-        <div class="field">
-          <div class="field-label">The missing data<small>What would have made this better?</small></div>
-          <div class="field-line-tall"></div>
-        </div>
-        <div class="field">
-          <div class="field-label">Tracking set up<small>What are you measuring now so next time you have the number?</small></div>
-          <div class="field-line-tall"></div>
-        </div>
-        <div class="field">
-          <div class="field-label">Result<small>Fill in later: was the next decision better?</small></div>
-          <div class="field-line-tall"></div>
-        </div>
-      </div>
-    </div>
+    <div id="loopContainer"></div>
 
-    <div class="loop-entry">
-      <div class="loop-num">Loop 2</div>
-      <div class="loop-fields">
-        <div class="field"><div class="field-label">Date</div><div class="field-line"></div></div>
-        <div class="field"><div class="field-label">The decision<small>What did you decide?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">The instinct<small>What was it based on?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">The missing data<small>What would have made this better?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">Tracking set up<small>What are you measuring now?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">Result<small>Fill in later</small></div><div class="field-line-tall"></div></div>
-      </div>
-    </div>
-
-    <div class="loop-entry">
-      <div class="loop-num">Loop 3</div>
-      <div class="loop-fields">
-        <div class="field"><div class="field-label">Date</div><div class="field-line"></div></div>
-        <div class="field"><div class="field-label">The decision<small>What did you decide?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">The instinct<small>What was it based on?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">The missing data<small>What would have made this better?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">Tracking set up<small>What are you measuring now?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">Result<small>Fill in later</small></div><div class="field-line-tall"></div></div>
-      </div>
-    </div>
-
-    <div class="loop-entry">
-      <div class="loop-num">Loop 4</div>
-      <div class="loop-fields">
-        <div class="field"><div class="field-label">Date</div><div class="field-line"></div></div>
-        <div class="field"><div class="field-label">The decision<small>What did you decide?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">The instinct<small>What was it based on?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">The missing data<small>What would have made this better?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">Tracking set up<small>What are you measuring now?</small></div><div class="field-line-tall"></div></div>
-        <div class="field"><div class="field-label">Result<small>Fill in later</small></div><div class="field-line-tall"></div></div>
-      </div>
+    <div class="add-loop-wrap">
+      <button onclick="addLoop()">+ Add loop</button>
     </div>
 
     <div class="summary-box">
@@ -119,5 +98,124 @@
       <p>Free tool from <a href="https://the5stacks.com">The 5 Stacks Framework</a> &middot; This finds the gap. The <a href="https://the5stacks.com/services.html">Modern Ops Program</a> closes it.</p>
     </div>
   </div>
+
+  <script>
+    const STORAGE_KEY = '5stacks-compounding-loops';
+    const fields = [
+      { key: 'date',     label: 'Date',             hint: '',                                                              type: 'date' },
+      { key: 'decision', label: 'The decision',      hint: 'What did you decide?',                                          type: 'textarea' },
+      { key: 'instinct', label: 'The instinct',      hint: 'What was it based on?',                                         type: 'textarea' },
+      { key: 'missing',  label: 'The missing data',  hint: 'What would have made this better?',                             type: 'textarea' },
+      { key: 'tracking', label: 'Tracking set up',   hint: 'What are you measuring now so next time you have the number?',  type: 'textarea' },
+      { key: 'result',   label: 'Result',            hint: 'Fill in later: was the next decision better?',                  type: 'textarea' }
+    ];
+
+    let loopCount = 0;
+
+    function createLoopHTML(num, data) {
+      data = data || {};
+      const entry = document.createElement('div');
+      entry.className = 'loop-entry';
+      entry.dataset.loop = num;
+
+      let fieldsHTML = '';
+      fields.forEach(f => {
+        const val = (data[f.key] || '').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const hintHTML = f.hint ? '<small>' + f.hint + '</small>' : '';
+        let inputHTML;
+        if (f.type === 'date') {
+          inputHTML = '<input type="date" data-field="' + f.key + '" value="' + val + '">';
+        } else if (f.type === 'textarea') {
+          inputHTML = '<textarea rows="2" data-field="' + f.key + '">' + val + '</textarea>';
+        } else {
+          inputHTML = '<input type="text" data-field="' + f.key + '" value="' + val + '">';
+        }
+        fieldsHTML += '<div class="field"><div class="field-label">' + f.label + hintHTML + '</div>' + inputHTML + '</div>';
+      });
+
+      entry.innerHTML = '<div class="loop-num">Loop ' + num + '</div><div class="loop-fields">' + fieldsHTML + '</div>';
+      return entry;
+    }
+
+    function addLoop(data) {
+      loopCount++;
+      const container = document.getElementById('loopContainer');
+      container.appendChild(createLoopHTML(loopCount, data));
+      updateCounter();
+      if (!data) save();
+    }
+
+    function updateCounter() {
+      document.getElementById('loopCounter').textContent = loopCount + ' loop' + (loopCount !== 1 ? 's' : '') + ' tracked';
+    }
+
+    function collectData() {
+      const loops = [];
+      document.querySelectorAll('.loop-entry').forEach(entry => {
+        const obj = {};
+        entry.querySelectorAll('[data-field]').forEach(el => {
+          obj[el.dataset.field] = el.value;
+        });
+        loops.push(obj);
+      });
+      return loops;
+    }
+
+    function save() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectData()));
+      } catch (e) { /* quota exceeded — silent fail */ }
+    }
+
+    function load() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const loops = JSON.parse(raw);
+          if (Array.isArray(loops) && loops.length) {
+            loops.forEach(d => addLoop(d));
+            return;
+          }
+        }
+      } catch (e) { /* corrupted data — start fresh */ }
+      for (let i = 0; i < 4; i++) addLoop();
+    }
+
+    function downloadCSV() {
+      const data = collectData();
+      if (!data.length) return;
+      const headers = ['Loop', ...fields.map(f => f.label)];
+      const rows = data.map((d, i) => {
+        return [i + 1, ...fields.map(f => {
+          const v = (d[f.key] || '').replace(/"/g, '""');
+          return '"' + v + '"';
+        })].join(',');
+      });
+      const csv = headers.join(',') + '\n' + rows.join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'compounding-loops.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function clearAll() {
+      if (!confirm('Clear all loop data? This cannot be undone.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      loopCount = 0;
+      document.getElementById('loopContainer').innerHTML = '';
+      for (let i = 0; i < 4; i++) addLoop();
+    }
+
+    // Auto-save on any input change
+    document.addEventListener('input', function(e) {
+      if (e.target.closest('.loop-entry')) save();
+    });
+
+    // Initialize
+    load();
+  </script>
 </body>
 </html>

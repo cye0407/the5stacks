@@ -16,9 +16,13 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
     .page { max-width: 720px; margin: 0 auto; padding: 48px 32px; }
-    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
     .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
     .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .toolbar { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 32px; }
+    .toolbar button { margin-top: 0; padding: 7px 16px; font-size: 0.85rem; }
+    .toolbar button.btn-clear { background: var(--surface); color: var(--ink); border: 1px solid var(--border); }
+    .toolbar button.btn-clear:hover { background: var(--bg); border-color: var(--subtle); }
     .intro { font-size: 0.92rem; color: var(--muted); margin-bottom: 32px; }
     .calc-section { margin-bottom: 28px; }
     .calc-section h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
@@ -26,11 +30,11 @@
     .calc-row.header-row { font-size: 0.7rem; font-weight: 600; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
     .calc-label { font-size: 0.88rem; color: var(--text); }
     .calc-label small { display: block; font-size: 0.78rem; color: var(--subtle); font-weight: 400; }
-    input[type="number"] {
+    input[type="number"], input[type="text"] {
       width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px;
       font-family: var(--font); font-size: 0.9rem; color: var(--ink); background: var(--surface);
     }
-    input[type="number"]:focus { outline: none; border-color: var(--ink); }
+    input[type="number"]:focus, input[type="text"]:focus { outline: none; border-color: var(--ink); }
     .calc-result { font-size: 0.9rem; font-weight: 600; color: var(--ink); text-align: right; }
     .result-box { background: var(--ink); color: white; border-radius: 8px; padding: 24px; margin: 32px 0; }
     .result-box h3 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle); margin-bottom: 8px; }
@@ -49,13 +53,15 @@
     button:hover { background: #333; }
     @media print {
       .page { padding: 24px 0; }
-      input[type="number"] { border: 1px solid #ccc; }
+      input[type="number"], input[type="text"] { border: 1px solid #ccc; }
       button { display: none; }
+      .toolbar { display: none; }
     }
     @media (max-width: 600px) {
       .calc-row { grid-template-columns: 1fr; gap: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
       .calc-row.header-row { display: none; }
       .result-grid { grid-template-columns: 1fr; }
+      .toolbar { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -66,12 +72,18 @@
       <span class="brand">The 5 Stacks Framework</span>
     </div>
 
+    <div class="toolbar">
+      <button onclick="downloadCSV()">Download CSV</button>
+      <button onclick="window.print()">Print / PDF</button>
+      <button class="btn-clear" onclick="clearAll()">Clear</button>
+    </div>
+
     <p class="intro">At what energy price does this product line stop being profitable? Enter your numbers below to find out. Repeat for each product line to see which ones survive a price spike — and which ones don't.</p>
 
     <div class="calc-section">
       <h2>Product Line</h2>
       <div style="margin-bottom: 16px;">
-        <input type="text" id="productName" placeholder="e.g. Product A — Main line" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-family: var(--font); font-size: 0.9rem;">
+        <input type="text" id="productName" placeholder="e.g. Product A — Main line">
       </div>
     </div>
 
@@ -160,7 +172,51 @@
   </div>
 
   <script>
-    function calculate() {
+    const STORAGE_KEY = '5stacks-breakeven';
+    const INPUT_IDS = ['productName', 'pricePerUnit', 'materialsPerUnit', 'laborPerUnit', 'otherPerUnit', 'monthlyKwh', 'monthlyUnits', 'currentRate'];
+
+    // --- localStorage auto-save / restore ---
+
+    function saveInputs() {
+      const data = {};
+      INPUT_IDS.forEach(function(id) {
+        data[id] = document.getElementById(id).value;
+      });
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) { /* silent */ }
+    }
+
+    function restoreInputs() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        var data = JSON.parse(raw);
+        INPUT_IDS.forEach(function(id) {
+          if (data[id] !== undefined && data[id] !== '') {
+            document.getElementById(id).value = data[id];
+          }
+        });
+      } catch (e) { /* silent */ }
+    }
+
+    // --- Auto-calculate on input ---
+
+    function autoCalculate() {
+      saveInputs();
+      var kwh = parseFloat(document.getElementById('monthlyKwh').value) || 0;
+      var units = parseFloat(document.getElementById('monthlyUnits').value) || 0;
+      if (kwh > 0 && units > 0) {
+        calculate(true);
+      }
+    }
+
+    INPUT_IDS.forEach(function(id) {
+      var el = document.getElementById(id);
+      el.addEventListener('input', autoCalculate);
+    });
+
+    // --- Core calculation ---
+
+    function calculate(silent) {
       const price = parseFloat(document.getElementById('pricePerUnit').value) || 0;
       const materials = parseFloat(document.getElementById('materialsPerUnit').value) || 0;
       const labor = parseFloat(document.getElementById('laborPerUnit').value) || 0;
@@ -169,7 +225,10 @@
       const units = parseFloat(document.getElementById('monthlyUnits').value) || 0;
       const rate = parseFloat(document.getElementById('currentRate').value) || 0;
 
-      if (units === 0 || kwh === 0) { alert('Enter units produced and energy consumption.'); return; }
+      if (units === 0 || kwh === 0) {
+        if (!silent) alert('Enter units produced and energy consumption.');
+        return;
+      }
 
       const kwhPerUnit = kwh / units;
       const energyCostPerUnit = kwhPerUnit * rate;
@@ -180,17 +239,100 @@
       const breakeven = marginAvailable / kwhPerUnit;
 
       document.getElementById('results').style.display = 'block';
-      document.getElementById('breakevenPrice').textContent = '€' + breakeven.toFixed(3) + '/kWh';
-      document.getElementById('currentEnergyCost').textContent = '€' + energyCostPerUnit.toFixed(2);
-      document.getElementById('totalCostPerUnit').textContent = '€' + totalCost.toFixed(2);
-      document.getElementById('currentMargin').textContent = '€' + margin.toFixed(2);
+      document.getElementById('breakevenPrice').textContent = '\u20AC' + breakeven.toFixed(3) + '/kWh';
+      document.getElementById('currentEnergyCost').textContent = '\u20AC' + energyCostPerUnit.toFixed(2);
+      document.getElementById('totalCostPerUnit').textContent = '\u20AC' + totalCost.toFixed(2);
+      document.getElementById('currentMargin').textContent = '\u20AC' + margin.toFixed(2);
 
       if (rate >= breakeven) {
-        document.getElementById('breakevenNote').textContent = 'Warning: your current energy price (€' + rate.toFixed(3) + '/kWh) is at or above breakeven. This line is losing money.';
+        document.getElementById('breakevenNote').textContent = 'Warning: your current energy price (\u20AC' + rate.toFixed(3) + '/kWh) is at or above breakeven. This line is losing money.';
       } else {
         const headroom = ((breakeven - rate) / rate * 100).toFixed(0);
-        document.getElementById('breakevenNote').textContent = 'Your current rate is €' + rate.toFixed(3) + '/kWh — you have ' + headroom + '% headroom before this line breaks even.';
+        document.getElementById('breakevenNote').textContent = 'Your current rate is \u20AC' + rate.toFixed(3) + '/kWh \u2014 you have ' + headroom + '% headroom before this line breaks even.';
       }
+    }
+
+    // --- CSV export ---
+
+    function downloadCSV() {
+      var productName = document.getElementById('productName').value || 'Unnamed';
+      var price = document.getElementById('pricePerUnit').value || '0';
+      var materials = document.getElementById('materialsPerUnit').value || '0';
+      var labor = document.getElementById('laborPerUnit').value || '0';
+      var other = document.getElementById('otherPerUnit').value || '0';
+      var kwh = document.getElementById('monthlyKwh').value || '0';
+      var units = document.getElementById('monthlyUnits').value || '0';
+      var rate = document.getElementById('currentRate').value || '0';
+
+      var breakevenEl = document.getElementById('breakevenPrice');
+      var energyCostEl = document.getElementById('currentEnergyCost');
+      var totalCostEl = document.getElementById('totalCostPerUnit');
+      var marginEl = document.getElementById('currentMargin');
+
+      var breakeven = breakevenEl ? breakevenEl.textContent : '';
+      var energyCost = energyCostEl ? energyCostEl.textContent : '';
+      var totalCost = totalCostEl ? totalCostEl.textContent : '';
+      var margin = marginEl ? marginEl.textContent : '';
+
+      var rows = [
+        ['Field', 'Value'],
+        ['Product Line', productName],
+        ['Selling Price per Unit', price],
+        ['Materials per Unit', materials],
+        ['Labor per Unit', labor],
+        ['Other per Unit', other],
+        ['Monthly Energy (kWh)', kwh],
+        ['Units per Month', units],
+        ['Current Energy Price (per kWh)', rate],
+        ['', ''],
+        ['Breakeven Energy Price', breakeven],
+        ['Energy Cost per Unit (current)', energyCost],
+        ['Total Cost per Unit', totalCost],
+        ['Current Margin per Unit', margin]
+      ];
+
+      var csv = rows.map(function(row) {
+        return row.map(function(cell) {
+          return '"' + String(cell).replace(/"/g, '""') + '"';
+        }).join(',');
+      }).join('\r\n');
+
+      var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      var safeName = productName.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 40);
+      a.download = 'breakeven-' + safeName + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // --- Clear all ---
+
+    function clearAll() {
+      if (!confirm('Clear all inputs and saved data?')) return;
+      INPUT_IDS.forEach(function(id) {
+        document.getElementById(id).value = '';
+      });
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) { /* silent */ }
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('breakevenPrice').textContent = '\u2014';
+      document.getElementById('breakevenNote').textContent = '';
+      document.getElementById('currentEnergyCost').textContent = '\u2014';
+      document.getElementById('totalCostPerUnit').textContent = '\u2014';
+      document.getElementById('currentMargin').textContent = '\u2014';
+    }
+
+    // --- Restore on load ---
+
+    restoreInputs();
+    // If restored data is sufficient, auto-calculate
+    var restoredKwh = parseFloat(document.getElementById('monthlyKwh').value) || 0;
+    var restoredUnits = parseFloat(document.getElementById('monthlyUnits').value) || 0;
+    if (restoredKwh > 0 && restoredUnits > 0) {
+      calculate(true);
     }
   </script>
 </body>

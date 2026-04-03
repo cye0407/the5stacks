@@ -12,23 +12,36 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
     .page { max-width: 720px; margin: 0 auto; padding: 48px 32px; }
-    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
     .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
     .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .toolbar { display: flex; gap: 8px; margin-bottom: 24px; }
+    .toolbar button { font-family: var(--font); font-size: 0.85rem; font-weight: 600; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; background: var(--ink); color: white; }
+    .toolbar button:hover { opacity: 0.85; }
+    .toolbar button.btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .toolbar button.btn-clear:hover { border-color: var(--muted); color: var(--ink); }
     .meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px; }
     .meta-field { font-size: 0.8rem; color: var(--muted); }
     .meta-field strong { display: block; color: var(--ink); font-size: 0.85rem; }
-    .meta-line { border-bottom: 1px solid var(--border); padding-bottom: 2px; margin-top: 4px; min-height: 20px; }
+    .meta-field input { display: block; width: 100%; border: none; border-bottom: 1px solid var(--border); background: transparent; font-family: var(--font); font-size: 0.85rem; color: var(--ink); padding: 4px 0; margin-top: 4px; outline: none; }
+    .meta-field input:focus { border-bottom-color: var(--ink); }
     .intro { font-size: 0.88rem; color: var(--muted); margin-bottom: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
     .intro strong { color: var(--ink); }
     h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 4px; }
     th { text-align: left; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding: 8px 10px; background: var(--surface); border-bottom: 1px solid var(--border); }
-    td { padding: 10px; font-size: 0.85rem; border-bottom: 1px solid var(--border); vertical-align: top; min-height: 36px; }
-    td.writable { border-bottom: 1px dotted var(--border); }
+    td { padding: 4px 6px; font-size: 0.85rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    td input { width: 100%; border: none; border-bottom: 1px solid transparent; background: transparent; font-family: var(--font); font-size: 0.85rem; color: var(--text); padding: 6px 4px; outline: none; }
+    td input:focus { border-bottom-color: var(--ink); }
+    td input[type="number"] { -moz-appearance: textfield; }
+    td input[type="number"]::-webkit-inner-spin-button,
+    td input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     .category-header { background: var(--ink); color: white; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.02em; padding: 8px 10px; }
     .category-desc { font-size: 0.78rem; color: var(--subtle); font-weight: 400; margin-left: 8px; }
     .total-row { background: var(--surface); font-weight: 700; color: var(--ink); }
+    .total-row td { padding: 10px; font-size: 0.85rem; }
+    .add-row-btn { font-family: var(--font); font-size: 0.78rem; color: var(--subtle); background: none; border: none; cursor: pointer; padding: 4px 0; margin-bottom: 28px; display: block; }
+    .add-row-btn:hover { color: var(--ink); }
     .summary-box { background: var(--ink); color: white; border-radius: 8px; padding: 24px; margin: 28px 0; }
     .summary-box h2 { color: var(--subtle); border-bottom-color: rgba(255,255,255,0.15); }
     .summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
@@ -36,7 +49,13 @@
     .summary-item .val { display: block; font-size: 1.2rem; font-weight: 700; color: white; margin-top: 4px; min-height: 28px; border-bottom: 1px solid rgba(255,255,255,0.2); }
     .footer-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--subtle); text-align: center; }
     .footer-note a { color: var(--muted); }
-    @media print { .page { padding: 16px 0; } }
+    @media print {
+      .page { padding: 16px 0; }
+      .toolbar { display: none; }
+      .add-row-btn { display: none; }
+      td input { border-bottom: none !important; }
+      .meta-field input { border-bottom: 1px solid var(--border) !important; }
+    }
   </style>
 </head>
 <body>
@@ -46,10 +65,16 @@
       <span class="brand">The 5 Stacks Framework</span>
     </div>
 
+    <div class="toolbar">
+      <button onclick="downloadCSV()">Download CSV</button>
+      <button onclick="window.print()">Print / PDF</button>
+      <button class="btn-clear" onclick="clearAll()">Clear</button>
+    </div>
+
     <div class="meta">
-      <div class="meta-field">Product line<div class="meta-line"></div></div>
-      <div class="meta-field">Week of<div class="meta-line"></div></div>
-      <div class="meta-field">Recorded by<div class="meta-line"></div></div>
+      <div class="meta-field"><strong>Product line</strong><input type="text" data-meta="productLine" placeholder="e.g. Widget Assembly"></div>
+      <div class="meta-field"><strong>Week of</strong><input type="text" data-meta="weekOf" placeholder="e.g. April 7, 2026"></div>
+      <div class="meta-field"><strong>Recorded by</strong><input type="text" data-meta="recordedBy" placeholder="Name"></div>
     </div>
 
     <div class="intro">
@@ -58,48 +83,52 @@
 
     <h2>Category A — Reusable</h2>
     <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 12px;">Material that could go back into production as-is or with minor rework.</p>
-    <table>
+    <table id="table-a">
       <thead><tr><th>Item / Material</th><th>Qty / Weight</th><th>Est. Original Cost</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr class="total-row"><td>Category A Total</td><td></td><td></td><td></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr class="total-row"><td>Category A Total</td><td></td><td id="total-a">$0.00</td><td></td></tr>
       </tbody>
     </table>
+    <button class="add-row-btn" onclick="addRow('table-a')">+ Add row</button>
 
     <h2>Category B — Sellable</h2>
     <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 12px;">Material that has value to someone else — offcuts, byproducts, scrap that can be sold.</p>
-    <table>
+    <table id="table-b">
       <thead><tr><th>Item / Material</th><th>Qty / Weight</th><th>Est. Sale Value</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr class="total-row"><td>Category B Total</td><td></td><td></td><td></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr class="total-row"><td>Category B Total</td><td></td><td id="total-b">$0.00</td><td></td></tr>
       </tbody>
     </table>
+    <button class="add-row-btn" onclick="addRow('table-b')">+ Add row</button>
 
     <h2>Category C — Actual Waste</h2>
     <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 12px;">Material with genuinely no recoverable value. What you're paying to dispose of.</p>
-    <table>
+    <table id="table-c">
       <thead><tr><th>Item / Material</th><th>Qty / Weight</th><th>Disposal Cost</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr><td class="writable">&nbsp;</td><td class="writable"></td><td class="writable"></td><td class="writable"></td></tr>
-        <tr class="total-row"><td>Category C Total</td><td></td><td></td><td></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr><td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td></tr>
+        <tr class="total-row"><td>Category C Total</td><td></td><td id="total-c">$0.00</td><td></td></tr>
       </tbody>
     </table>
+    <button class="add-row-btn" onclick="addRow('table-c')">+ Add row</button>
 
     <div class="summary-box">
       <h2>Weekly summary</h2>
       <div class="summary-grid">
-        <div class="summary-item">Recoverable value (A + B)<div class="val"></div></div>
-        <div class="summary-item">Disposal cost (C)<div class="val"></div></div>
-        <div class="summary-item">Total margin lost<div class="val"></div></div>
+        <div class="summary-item">Recoverable value (A + B)<div class="val" id="sum-recoverable">$0.00</div></div>
+        <div class="summary-item">Disposal cost (C)<div class="val" id="sum-disposal">$0.00</div></div>
+        <div class="summary-item">Total margin lost<div class="val" id="sum-total">$0.00</div></div>
       </div>
     </div>
 
@@ -107,5 +136,197 @@
       <p>Free tool from <a href="https://the5stacks.com">The 5 Stacks Framework</a> &middot; This finds the gap. The <a href="https://the5stacks.com/services.html">Modern Ops Program</a> closes it.</p>
     </div>
   </div>
+
+  <script>
+    const STORAGE_KEY = '5stacks-waste-audit';
+
+    // --- Add Row ---
+    function addRow(tableId) {
+      const table = document.getElementById(tableId);
+      const tbody = table.querySelector('tbody');
+      const totalRow = tbody.querySelector('.total-row');
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td>';
+      tbody.insertBefore(tr, totalRow);
+      tr.querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('input', onInput);
+      });
+      saveData();
+    }
+
+    // --- Calculate Totals ---
+    function calcTotals() {
+      const totals = {};
+      ['table-a', 'table-b', 'table-c'].forEach(id => {
+        const table = document.getElementById(id);
+        let sum = 0;
+        table.querySelectorAll('tbody tr:not(.total-row) input[data-col="cost"]').forEach(inp => {
+          const v = parseFloat(inp.value);
+          if (!isNaN(v)) sum += v;
+        });
+        totals[id] = sum;
+        const key = id.replace('table-', 'total-');
+        document.getElementById(key).textContent = formatCurrency(sum);
+      });
+
+      const recoverable = totals['table-a'] + totals['table-b'];
+      const disposal = totals['table-c'];
+      const total = recoverable + disposal;
+
+      document.getElementById('sum-recoverable').textContent = formatCurrency(recoverable);
+      document.getElementById('sum-disposal').textContent = formatCurrency(disposal);
+      document.getElementById('sum-total').textContent = formatCurrency(total);
+    }
+
+    function formatCurrency(n) {
+      return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    // --- Save / Load ---
+    function gatherData() {
+      const data = { meta: {}, tables: {} };
+      document.querySelectorAll('[data-meta]').forEach(inp => {
+        data.meta[inp.dataset.meta] = inp.value;
+      });
+      ['table-a', 'table-b', 'table-c'].forEach(id => {
+        const rows = [];
+        document.getElementById(id).querySelectorAll('tbody tr:not(.total-row)').forEach(tr => {
+          const row = {};
+          tr.querySelectorAll('input').forEach(inp => {
+            row[inp.dataset.col] = inp.value;
+          });
+          rows.push(row);
+        });
+        data.tables[id] = rows;
+      });
+      return data;
+    }
+
+    function saveData() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(gatherData())); } catch (e) {}
+    }
+
+    function loadData() {
+      let data;
+      try { data = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { return; }
+      if (!data) return;
+
+      if (data.meta) {
+        Object.keys(data.meta).forEach(key => {
+          const inp = document.querySelector('[data-meta="' + key + '"]');
+          if (inp) inp.value = data.meta[key];
+        });
+      }
+
+      if (data.tables) {
+        ['table-a', 'table-b', 'table-c'].forEach(id => {
+          const rows = data.tables[id];
+          if (!rows) return;
+          const table = document.getElementById(id);
+          const tbody = table.querySelector('tbody');
+          const totalRow = tbody.querySelector('.total-row');
+
+          // Remove existing data rows
+          tbody.querySelectorAll('tr:not(.total-row)').forEach(tr => tr.remove());
+
+          // Create rows from saved data
+          rows.forEach(rowData => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = '<td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td>';
+            tbody.insertBefore(tr, totalRow);
+            tr.querySelectorAll('input').forEach(inp => {
+              if (rowData[inp.dataset.col] !== undefined) {
+                inp.value = rowData[inp.dataset.col];
+              }
+              inp.addEventListener('input', onInput);
+            });
+          });
+        });
+      }
+
+      calcTotals();
+    }
+
+    // --- Input Handler ---
+    function onInput() {
+      calcTotals();
+      saveData();
+    }
+
+    // --- CSV Export ---
+    function downloadCSV() {
+      const data = gatherData();
+      const lines = [];
+      lines.push('Product Line,' + csvEsc(data.meta.productLine || ''));
+      lines.push('Week Of,' + csvEsc(data.meta.weekOf || ''));
+      lines.push('Recorded By,' + csvEsc(data.meta.recordedBy || ''));
+      lines.push('');
+
+      const labels = { 'table-a': 'Category A — Reusable', 'table-b': 'Category B — Sellable', 'table-c': 'Category C — Actual Waste' };
+      const costHeaders = { 'table-a': 'Est. Original Cost', 'table-b': 'Est. Sale Value', 'table-c': 'Disposal Cost' };
+
+      ['table-a', 'table-b', 'table-c'].forEach(id => {
+        lines.push(labels[id]);
+        lines.push('Item / Material,Qty / Weight,' + costHeaders[id] + ',Notes');
+        (data.tables[id] || []).forEach(row => {
+          lines.push([csvEsc(row.item || ''), csvEsc(row.qty || ''), csvEsc(row.cost || ''), csvEsc(row.notes || '')].join(','));
+        });
+        lines.push('');
+      });
+
+      lines.push('Weekly Summary');
+      lines.push('Recoverable Value (A + B),' + document.getElementById('sum-recoverable').textContent);
+      lines.push('Disposal Cost (C),' + document.getElementById('sum-disposal').textContent);
+      lines.push('Total Margin Lost,' + document.getElementById('sum-total').textContent);
+
+      const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'waste-audit-' + (data.meta.weekOf || 'export').replace(/[^a-zA-Z0-9]/g, '-') + '.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function csvEsc(val) {
+      val = String(val);
+      if (val.includes(',') || val.includes('"') || val.includes('\n')) {
+        return '"' + val.replace(/"/g, '""') + '"';
+      }
+      return val;
+    }
+
+    // --- Clear ---
+    function clearAll() {
+      if (!confirm('Clear all entered data? This cannot be undone.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+
+      document.querySelectorAll('[data-meta]').forEach(inp => inp.value = '');
+
+      ['table-a', 'table-b', 'table-c'].forEach(id => {
+        const table = document.getElementById(id);
+        const tbody = table.querySelector('tbody');
+        const totalRow = tbody.querySelector('.total-row');
+        tbody.querySelectorAll('tr:not(.total-row)').forEach(tr => tr.remove());
+        for (let i = 0; i < 4; i++) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = '<td><input type="text" data-col="item"></td><td><input type="text" data-col="qty"></td><td><input type="number" data-col="cost" step="any" min="0"></td><td><input type="text" data-col="notes"></td>';
+          tbody.insertBefore(tr, totalRow);
+          tr.querySelectorAll('input').forEach(inp => inp.addEventListener('input', onInput));
+        }
+      });
+
+      calcTotals();
+    }
+
+    // --- Init ---
+    document.addEventListener('DOMContentLoaded', function() {
+      // Bind input events to all existing inputs
+      document.querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('input', onInput);
+      });
+      // Load saved data
+      loadData();
+    });
+  </script>
 </body>
 </html>

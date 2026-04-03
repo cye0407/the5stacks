@@ -12,27 +12,53 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
     .page { max-width: 720px; margin: 0 auto; padding: 48px 32px; }
-    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
     .header h1 { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
     .header .brand { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .toolbar { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .toolbar button { font-family: var(--font); font-size: 0.85rem; font-weight: 500; background: var(--ink); color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: opacity 0.15s; }
+    .toolbar button:hover { opacity: 0.85; }
+    .toolbar button.btn-clear { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .toolbar button.btn-clear:hover { border-color: var(--muted); color: var(--ink); }
     .intro { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; }
     .section { margin-bottom: 28px; }
     .section-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
     .check-item { display: grid; grid-template-columns: 28px 1fr 140px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--border); }
-    .check-box { width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 3px; margin-top: 2px; }
+    .check-item input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; accent-color: var(--ink); border: 2px solid var(--border); border-radius: 3px; appearance: none; -webkit-appearance: none; background: var(--surface); display: grid; place-content: center; }
+    .check-item input[type="checkbox"]::before { content: ""; width: 10px; height: 10px; transform: scale(0); transition: transform 0.1s ease-in-out; background: var(--ink); clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); }
+    .check-item input[type="checkbox"]:checked { border-color: var(--ink); }
+    .check-item input[type="checkbox"]:checked::before { transform: scale(1); }
     .check-text { font-size: 0.88rem; color: var(--text); }
     .check-text small { display: block; font-size: 0.78rem; color: var(--subtle); margin-top: 2px; }
-    .check-cost { font-size: 0.8rem; color: var(--muted); text-align: right; }
-    .check-cost-line { border-bottom: 1px dotted var(--border); display: block; min-width: 100px; min-height: 18px; }
+    .check-cost { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+    .check-cost-label { font-size: 0.8rem; color: var(--muted); }
+    .check-cost input[type="number"] { font-family: var(--font); font-size: 0.85rem; width: 100px; padding: 2px 4px; text-align: right; color: var(--ink); background: transparent; border: none; border-bottom: 1px solid var(--border); outline: none; transition: border-color 0.15s; }
+    .check-cost input[type="number"]:focus { border-bottom-color: var(--ink); }
+    .check-cost input[type="number"]::-webkit-inner-spin-button,
+    .check-cost input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    .check-cost input[type="number"] { -moz-appearance: textfield; }
+    .total-bar { display: flex; justify-content: flex-end; align-items: baseline; gap: 8px; padding: 16px 0; margin-bottom: 8px; border-top: 2px solid var(--ink); }
+    .total-label { font-size: 0.85rem; font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; }
+    .total-value { font-size: 1.2rem; font-weight: 700; color: var(--ink); }
     .action-box { background: var(--ink); color: white; border-radius: 8px; padding: 24px; margin: 28px 0; }
     .action-box h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle); margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 6px; }
     .action-field { margin-bottom: 16px; }
     .action-label { font-size: 0.82rem; color: var(--subtle); margin-bottom: 4px; }
-    .action-line { border-bottom: 1px solid rgba(255,255,255,0.2); min-height: 24px; }
+    .action-field input[type="text"],
+    .action-field textarea { font-family: var(--font); font-size: 0.88rem; width: 100%; padding: 4px 0; color: #fff; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); outline: none; resize: none; transition: border-color 0.15s; }
+    .action-field input[type="text"]:focus,
+    .action-field textarea:focus { border-bottom-color: rgba(255,255,255,0.5); }
+    .action-field textarea { min-height: 48px; }
     .time-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 28px; }
     .footer-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--subtle); text-align: center; }
     .footer-note a { color: var(--muted); }
-    @media print { .page { padding: 16px 0; } }
+    @media print {
+      .page { padding: 16px 0; }
+      .toolbar { display: none; }
+      .check-cost input[type="number"] { border-bottom: none; }
+      .action-field input[type="text"],
+      .action-field textarea { border-bottom: none; }
+    }
   </style>
 </head>
 <body>
@@ -42,97 +68,108 @@
       <span class="brand">The 5 Stacks Framework</span>
     </div>
 
+    <div class="toolbar">
+      <button onclick="downloadCSV()">Download CSV</button>
+      <button onclick="window.print()">Print / PDF</button>
+      <button class="btn-clear" onclick="clearAll()">Clear</button>
+    </div>
+
     <p class="intro">Walk the floor. Check each item. Estimate the monthly cost of any waste you find. Pick the biggest one and fix it this week. At current energy prices, even small fixes pay back fast.</p>
     <p class="time-note">Time required: ~30 minutes on the floor + 15 minutes calculating.</p>
 
     <div class="section">
       <div class="section-title">Equipment running outside production</div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="equip-1">
+        <input type="checkbox">
         <div class="check-text">Machines left running overnight or on weekends<small>Check: are any powered up with no one operating them?</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="equip-2">
+        <input type="checkbox">
         <div class="check-text">Lights on in unoccupied areas<small>Warehouses, offices, break rooms, parking areas</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="equip-3">
+        <input type="checkbox">
         <div class="check-text">HVAC running in empty spaces<small>Heating/cooling areas nobody's working in</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-title">Compressed air</div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="air-1">
+        <input type="checkbox">
         <div class="check-text">Audible leaks in compressed air lines<small>Walk the line with production stopped. Listen for hissing.</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="air-2">
+        <input type="checkbox">
         <div class="check-text">Compressor running at full pressure when partial would do<small>Check: is the system pressure set higher than equipment requires?</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-title">Heating &amp; cooling</div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="hvac-1">
+        <input type="checkbox">
         <div class="check-text">Heating and cooling running simultaneously<small>One system fights the other. Common in older buildings with zone overlap.</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="hvac-2">
+        <input type="checkbox">
         <div class="check-text">Doors/docks left open while conditioned<small>Especially loading docks and warehouse entrances</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="hvac-3">
+        <input type="checkbox">
         <div class="check-text">Thermostat set beyond necessary range<small>Every degree matters. Check actual vs. needed.</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-title">Idle running &amp; standby</div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="idle-1">
+        <input type="checkbox">
         <div class="check-text">Equipment idling between jobs<small>Powered on, consuming energy, producing nothing</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="idle-2">
+        <input type="checkbox">
         <div class="check-text">Chillers or ovens cycling too frequently<small>Cycling = energy spikes. Check if insulation or controls need attention.</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <div class="check-item">
-        <div class="check-box"></div>
+      <div class="check-item" data-id="idle-3">
+        <input type="checkbox">
         <div class="check-text">Extraction / ventilation running when not needed<small>Check if it's on a timer or always on</small></div>
-        <div class="check-cost">Est. &euro;/month<span class="check-cost-line"></span></div>
+        <div class="check-cost"><span class="check-cost-label">Est. &euro;/month</span><input type="number" min="0" step="1" placeholder="0"></div>
       </div>
+    </div>
+
+    <div class="total-bar">
+      <span class="total-label">Total estimated monthly waste:</span>
+      <span class="total-value" id="totalValue">&euro;0</span>
     </div>
 
     <div class="action-box">
       <h2>Biggest waste found</h2>
       <div class="action-field">
         <div class="action-label">What is it?</div>
-        <div class="action-line"></div>
+        <input type="text" data-action="what">
       </div>
       <div class="action-field">
         <div class="action-label">Estimated monthly cost</div>
-        <div class="action-line"></div>
+        <input type="text" data-action="cost">
       </div>
       <div class="action-field">
         <div class="action-label">Fix — what needs to happen?</div>
-        <div class="action-line"></div>
+        <textarea data-action="fix"></textarea>
       </div>
       <div class="action-field">
         <div class="action-label">Who owns it? By when?</div>
-        <div class="action-line"></div>
+        <input type="text" data-action="owner">
       </div>
     </div>
 
@@ -140,5 +177,112 @@
       <p>Free tool from <a href="https://the5stacks.com">The 5 Stacks Framework</a> &middot; This finds the gap. The <a href="https://the5stacks.com/services.html">Modern Ops Program</a> closes it.</p>
     </div>
   </div>
+
+  <script>
+    const STORAGE_KEY = '5stacks-energy-checklist';
+
+    // --- State helpers ---
+    function getState() {
+      const items = [];
+      document.querySelectorAll('.check-item').forEach(el => {
+        items.push({
+          id: el.dataset.id,
+          checked: el.querySelector('input[type="checkbox"]').checked,
+          cost: el.querySelector('input[type="number"]').value
+        });
+      });
+      const actions = {};
+      document.querySelectorAll('[data-action]').forEach(el => {
+        actions[el.dataset.action] = el.value;
+      });
+      return { items, actions };
+    }
+
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(getState())); } catch (e) { /* quota */ }
+    }
+
+    function restoreState() {
+      let data;
+      try { data = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { return; }
+      if (!data) return;
+      if (data.items) {
+        data.items.forEach(saved => {
+          const el = document.querySelector(`.check-item[data-id="${saved.id}"]`);
+          if (!el) return;
+          el.querySelector('input[type="checkbox"]').checked = saved.checked;
+          el.querySelector('input[type="number"]').value = saved.cost;
+        });
+      }
+      if (data.actions) {
+        Object.entries(data.actions).forEach(([key, val]) => {
+          const el = document.querySelector(`[data-action="${key}"]`);
+          if (el) el.value = val;
+        });
+      }
+      updateTotal();
+    }
+
+    // --- Total ---
+    function updateTotal() {
+      let sum = 0;
+      document.querySelectorAll('.check-cost input[type="number"]').forEach(inp => {
+        const v = parseFloat(inp.value);
+        if (!isNaN(v)) sum += v;
+      });
+      document.getElementById('totalValue').textContent = '\u20AC' + sum.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    // --- CSV export ---
+    function downloadCSV() {
+      const rows = [['Item', 'Checked', 'Est. EUR/month']];
+      document.querySelectorAll('.check-item').forEach(el => {
+        const text = el.querySelector('.check-text').childNodes[0].textContent.trim();
+        const checked = el.querySelector('input[type="checkbox"]').checked ? 'Yes' : 'No';
+        const cost = el.querySelector('input[type="number"]').value || '0';
+        rows.push(['"' + text.replace(/"/g, '""') + '"', checked, cost]);
+      });
+      // Add total row
+      const totalEl = document.getElementById('totalValue');
+      rows.push([]);
+      rows.push(['Total estimated monthly waste', '', totalEl.textContent.replace('\u20AC', '')]);
+      // Add action box
+      rows.push([]);
+      rows.push(['--- Biggest waste found ---']);
+      document.querySelectorAll('[data-action]').forEach(el => {
+        const label = el.closest('.action-field').querySelector('.action-label').textContent;
+        rows.push(['"' + label + '"', '"' + (el.value || '').replace(/"/g, '""') + '"']);
+      });
+      const csv = rows.map(r => r.join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'energy-waste-checklist.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    // --- Clear ---
+    function clearAll() {
+      if (!confirm('Clear all entries? This cannot be undone.')) return;
+      document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.check-cost input[type="number"]').forEach(inp => inp.value = '');
+      document.querySelectorAll('[data-action]').forEach(el => el.value = '');
+      updateTotal();
+      saveState();
+    }
+
+    // --- Event listeners ---
+    document.querySelectorAll('.check-item input[type="checkbox"], .check-cost input[type="number"]').forEach(el => {
+      el.addEventListener('change', () => { updateTotal(); saveState(); });
+      el.addEventListener('input', () => { updateTotal(); saveState(); });
+    });
+    document.querySelectorAll('[data-action]').forEach(el => {
+      el.addEventListener('input', saveState);
+    });
+
+    // --- Init ---
+    restoreState();
+  </script>
 </body>
 </html>

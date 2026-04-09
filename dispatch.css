@@ -297,3 +297,34 @@
     border-radius: 8px;
   }
 }
+
+/* ── Chips (stack / topic tags) ── */
+
+.chip {
+  display: inline-block;
+  padding: 3px 9px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  vertical-align: middle;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+.chip + .chip { margin-left: 6px; }
+
+.chip-topic {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.blog-card-chips {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

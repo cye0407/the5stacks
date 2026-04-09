@@ -86,6 +86,6 @@ The questionnaire was designed for their benefit. The data it forces you to coll
 
 ---
 
-*This is the second in a series about what sustainability actually looks like for real businesses. [Subscribe on Substack](https://fivestacks.substack.com) for the full series — including the practical framework that starts in Week 4.*
+*This is the second in a series about what sustainability actually looks like for real businesses. [Subscribe on Substack](https://modernops.substack.com) for the full series — including the practical framework that starts in Week 4.*
 
 **Tags:** supply chain sustainability, sustainability questionnaire, ESG reporting, SME, scope 3, cost-shifting, supply chain engagement, compliance burden, CSRD

@@ -30,7 +30,7 @@ And you already use it every day. When you price a job, you think about what you
 
 Svenja runs a sewing company. Thirty employees. Solid contracts. Good reputation.
 
-She could invest in tracking her energy use. She could optimise her production line to cut waste. She could audit her suppliers, reduce her material costs, run a tighter operation.
+She could invest in tracking her energy use. She could optimize her production line to cut waste. She could audit her suppliers, reduce her material costs, run a tighter operation.
 
 If every company in her supply chain did the same thing, costs would come down for everyone. The whole chain would get more efficient. Customers would get better products at better margins. Everyone wins.
 

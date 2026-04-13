@@ -199,6 +199,7 @@ body {
   background: var(--ink);
   color: white;
   text-decoration: none;
+  font-family: inherit;
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: -0.01em;
@@ -738,6 +739,60 @@ body {
 
 .workshop-cta-area .cta-button:hover {
   background: #E5E5E5;
+}
+
+/* Kit form in workshop */
+.workshop-cta-area .formkit-form {
+  background: transparent !important;
+  padding: 0 !important;
+  max-width: 280px !important;
+  min-width: 0 !important;
+}
+
+.workshop-cta-area .formkit-fields {
+  gap: 8px;
+  flex-direction: column !important;
+}
+
+.workshop-cta-area .formkit-input {
+  background: rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-family: inherit !important;
+  font-size: 0.9rem !important;
+}
+
+.workshop-cta-area .formkit-input::placeholder {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+.workshop-cta-area .formkit-submit {
+  background: white !important;
+  color: var(--ink) !important;
+  border-radius: 8px !important;
+  font-family: inherit !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+}
+
+.workshop-cta-area .formkit-submit:hover > span {
+  background-color: rgba(0,0,0,0.05) !important;
+}
+
+.workshop-cta-area .formkit-submit > span {
+  padding: 12px 24px !important;
+}
+
+.workshop-cta-area .formkit-alert-success {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.25) !important;
+  color: #fff !important;
+}
+
+.workshop-cta-area .formkit-powered-by-convertkit-container {
+  display: none !important;
 }
 
 /* ── CTA / Waitlist ── */

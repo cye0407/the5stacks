@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 627px;
+    overflow: hidden;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FAFAFA;
+    color: #404040;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 80px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #A3A3A3;
+    margin-bottom: 12px;
+  }
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #171717;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 15px;
+    color: #737373;
+    margin-bottom: 20px;
+  }
+  .divider {
+    height: 1px;
+    background: #E5E5E5;
+    margin-bottom: 12px;
+  }
+  .stacks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+  .stack {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-bottom: none;
+    gap: 18px;
+  }
+  .stack:last-child {
+    border-bottom: 1px solid #E5E5E5;
+  }
+  .stack.inverted {
+    background: #171717;
+    border-color: #171717;
+  }
+  .stack-num {
+    width: 32px;
+    height: 32px;
+    background: #171717;
+    color: #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .stack.inverted .stack-num {
+    background: #FFFFFF;
+    color: #171717;
+  }
+  .stack-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #171717;
+    margin-bottom: 1px;
+  }
+  .stack.inverted .stack-name {
+    color: #FFFFFF;
+  }
+  .stack-quote {
+    font-size: 13px;
+    color: #737373;
+    font-style: italic;
+  }
+  .stack.inverted .stack-quote {
+    color: #A3A3A3;
+  }
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 16px;
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mark-icon {
+    width: 28px;
+    height: 28px;
+    background: #171717;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+  }
+  .mark-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: #A3A3A3;
+  }
+  .url {
+    font-size: 12px;
+    font-weight: 500;
+    color: #A3A3A3;
+  }
+</style>
+</head>
+<body>
+  <div class="label">THE FIVE STACKS FRAMEWORK</div>
+  <div class="title">Five stacks. Each one funds the next.</div>
+  <div class="subtitle">Each stack delivers value independently. Each stack earns the investment for the next.</div>
+  <div class="divider"></div>
+  <div class="stacks">
+    <div class="stack">
+      <div class="stack-num">1</div>
+      <div>
+        <div class="stack-name">The Defensible Baseline</div>
+        <div class="stack-quote">"If it can't be measured, it can't be defended."</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="stack-num">2</div>
+      <div>
+        <div class="stack-name">Operational Efficiency</div>
+        <div class="stack-quote">"Fix leaks before adding initiatives."</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="stack-num">3</div>
+      <div>
+        <div class="stack-name">Margin Recovery</div>
+        <div class="stack-quote">"What you discard is lost margin."</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="stack-num">4</div>
+      <div>
+        <div class="stack-name">Structural Resilience</div>
+        <div class="stack-quote">"Systems must absorb shocks without breaking."</div>
+      </div>
+    </div>
+    <div class="stack inverted">
+      <div class="stack-num">5</div>
+      <div>
+        <div class="stack-name">The Compounding Engine</div>
+        <div class="stack-quote">"Build systems that improve as they operate."</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="mark">
+      <div class="mark-icon">5S</div>
+      <div class="mark-text">The Five Stacks Framework</div>
+    </div>
+    <div class="url">the5stacks.com</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margin Protection Workshop — The 5 Stacks Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAFA;
+    --ink: #171717;
+    --text: #404040;
+    --muted: #737373;
+    --subtle: #A3A3A3;
+    --border: #E5E5E5;
+    --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Slide container ── */
+  .deck { width: 100%; height: 100%; position: relative; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    overflow: hidden;
+  }
+
+  .slide.active { display: flex; }
+  .slide.dark { background: var(--ink); color: #E5E5E5; }
+  .slide.dark h1, .slide.dark h2, .slide.dark h3, .slide.dark strong { color: white; }
+  .slide.dark .muted { color: var(--subtle); }
+  .slide.dark .accent { color: #D4D4D4; }
+  .slide.dark table th { color: var(--subtle); border-color: #333; }
+  .slide.dark table td { border-color: #333; color: #D4D4D4; }
+
+  /* ── Typography ── */
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  p, li {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 48px;
+  }
+
+  .muted { color: var(--muted); }
+  .accent { color: var(--ink); font-weight: 600; }
+  .italic { font-style: italic; color: var(--muted); margin-top: 32px; font-size: 1.2rem; }
+
+  ul, ol {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 8px;
+    height: 8px;
+    background: var(--ink);
+    border-radius: 2px;
+  }
+
+  .slide.dark ul li::before { background: var(--subtle); }
+
+  ol { counter-reset: item; }
+  ol li { counter-increment: item; }
+  ol li::before {
+    content: counter(item) '.';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .slide.dark ol li::before { color: white; }
+
+  /* ── Tables ── */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin: 8px 0 16px;
+  }
+
+  th {
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 2px solid var(--border);
+  }
+
+  td {
+    padding: 10px 16px;
+    font-size: 1.15rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  td.num { font-weight: 600; color: var(--ink); text-align: right; }
+  td.dim { color: var(--muted); }
+
+  /* ── Code / diagram blocks ── */
+  .diagram {
+    font-family: 'DM Sans', monospace;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    background: var(--ink);
+    color: #E5E5E5;
+    padding: 32px 40px;
+    border-radius: 12px;
+    margin: 16px 0;
+    max-width: 800px;
+    white-space: pre;
+  }
+
+  .slide.dark .diagram {
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* ── Two-column layout ── */
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── Stacks visual ── */
+  .stacks-visual {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 6px;
+    width: 160px;
+    margin: 32px 0;
+  }
+
+  .stacks-visual .layer {
+    width: 100%;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--ink);
+  }
+
+  .slide.dark .stacks-visual .layer { background: var(--bg); }
+
+  .stacks-visual .layer:nth-child(5) { opacity: 0.12; }
+  .stacks-visual .layer:nth-child(4) { opacity: 0.28; }
+  .stacks-visual .layer:nth-child(3) { opacity: 0.48; }
+  .stacks-visual .layer:nth-child(2) { opacity: 0.70; }
+  .stacks-visual .layer:nth-child(1) { opacity: 1.0; }
+
+  /* ── Title slide specific ── */
+  .title-slide {
+    text-align: center;
+    align-items: center;
+  }
+
+  .title-slide .presents {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .title-slide h1 { font-size: 5rem; margin-bottom: 12px; }
+  .title-slide .subtitle { margin-bottom: 56px; }
+
+  .title-slide .meta {
+    font-size: 1rem;
+    color: var(--subtle);
+  }
+
+  .title-slide .meta span { margin: 0 12px; }
+
+  /* ── Findings (numbered insights) ── */
+  .finding {
+    margin-bottom: 24px;
+  }
+
+  .finding-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--subtle);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .finding p { font-size: 1.2rem; }
+  .finding strong { color: var(--ink); }
+  .slide.dark .finding strong { color: white; }
+
+  /* ── Progress bar ── */
+  .progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--ink);
+    transition: width 0.3s ease;
+    z-index: 10;
+  }
+
+  /* ── Slide number ── */
+  .slide-num {
+    position: fixed;
+    bottom: 16px;
+    right: 24px;
+    font-size: 0.75rem;
+    color: var(--subtle);
+    z-index: 10;
+  }
+
+  /* ── Block label ── */
+  .block-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 12px;
+  }
+
+  /* ── Big quote ── */
+  .big-question {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 700px;
+  }
+
+  .slide.dark .big-question { color: white; }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- SLIDE 1 — Title -->
+  <div class="slide title-slide dark active">
+    <div class="presents">The 5 Stacks Framework</div>
+    <div class="stacks-visual" style="margin: 0 auto 40px;">
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+    </div>
+    <h1>Margin<br>Protection</h1>
+    <p class="subtitle">How to Stop Profit Erosion and Map Your Operational Costs</p>
+    <div class="meta">Cat Yeldi <span>&middot;</span> April 14, 2026 <span>&middot;</span> 60 minutes</div>
+  </div>
+
+  <!-- SLIDE 2 — While We Wait -->
+  <div class="slide">
+    <h2>While we wait&hellip;</h2>
+    <p style="font-size: 1.5rem; margin-bottom: 40px;">Drop in the chat:</p>
+    <ol>
+      <li>Your name</li>
+      <li>Your business</li>
+      <li>Your biggest cost headache right now</li>
+    </ol>
+    <p class="italic">Small group. Cameras welcome. This is a working session, not a webinar.</p>
+  </div>
+
+  <!-- SLIDE 3 — The Squeeze -->
+  <div class="slide">
+    <div class="block-label">The Problem &middot; 0:05</div>
+    <h2>Your costs are rising.<br>You already know that.</h2>
+    <ul>
+      <li>Energy up 20&ndash;40% in two years</li>
+      <li>Materials, logistics, packaging &mdash; all creeping</li>
+      <li>Margins absorbing the hit silently</li>
+    </ul>
+    <p class="italic">You know the total bill. But do you know the split?</p>
+  </div>
+
+  <!-- SLIDE 4 — The Visibility Gap -->
+  <div class="slide">
+    <div class="block-label">The Problem &middot; 0:08</div>
+    <h2>Two kinds of businesses</h2>
+    <table>
+      <thead>
+        <tr><th></th><th>Most SMEs</th><th>Large companies</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Know total costs</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Know cost-per-unit</td><td class="dim">Rarely</td><td class="num">Always</td></tr>
+        <tr><td>Know which costs grow fastest</td><td class="dim">Gut feel</td><td class="num">Dashboard</td></tr>
+        <tr><td>Have someone dedicated to this</td><td class="dim">No</td><td class="num">Full team</td></tr>
+      </tbody>
+    </table>
+    <p class="italic">You&rsquo;re running blind where they have instrumentation.</p>
+  </div>
+
+  <!-- SLIDE 5 — Why This Matters Now -->
+  <div class="slide dark">
+    <div class="block-label">The Problem &middot; 0:12</div>
+    <h2>Every price spike is a gut punch<br>you can&rsquo;t predict or prevent.</h2>
+    <ul>
+      <li>You can&rsquo;t negotiate from data</li>
+      <li>You can&rsquo;t prioritize which costs to attack first</li>
+      <li>You can&rsquo;t tell if your pricing still covers your actual costs</li>
+      <li>You can&rsquo;t see it coming</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 6 — The Approach -->
+  <div class="slide">
+    <div class="block-label">The Framework &middot; 0:15</div>
+    <h2>Three things we&rsquo;re doing today</h2>
+    <ol>
+      <li><strong>Map</strong> your operational cost categories</li>
+      <li><strong>Calculate</strong> a rough cost-per-unit for one process</li>
+      <li><strong>Find</strong> 2&ndash;3 areas where margin is quietly eroding</li>
+    </ol>
+    <p class="italic">Simple. Practical. Using your real numbers.</p>
+  </div>
+
+  <!-- SLIDE 7 — Worked Example: The Bakery -->
+  <div class="slide dark">
+    <div class="block-label">The Framework &middot; 0:18</div>
+    <h2>Worked Example</h2>
+    <h3 style="color: white;">Berlin Bakery &mdash; 14 employees</h3>
+    <p style="font-size: 1.4rem; margin-bottom: 8px;">Monthly output: ~18,000 loaves</p>
+    <p style="font-size: 1.4rem;">Revenue: ~&euro;54,000/month</p>
+    <p class="italic" style="color: var(--subtle);">Let&rsquo;s trace where the money goes.</p>
+  </div>
+
+  <!-- SLIDE 8 — The Bill View -->
+  <div class="slide">
+    <div class="block-label">The Framework &middot; 0:20</div>
+    <h2>The Bill View</h2>
+    <p style="margin-bottom: 16px;">What the owner sees every month:</p>
+    <table>
+      <thead>
+        <tr><th>Bill</th><th style="text-align: right;">Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Flour &amp; ingredients</td><td class="num">&euro;11,200</td></tr>
+        <tr><td>Electricity</td><td class="num">&euro;3,400</td></tr>
+        <tr><td>Gas (ovens)</td><td class="num">&euro;2,100</td></tr>
+        <tr><td>Rent</td><td class="num">&euro;4,800</td></tr>
+        <tr><td>Staff</td><td class="num">&euro;19,600</td></tr>
+        <tr><td>Packaging</td><td class="num">&euro;1,400</td></tr>
+        <tr><td>Delivery / logistics</td><td class="num">&euro;2,800</td></tr>
+        <tr><td><strong>Total</strong></td><td class="num"><strong>&euro;45,300</strong></td></tr>
+      </tbody>
+    </table>
+    <p>Margin: ~&euro;8,700 &rarr; <strong>16.1%</strong></p>
+    <p class="italic">Looks fine. But where&rsquo;s the risk?</p>
+  </div>
+
+  <!-- SLIDE 9 — The Split View -->
+  <div class="slide">
+    <div class="block-label">The Framework &middot; 0:23</div>
+    <h2>The Split View</h2>
+    <p style="margin-bottom: 16px;">Same data, reorganized by process:</p>
+    <table>
+      <thead>
+        <tr><th>Process</th><th style="text-align: right;">Monthly</th><th style="text-align: right;">Per loaf</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ingredients</td><td class="num">&euro;11,200</td><td class="num">&euro;0.62</td></tr>
+        <tr><td>Baking (energy)</td><td class="num">&euro;5,500</td><td class="num">&euro;0.31</td></tr>
+        <tr><td>Labor (production)</td><td class="num">&euro;14,200</td><td class="num">&euro;0.79</td></tr>
+        <tr><td>Packaging</td><td class="num">&euro;1,400</td><td class="num">&euro;0.08</td></tr>
+        <tr><td>Delivery</td><td class="num">&euro;2,800</td><td class="num">&euro;0.16</td></tr>
+        <tr><td>Overhead</td><td class="num">&euro;10,200</td><td class="num">&euro;0.57</td></tr>
+        <tr><td><strong>Total cost per loaf</strong></td><td></td><td class="num"><strong>&euro;2.53</strong></td></tr>
+      </tbody>
+    </table>
+    <p>Selling price: &euro;3.00 &rarr; <strong>margin: &euro;0.47/loaf</strong></p>
+  </div>
+
+  <!-- SLIDE 10 — What the Split Reveals -->
+  <div class="slide dark">
+    <div class="block-label">The Framework &middot; 0:26</div>
+    <h2>What the split reveals</h2>
+    <div class="finding">
+      <div class="finding-num">Finding 1</div>
+      <p><strong>Energy is 12% of cost</strong> &mdash; risen 35% in 18 months. That&rsquo;s &euro;1,400/month more than two years ago. Invisible from the total bill.</p>
+    </div>
+    <div class="finding">
+      <div class="finding-num">Finding 2</div>
+      <p><strong>Delivery costs &euro;0.16/loaf</strong> &mdash; but only for wholesale. Direct-to-store costs &euro;0.04. The wholesale channel is 4x more expensive to serve.</p>
+    </div>
+    <div class="finding">
+      <div class="finding-num">Finding 3</div>
+      <p><strong>Oven scheduling</strong> &mdash; two shifts overlap, running ovens at 40% capacity for 3 hours/day. ~&euro;600/month in wasted gas.</p>
+    </div>
+    <p class="italic" style="color: var(--subtle);">None of this shows up in a P&amp;L. All of it shows up in your margin.</p>
+  </div>
+
+  <!-- SLIDE 11 — The Cost Map Template -->
+  <div class="slide">
+    <div class="block-label">The Framework &middot; 0:28</div>
+    <h2>The Cost Map</h2>
+    <div class="diagram">INPUTS              PROCESSES           OUTPUTS
+&mdash;&mdash;&mdash;&mdash;&mdash;           &mdash;&mdash;&mdash;&mdash;&mdash;          &mdash;&mdash;&mdash;&mdash;&mdash;
+Energy      &rarr;      Process A    &rarr;    Product / Service X
+Materials   &rarr;      Process B    &rarr;    Product / Service Y
+Labor       &rarr;      Process C
+Logistics
+Facilities</div>
+    <p style="margin-top: 20px;">For each input: <strong>What does it cost?</strong> Which process uses it? What output does it serve?</p>
+  </div>
+
+  <!-- SLIDE 12 — Cost-Per-Unit Formula -->
+  <div class="slide dark">
+    <div class="block-label">The Framework &middot; 0:29</div>
+    <h2>Cost-Per-Unit</h2>
+    <div class="diagram" style="font-size: 1.5rem; text-align: center; max-width: 600px;">Total cost of inputs for Process A
+&divide; Units Process A produces
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+= Cost per unit</div>
+    <p style="margin-top: 28px;">You don&rsquo;t need perfect data.<br>A rough number is infinitely better than no number.</p>
+    <p class="italic" style="color: var(--subtle);">If you know your monthly electricity bill and your monthly output, you already have enough.</p>
+  </div>
+
+  <!-- SLIDE 13 — Exercise Instructions -->
+  <div class="slide">
+    <div class="block-label">Your Turn &middot; 0:30</div>
+    <h2>15 minutes. Here&rsquo;s what to do.</h2>
+    <ol>
+      <li><strong>List your top 5 cost categories</strong> &mdash; energy, materials, labor, logistics, rent</li>
+      <li><strong>Pick one core process</strong> &mdash; the thing your business does most often</li>
+      <li><strong>Estimate the cost-per-unit</strong> &mdash; What goes in? What does it cost? How many units come out?</li>
+      <li><strong>Flag the blind spots</strong> &mdash; which costs do you NOT know the breakdown of?</li>
+    </ol>
+    <p class="italic">Use paper, a spreadsheet, whatever works. I&rsquo;ll be here if you get stuck.</p>
+  </div>
+
+  <!-- SLIDE 14 — Guiding Questions -->
+  <div class="slide">
+    <div class="block-label">Your Turn &middot; On Screen During Exercise</div>
+    <h2>If you&rsquo;re stuck, start here</h2>
+    <ul>
+      <li>What is the single most expensive input in your business?</li>
+      <li>Has it changed in the last 12 months? By how much?</li>
+      <li>Do you know what it costs per unit of output?</li>
+      <li>Which bill do you dread opening &mdash; and why?</li>
+      <li>Is there a cost you pay every month that you&rsquo;ve never broken down?</li>
+    </ul>
+  </div>
+
+  <!-- SLIDE 15 — Group Share -->
+  <div class="slide dark">
+    <div class="block-label">Discussion &middot; 0:45</div>
+    <h2>What surprised you?</h2>
+    <ul>
+      <li>What cost category was bigger than you expected?</li>
+      <li>Where do you have the least visibility?</li>
+      <li>Did anyone find a number that changes how they think about pricing?</li>
+    </ul>
+    <p class="italic" style="color: var(--subtle);">No pressure to share specific numbers &mdash; patterns and surprises are what we&rsquo;re after.</p>
+  </div>
+
+  <!-- SLIDE 16 — Your One Action -->
+  <div class="slide">
+    <div class="block-label">Next Steps &middot; 0:55</div>
+    <p class="big-question">What is the ONE cost you&rsquo;re going to dig into this week?</p>
+    <p class="italic" style="margin-top: 40px;">Drop it in the chat. Make it specific.<br>&ldquo;Energy&rdquo; is too broad. &ldquo;Electricity cost per unit at my Leipzig facility&rdquo; is a step you can actually take.</p>
+  </div>
+
+  <!-- SLIDE 17 — Resources -->
+  <div class="slide">
+    <div class="block-label">Next Steps &middot; 0:58</div>
+    <h2>Resources</h2>
+    <div class="cols" style="max-width: 700px;">
+      <div>
+        <h3>Feedback form</h3>
+        <p>2 minutes, anonymous, helps me make this better.</p>
+        <p class="muted" style="font-size: 1rem; margin-top: 8px;">(link in chat)</p>
+      </div>
+      <div>
+        <h3>Baseline tool</h3>
+        <p>Free. Tracks your operational data. Gives you the visibility we talked about today.</p>
+        <p style="font-size: 1rem; margin-top: 8px;"><strong>baseline.the5stacks.com</strong></p>
+      </div>
+    </div>
+    <p class="italic">I built the tool for my own clients. It&rsquo;s free because I want more SMEs to actually have this visibility. The framework we did today works just as well on a legal pad.</p>
+  </div>
+
+  <!-- SLIDE 18 — Thank You -->
+  <div class="slide title-slide dark">
+    <div class="stacks-visual" style="margin: 0 auto 40px;">
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+    </div>
+    <h1 style="font-size: 4rem;">Thank you.</h1>
+    <p class="subtitle" style="color: var(--subtle); margin-bottom: 24px;">Cat Yeldi</p>
+    <p style="color: var(--subtle); font-size: 1.1rem;">the5stacks.com</p>
+    <p class="italic" style="color: var(--subtle); margin-top: 40px;">If this was useful, a short testimonial would mean the world.<br>Link is in the feedback form.</p>
+  </div>
+
+</div>
+
+<!-- Progress bar -->
+<div class="progress" id="progress"></div>
+<div class="slide-num" id="slideNum"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function show(n) {
+    if (n < 0 || n >= slides.length) return;
+    slides[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    document.getElementById('progress').style.width =
+      ((current + 1) / slides.length * 100) + '%';
+    document.getElementById('slideNum').textContent =
+      (current + 1) + ' / ' + slides.length;
+
+    // Match slide-num color to slide background
+    const num = document.getElementById('slideNum');
+    num.style.color = slides[current].classList.contains('dark') ? '#525252' : '#A3A3A3';
+
+    // Match progress bar color
+    const bar = document.getElementById('progress');
+    bar.style.background = slides[current].classList.contains('dark') ? '#FAFAFA' : '#171717';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      show(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      show(current - 1);
+    } else if (e.key === 'Home') {
+      show(0);
+    } else if (e.key === 'End') {
+      show(slides.length - 1);
+    }
+  });
+
+  // Touch support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? show(current + 1) : show(current - 1);
+    }
+  });
+
+  // Click to advance (left third = back, rest = forward)
+  document.addEventListener('click', (e) => {
+    if (e.clientX < window.innerWidth / 3) {
+      show(current - 1);
+    } else {
+      show(current + 1);
+    }
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>

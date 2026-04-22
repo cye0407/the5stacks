@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 627" width="1200" height="627">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap');
+      text { font-family: 'DM Sans', Arial, Helvetica, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- White background -->
+  <rect width="1200" height="627" fill="#FAFAFA"/>
+
+  <!-- Card surface -->
+  <rect x="160" y="80" width="880" height="420" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="1"/>
+
+  <!-- Manifesto-style layout from the site -->
+  <text x="600" y="190" fill="#737373" font-size="16" font-weight="400" text-anchor="middle">
+    <tspan x="600" dy="0">If you're looking for someone to tell you</tspan>
+    <tspan x="600" dy="26">to save the planet, we're not your people.</tspan>
+  </text>
+
+  <!-- Divider -->
+  <rect x="240" y="265" width="720" height="1" fill="#E5E5E5"/>
+
+  <text x="600" y="330" fill="#171717" font-size="22" font-weight="700" text-anchor="middle" letter-spacing="-0.3">
+    <tspan x="600" dy="0">If you're looking for a system that makes</tspan>
+    <tspan x="600" dy="34">your business stronger — keep reading.</tspan>
+  </text>
+
+  <!-- Stack preview tabs at bottom of card -->
+  <rect x="310" y="420" width="580" height="40" fill="#F5F5F5"/>
+  <rect x="310" y="420" width="116" height="40" fill="#171717"/>
+  <text x="368" y="445" fill="#FFFFFF" font-size="11" font-weight="600" text-anchor="middle">BASELINE</text>
+  <text x="484" y="445" fill="#737373" font-size="11" font-weight="500" text-anchor="middle">EFFICIENCY</text>
+  <text x="600" y="445" fill="#737373" font-size="11" font-weight="500" text-anchor="middle">RECOVERY</text>
+  <text x="716" y="445" fill="#737373" font-size="11" font-weight="500" text-anchor="middle">RESILIENCE</text>
+  <text x="832" y="445" fill="#737373" font-size="11" font-weight="500" text-anchor="middle">COMPOUND</text>
+
+  <!-- Bottom bar -->
+  <rect x="80" y="560" width="28" height="28" rx="6" fill="#171717"/>
+  <text x="94" y="579" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="middle">5S</text>
+  <text x="120" y="579" fill="#A3A3A3" font-size="12" font-weight="500">The Five Stacks Framework</text>
+  <text x="1120" y="579" fill="#A3A3A3" font-size="12" font-weight="500" text-anchor="end">the5stacks.com</text>
+</svg>

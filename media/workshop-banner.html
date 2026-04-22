@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshop Banner</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 2160px; height: 1080px; overflow: hidden; }
+
+  .banner {
+    width: 2160px;
+    height: 1080px;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    background: #FAFAFA;
+    display: flex;
+  }
+
+  .left {
+    flex: 1;
+    padding: 120px 100px 120px 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 56px;
+  }
+
+  .presents {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #737373;
+  }
+
+  .title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 108px;
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: #171717;
+  }
+
+  .subtitle {
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #525252;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 32px;
+    font-weight: 400;
+    color: #525252;
+  }
+
+  .detail-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #171717;
+  }
+
+  .host {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #525252;
+  }
+
+  .host-label {
+    font-weight: 400;
+    color: #A3A3A3;
+  }
+
+  .right {
+    width: 640px;
+    background: #171717;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    gap: 64px;
+  }
+
+  .stacks-tower {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 14px;
+    width: 260px;
+  }
+
+  .stacks-tower .layer {
+    width: 100%;
+    height: 32px;
+    border-radius: 5px;
+    background: #FAFAFA;
+  }
+
+  .stacks-tower .layer:nth-child(5) { opacity: 0.12; }
+  .stacks-tower .layer:nth-child(4) { opacity: 0.28; }
+  .stacks-tower .layer:nth-child(3) { opacity: 0.50; }
+  .stacks-tower .layer:nth-child(2) { opacity: 0.72; }
+  .stacks-tower .layer:nth-child(1) { opacity: 1.0; }
+
+  .right-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .free-badge {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #FAFAFA;
+    border: 3px solid #FAFAFA;
+    padding: 16px 48px;
+    border-radius: 5px;
+  }
+
+  .seats {
+    font-size: 26px;
+    font-weight: 400;
+    color: #737373;
+    letter-spacing: 0.1em;
+  }
+
+  .url {
+    font-size: 26px;
+    font-weight: 400;
+    color: #525252;
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="left">
+    <div class="presents">The 5 Stacks Framework</div>
+    <div class="title-group">
+      <div class="title">Margin<br>Protection</div>
+      <div class="subtitle">How to Stop Profit Erosion and<br>Map Your Operational Costs</div>
+    </div>
+    <div class="details">
+      <div class="detail-row">
+        <div class="detail-icon">&#9650;</div>
+        <span>Tuesday, April 14, 2026 &mdash; 8:00 AM ET</span>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">&#9654;</div>
+        <span>60 minutes &bull; Virtual &bull; Interactive</span>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">&#9632;</div>
+        <span>For SME owners &amp; ops managers (10&ndash;250 employees)</span>
+      </div>
+    </div>
+    <div class="host">
+      <span class="host-label">with</span> Cat Yeldi
+    </div>
+  </div>
+  <div class="right">
+    <div class="stacks-tower">
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+      <div class="layer"></div>
+    </div>
+    <div class="right-text">
+      <div class="free-badge">Free Workshop</div>
+      <div class="seats">12 seats only</div>
+    </div>
+    <div class="url">the5stacks.com</div>
+  </div>
+</div>
+</body>
+</html>

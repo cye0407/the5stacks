@@ -1,155 +1,344 @@
 "use client";
 
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import {
+  ArrowRight,
+  ChartBar,
   Database,
   Export,
   ListChecks,
-  ArrowRight,
-  ChartBar,
   MapPin,
+  Target,
   TreeStructure,
-  Plant,
-  Cow,
-  Grains,
-  Drop,
 } from '@phosphor-icons/react';
-import { Card } from '@/components/ui';
+import { Button, Card } from '@/components/ui';
+import { FtueChecklist } from '@/components/app/FtueChecklist';
 import { useAppStore } from '@/stores/appStore';
 import { useDataStore } from '@/stores/dataStore';
-import { isAgriculturalIndustry } from '@/lib/utils/industry';
-import { FtueChecklist } from '@/components/app/FtueChecklist';
+import { getDashboardInsights } from '@/lib/dashboardInsights';
+import { seedMockData } from '@/lib/mockData';
 
-// Helper to format numbers
-function formatNumber(n: number): string {
-  if (n === 0) return '0';
-  if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M`;
-  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
-  return n.toLocaleString();
+function formatCompactCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'EUR',
+    notation: amount >= 10000 ? 'compact' : 'standard',
+    maximumFractionDigits: amount >= 10000 ? 1 : 0,
+  }).format(amount);
 }
 
 export default function DashboardPage() {
-  const { company, sites } = useAppStore();
-  const {
-    materialInputs,
-    packagingInputs,
-    energyElectricity,
-    energyFuels,
-    energyWater,
-    assets,
-    transportLogs,
-    workforce,
-    healthSafety,
-    training,
-    waste,
-    productOutputs,
-    directEmissions,
-    externalContext,
-    financialContext,
-    landUse,
-    fertiliserApplications,
-    livestockRecords,
-    cropOutputs,
-  } = useDataStore();
+  const company = useAppStore((state) => state.company);
+  const sites = useAppStore((state) => state.sites);
+  const setIsOnboardingComplete = useAppStore((state) => state.setIsOnboardingComplete);
+  const dataStore = useDataStore();
+  const [isSeedingDemo, setIsSeedingDemo] = useState(false);
 
-  const isAg = isAgriculturalIndustry(company?.industryCode);
+  const insights = useMemo(
+    () =>
+      getDashboardInsights({
+        company,
+        sites,
+        materialInputs: dataStore.materialInputs,
+        packagingInputs: dataStore.packagingInputs,
+        energyElectricity: dataStore.energyElectricity,
+        energyFuels: dataStore.energyFuels,
+        energyWater: dataStore.energyWater,
+        assets: dataStore.assets,
+        transportLogs: dataStore.transportLogs,
+        workforce: dataStore.workforce,
+        healthSafety: dataStore.healthSafety,
+        training: dataStore.training,
+        waste: dataStore.waste,
+        productOutputs: dataStore.productOutputs,
+        directEmissions: dataStore.directEmissions,
+        externalContext: dataStore.externalContext,
+        financialContext: dataStore.financialContext,
+        buyerRequirements: dataStore.buyerRequirements,
+      }),
+    [company, sites, dataStore]
+  );
 
-  // Domain record counts
-  const domainCounts = {
-    materials: materialInputs.length + (isAg ? fertiliserApplications.length : 0),
-    packaging: packagingInputs.length,
-    energy: energyElectricity.length + energyFuels.length + energyWater.length,
-    infrastructure: assets.length + sites.length + (isAg ? landUse.length : 0),
-    transport: transportLogs.length,
-    workforce: workforce.length + healthSafety.length + training.length,
-    outputs: waste.length + productOutputs.length + directEmissions.length + (isAg ? cropOutputs.length + livestockRecords.length : 0),
-    context: (externalContext ? 1 : 0) + (financialContext ? 1 : 0),
+  const hasCompany = Boolean(company);
+  const hasAnyData = insights.totalRecords > 0;
+
+  const handleLoadDemo = () => {
+    setIsSeedingDemo(true);
+    seedMockData();
+    setIsOnboardingComplete(true);
+    setIsSeedingDemo(false);
   };
 
-  const totalRecords = Object.values(domainCounts).reduce((sum, c) => sum + c, 0);
-  const domainsWithData = Object.values(domainCounts).filter(c => c > 0).length;
-  const completenessPercent = Math.round((domainsWithData / 8) * 100);
+  if (!hasCompany && !hasAnyData) {
+    return (
+      <div className="animate-fade-in space-y-6">
+        <Card className="overflow-hidden border-0 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 text-white shadow-xl">
+          <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+            <div className="space-y-5">
+              <div className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200">
+                Product Preview
+              </div>
+              <div className="space-y-3">
+                <h1 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
+                  Turn the baseline into something a buyer can understand in five minutes.
+                </h1>
+                <p className="max-w-2xl text-base leading-7 text-slate-300">
+                  Five Stacks should not feel like a tracker. It should feel like an operating system:
+                  where money is leaking, what evidence is weak, and what to fix next.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button onClick={handleLoadDemo} isLoading={isSeedingDemo} size="lg">
+                  Load demo company
+                </Button>
+                <Link
+                  href="/onboarding"
+                  className="inline-flex items-center justify-center rounded-lg border border-white/20 px-7 py-3.5 text-base font-medium text-white transition-colors hover:bg-white/10"
+                >
+                  Set up my own company
+                </Link>
+              </div>
+            </div>
 
-  // Find the first domain with 0 records for the "what to do next" nudge
-  const domainLabels: Record<string, { label: string; path: string }> = {
-    materials: { label: 'Materials', path: '/data/materials' },
-    packaging: { label: 'Packaging', path: '/data/packaging' },
-    energy: { label: 'Energy', path: '/data/energy' },
-    infrastructure: { label: 'Infrastructure', path: '/data/infrastructure' },
-    transport: { label: 'Transport', path: '/data/transport' },
-    workforce: { label: 'Workforce', path: '/data/workforce' },
-    outputs: { label: 'Outputs', path: '/data/outputs' },
-    context: { label: 'Context', path: '/data/context' },
-  };
-  const emptyDomain = Object.entries(domainCounts).find(([, count]) => count === 0);
-
-  // Agricultural quick stats
-  const totalLandHa = landUse.reduce((sum, l) => sum + l.areaHa, 0);
-  const totalLivestock = livestockRecords.reduce((sum, l) => sum + l.headcount, 0);
-  const totalCropHa = cropOutputs.reduce((sum, c) => sum + c.areaHa, 0);
-  const totalFertiliserKg = fertiliserApplications.reduce((sum, f) => sum + f.quantityKg, 0);
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              <div className="rounded-2xl border border-white/10 bg-white/8 p-4">
+                <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Step 1</div>
+                <div className="mt-2 text-lg font-semibold">Surface tracked spend</div>
+                <p className="mt-1 text-sm text-slate-300">Pull materials, utilities, waste, and site costs into one defensible view.</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/8 p-4">
+                <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Step 2</div>
+                <div className="mt-2 text-lg font-semibold">Prioritize margin leaks</div>
+                <p className="mt-1 text-sm text-slate-300">Show where savings are most likely before another initiative gets funded.</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/8 p-4">
+                <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Step 3</div>
+                <div className="mt-2 text-lg font-semibold">Tie it to buyer pressure</div>
+                <p className="mt-1 text-sm text-slate-300">Make the data usable in customer, lender, and procurement conversations.</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="animate-fade-in space-y-8">
-      {/* Section A: Company Header */}
-      <div className="flex items-center gap-4">
-        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-stack-3 flex items-center justify-center shrink-0">
-          <span className="text-white font-bold text-lg">
-            {company?.legalEntityName?.charAt(0)?.toUpperCase() || 'E'}
-          </span>
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="space-y-2">
+          <div className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            Stack 1 in motion
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+              {company?.legalEntityName || 'Your Dashboard'}
+            </h1>
+            <p className="mt-2 max-w-3xl text-base leading-7 text-gray-600">
+              This view is about commercial signal, not record-keeping. It shows the cost base you have surfaced,
+              where margin is likely escaping, and the next move that earns the next stack.
+            </p>
+          </div>
         </div>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">
-            {company?.legalEntityName || 'Your Dashboard'}
-          </h1>
-          <p className="text-sm text-gray-500">
-            {[company?.industryDescription, company?.headquartersCountry].filter(Boolean).join(' · ') || 'Complete onboarding to set up your company'}
-          </p>
+
+        <div className="flex flex-wrap gap-3">
+          {!hasAnyData && (
+            <Button onClick={handleLoadDemo} isLoading={isSeedingDemo} variant="secondary">
+              Load demo data
+            </Button>
+          )}
+          <Link
+            href="/data"
+            className="inline-flex items-center justify-center rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-gray-800"
+          >
+            Enter data
+          </Link>
         </div>
       </div>
 
-      {/* FTUE Checklist */}
       <FtueChecklist />
 
-      {/* Section B: Key Metrics Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="!p-4 rounded-xl">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <Card className="rounded-2xl border-0 bg-slate-950 text-white shadow-lg">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Tracked spend</div>
+              <div className="mt-3 text-3xl font-bold">{formatCompactCurrency(insights.trackedSpend)}</div>
+              <p className="mt-2 text-sm text-slate-300">Visible costs already surfaced from the current baseline.</p>
+            </div>
+            <div className="rounded-xl bg-white/10 p-3">
+              <ChartBar className="h-5 w-5 text-emerald-300" weight="duotone" />
+            </div>
+          </div>
+        </Card>
+
+        <Card className="rounded-2xl border border-gray-200">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-gray-400">Recovered value</div>
+              <div className="mt-3 text-3xl font-bold text-gray-900">{formatCompactCurrency(insights.recoveredValue)}</div>
+              <p className="mt-2 text-sm text-gray-600">Value already captured from tracked discard streams.</p>
+            </div>
+            <div className="rounded-xl bg-primary-100 p-3">
+              <Target className="h-5 w-5 text-primary" weight="duotone" />
+            </div>
+          </div>
+        </Card>
+
+        <Card className="rounded-2xl border border-gray-200">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-gray-400">Data confidence</div>
+              <div className="mt-3 text-3xl font-bold text-gray-900">{insights.dataConfidencePercent}%</div>
+              <p className="mt-2 text-sm text-gray-600">How defensible the current evidence base is, weighted by record quality.</p>
+            </div>
+            <div className="rounded-xl bg-primary-100 p-3">
+              <Database className="h-5 w-5 text-primary" weight="duotone" />
+            </div>
+          </div>
+        </Card>
+
+        <Card className="rounded-2xl border border-gray-200">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-gray-400">Current focus</div>
+              <div className="mt-3 text-xl font-bold text-gray-900">{insights.focusLabel}</div>
+              <p className="mt-2 text-sm text-gray-600">{insights.focusDetail}</p>
+            </div>
+            <div className="rounded-xl bg-primary-100 p-3">
+              <TreeStructure className="h-5 w-5 text-primary" weight="duotone" />
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      <div className="grid gap-4 xl:grid-cols-[1.25fr_0.75fr]">
+        <Card className="rounded-2xl border border-gray-200">
+          <div className="mb-5 flex items-center justify-between gap-3">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">Where the money is likely hiding</h2>
+              <p className="mt-1 text-sm text-gray-600">First-pass opportunities based on the records already in the baseline.</p>
+            </div>
+            <Link href="/360-view" className="text-sm font-medium text-primary hover:text-primary-dark">
+              See full view
+            </Link>
+          </div>
+
+          <div className="space-y-3">
+            {insights.opportunities.map((opportunity) => (
+              <div key={opportunity.id} className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="space-y-2">
+                    <div className="inline-flex items-center rounded-full bg-white px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                      {opportunity.stackLabel}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900">{opportunity.title}</h3>
+                      <p className="mt-1 text-sm text-gray-600">{opportunity.summary}</p>
+                    </div>
+                  </div>
+                  <div className="min-w-[12rem] rounded-xl bg-white p-3 lg:text-right">
+                    <div className="text-sm font-semibold text-gray-900">{opportunity.amountLabel}</div>
+                    <Link
+                      href={opportunity.href}
+                      className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark"
+                    >
+                      {opportunity.actionLabel}
+                      <ArrowRight className="h-4 w-4" weight="bold" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <div className="space-y-4">
+          <Card className="rounded-2xl border-0 bg-gradient-to-br from-primary to-primary-dark text-white shadow-lg">
+            <div className="space-y-3">
+              <div className="text-xs uppercase tracking-[0.2em] text-emerald-100">Recommended next move</div>
+              <div className="text-2xl font-bold">{insights.nextAction.title}</div>
+              <p className="text-sm leading-6 text-emerald-50">{insights.nextAction.detail}</p>
+              <Link
+                href={insights.nextAction.href}
+                className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-gray-100"
+              >
+                {insights.nextAction.ctaLabel}
+                <ArrowRight className="h-4 w-4" weight="bold" />
+              </Link>
+            </div>
+          </Card>
+
+          <Card className="rounded-2xl border border-gray-200">
+            <div className="space-y-2">
+              <div className="text-xs uppercase tracking-[0.2em] text-gray-400">Buyer readiness</div>
+              <div className="text-xl font-bold text-gray-900">{insights.buyerReadiness.label}</div>
+              <p className="text-sm leading-6 text-gray-600">{insights.buyerReadiness.detail}</p>
+              <Link href="/data/context" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark">
+                Strengthen external context
+                <ArrowRight className="h-4 w-4" weight="bold" />
+              </Link>
+            </div>
+          </Card>
+
+          {insights.gaps.length > 0 && (
+            <Card className="rounded-2xl border border-amber-200 bg-amber-50">
+              <div className="space-y-3">
+                <div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-amber-700">Gaps blocking the product story</div>
+                  <div className="mt-1 text-lg font-bold text-amber-950">Close these next</div>
+                </div>
+                <div className="space-y-3">
+                  {insights.gaps.map((gap) => (
+                    <div key={gap.id} className="rounded-xl bg-white/70 p-3">
+                      <div className="font-semibold text-amber-950">{gap.title}</div>
+                      <p className="mt-1 text-sm text-amber-900">{gap.detail}</p>
+                      <Link href={gap.href} className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-amber-800 hover:text-amber-900">
+                        Fix this
+                        <ArrowRight className="h-4 w-4" weight="bold" />
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Card>
+          )}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <Card className="rounded-xl">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center">
-              <ChartBar className="w-5 h-5 text-primary" weight="duotone" />
+            <div className="rounded-lg bg-primary-100 p-2.5">
+              <ChartBar className="h-5 w-5 text-primary" weight="duotone" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-gray-900">{formatNumber(totalRecords)}</div>
+              <div className="text-2xl font-bold text-gray-900">{insights.totalRecords}</div>
               <div className="text-xs text-gray-500">Total records</div>
             </div>
           </div>
         </Card>
 
-        <Card className="!p-4 rounded-xl">
+        <Card className="rounded-xl">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-stack-3/10 flex items-center justify-center">
-              <TreeStructure className="w-5 h-5 text-stack-3" weight="duotone" />
+            <div className="rounded-lg bg-primary-100 p-2.5">
+              <TreeStructure className="h-5 w-5 text-primary" weight="duotone" />
             </div>
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="text-2xl font-bold text-gray-900">{domainsWithData}</span>
+                <span className="text-2xl font-bold text-gray-900">{insights.domainsWithData}</span>
                 <span className="text-sm text-gray-400">/ 8</span>
               </div>
               <div className="text-xs text-gray-500">Domains covered</div>
             </div>
           </div>
-          <div className="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-stack-3 to-primary rounded-full transition-all duration-500"
-              style={{ width: `${completenessPercent}%` }}
-            />
-          </div>
         </Card>
 
-        <Card className="!p-4 rounded-xl">
+        <Card className="rounded-xl">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-stack-4/10 flex items-center justify-center">
-              <MapPin className="w-5 h-5 text-stack-4" weight="duotone" />
+            <div className="rounded-lg bg-primary-100 p-2.5">
+              <MapPin className="h-5 w-5 text-primary" weight="duotone" />
             </div>
             <div>
               <div className="text-2xl font-bold text-gray-900">{sites.length}</div>
@@ -158,153 +347,65 @@ export default function DashboardPage() {
           </div>
         </Card>
 
-        <Card className="!p-4 rounded-xl">
+        <Card className="rounded-xl">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-stack-1/10 flex items-center justify-center">
-              <Database className="w-5 h-5 text-stack-1" weight="duotone" />
+            <div className="rounded-lg bg-primary-100 p-2.5">
+              <Database className="h-5 w-5 text-primary" weight="duotone" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-gray-900">{completenessPercent}%</div>
-              <div className="text-xs text-gray-500">Completeness</div>
+              <div className="text-2xl font-bold text-gray-900">{insights.completenessPercent}%</div>
+              <div className="text-xs text-gray-500">Baseline completeness</div>
             </div>
           </div>
         </Card>
       </div>
 
-      {/* Section C: Agricultural Quick Stats (ag users only) */}
-      {isAg && (totalLandHa > 0 || totalLivestock > 0 || totalCropHa > 0 || totalFertiliserKg > 0) && (
-        <div>
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Farm Overview</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Card className="!p-4 rounded-xl">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center">
-                  <Plant className="w-5 h-5 text-green-600" weight="duotone" />
-                </div>
-                <div>
-                  <div className="text-xl font-bold text-gray-900">{formatNumber(totalLandHa)}</div>
-                  <div className="text-xs text-gray-500">Land area (ha)</div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="!p-4 rounded-xl">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center">
-                  <Cow className="w-5 h-5 text-amber-600" weight="duotone" />
-                </div>
-                <div>
-                  <div className="text-xl font-bold text-gray-900">{formatNumber(totalLivestock)}</div>
-                  <div className="text-xs text-gray-500">Livestock (head)</div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="!p-4 rounded-xl">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center">
-                  <Grains className="w-5 h-5 text-emerald-600" weight="duotone" />
-                </div>
-                <div>
-                  <div className="text-xl font-bold text-gray-900">{formatNumber(totalCropHa)}</div>
-                  <div className="text-xs text-gray-500">Crop area (ha)</div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="!p-4 rounded-xl">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
-                  <Drop className="w-5 h-5 text-blue-600" weight="duotone" />
-                </div>
-                <div>
-                  <div className="text-xl font-bold text-gray-900">{formatNumber(totalFertiliserKg)}</div>
-                  <div className="text-xs text-gray-500">Fertiliser (kg)</div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      )}
-
-      {/* Section D: What to do next */}
-      <Card className="!p-5 rounded-xl border-l-4 border-l-primary bg-primary-100/30">
-        {emptyDomain ? (
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div>
-              <p className="font-semibold text-gray-900">
-                Get started with {domainLabels[emptyDomain[0]].label}
-              </p>
-              <p className="text-sm text-gray-600">
-                No data yet — add your first entry to improve your baseline coverage.
-              </p>
-            </div>
-            <Link
-              href={domainLabels[emptyDomain[0]].path}
-              className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-dark transition-colors text-sm shrink-0"
-            >
-              Add data
-              <ArrowRight className="w-4 h-4" weight="bold" />
-            </Link>
-          </div>
-        ) : (
-          <div>
-            <p className="font-semibold text-gray-900">All domains covered</p>
-            <p className="text-sm text-gray-600">
-              Keep adding monthly records to build a comprehensive baseline.
-            </p>
-          </div>
-        )}
-      </Card>
-
-      {/* Section E: Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <Link href="/data" className="group">
-          <Card className="!p-5 rounded-xl border-2 border-transparent hover:border-primary transition-all hover:shadow-md">
+          <Card className="rounded-2xl border-2 border-transparent transition-all hover:border-primary hover:shadow-md">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-stack-1 to-stack-3 flex items-center justify-center">
-                <Database className="w-6 h-6 text-white" weight="duotone" />
+              <div className="rounded-xl bg-gradient-to-br from-stack-1 to-stack-3 p-3">
+                <Database className="h-6 w-6 text-white" weight="duotone" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-gray-900 group-hover:text-primary transition-colors">Enter Data</div>
-                <div className="text-sm text-gray-500">Add records across all domains</div>
+                <div className="font-semibold text-gray-900 transition-colors group-hover:text-primary">Enter Data</div>
+                <div className="text-sm text-gray-500">Add stronger evidence where the current story is still thin.</div>
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all" weight="bold" />
+              <ArrowRight className="h-5 w-5 text-gray-300 transition-all group-hover:translate-x-1 group-hover:text-primary" weight="bold" />
             </div>
           </Card>
         </Link>
 
         <Link href="/360-view" className="group">
-          <Card className="!p-5 rounded-xl border-2 border-transparent hover:border-primary transition-all hover:shadow-md">
+          <Card className="rounded-2xl border-2 border-transparent transition-all hover:border-primary hover:shadow-md">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-stack-2 to-stack-4 flex items-center justify-center">
-                <ListChecks className="w-6 h-6 text-white" weight="duotone" />
+              <div className="rounded-xl bg-gradient-to-br from-stack-2 to-stack-4 p-3">
+                <ListChecks className="h-6 w-6 text-white" weight="duotone" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-gray-900 group-hover:text-primary transition-colors">360 View</div>
-                <div className="text-sm text-gray-500">See all your data in one place</div>
+                <div className="font-semibold text-gray-900 transition-colors group-hover:text-primary">Inspect The Full Baseline</div>
+                <div className="text-sm text-gray-500">Audit the raw detail behind the signals shown here.</div>
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all" weight="bold" />
+              <ArrowRight className="h-5 w-5 text-gray-300 transition-all group-hover:translate-x-1 group-hover:text-primary" weight="bold" />
             </div>
           </Card>
         </Link>
 
         <Link href="/exports" className="group">
-          <Card className="!p-5 rounded-xl border-2 border-transparent hover:border-primary transition-all hover:shadow-md">
+          <Card className="rounded-2xl border-2 border-transparent transition-all hover:border-primary hover:shadow-md">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-stack-3 to-stack-4 flex items-center justify-center">
-                <Export className="w-6 h-6 text-white" weight="duotone" />
+              <div className="rounded-xl bg-gradient-to-br from-stack-3 to-stack-4 p-3">
+                <Export className="h-6 w-6 text-white" weight="duotone" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-gray-900 group-hover:text-primary transition-colors">View Exports</div>
-                <div className="text-sm text-gray-500">Download your data</div>
+                <div className="font-semibold text-gray-900 transition-colors group-hover:text-primary">Export Evidence</div>
+                <div className="text-sm text-gray-500">Turn the baseline into something usable outside the tool.</div>
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-primary group-hover:translate-x-1 transition-all" weight="bold" />
+              <ArrowRight className="h-5 w-5 text-gray-300 transition-all group-hover:translate-x-1 group-hover:text-primary" weight="bold" />
             </div>
           </Card>
         </Link>
       </div>
-
     </div>
   );
 }

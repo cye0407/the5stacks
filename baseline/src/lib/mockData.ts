@@ -110,6 +110,78 @@ export function seedMockData() {
     updatedAt: new Date().toISOString(),
   });
 
+  dataStore.setExternalContext({
+    id: uuid(),
+    companyId,
+    primaryMarkets: ['Germany', 'Poland'],
+    marketScope: 'eu',
+    customerType: 'b2b',
+    keyCustomerIndustries: ['Automotive', 'Industrial equipment'],
+    customerConcentration: 'high',
+    topCustomerSharePercent: 42,
+    competitivePressureSustainability: 'medium',
+    competitorSustainabilityActivity:
+      'Two major competitors now publish supplier questionnaires and energy reduction targets.',
+    marketSustainabilityTrend: 'established',
+    pricePremiumPotential: 'small',
+    csrdStatus: 'not_applicable',
+    vsmeAdoption: 'implementing',
+    otherRegulations: ['Customer questionnaires', 'Procurement scorecards'],
+    regulatoryPressure: 'medium',
+    updatedAt: new Date().toISOString(),
+  });
+
+  dataStore.setFinancialContext({
+    id: uuid(),
+    companyId,
+    revenueBand: '10m-50m',
+    grossMarginBand: '10-20',
+    profitabilityTrend: 'declining',
+    cashPosition: 'adequate',
+    sustainabilityBudgetAnnual: 15000,
+    sustainabilityBudgetCurrency: 'EUR',
+    budgetType: 'ad_hoc',
+    capexCapacity12mo: 'limited',
+    investmentPriority: 'high',
+    primaryCostConcerns: ['energy', 'materials', 'waste'],
+    costPressureLevel: 'high',
+    costReductionTarget: 8,
+    costReductionTimeframe: '1-year',
+    financingRelationships: ['bank_loans'],
+    sustainabilityLinkedFinancing: 'exploring',
+    lenderEsgRequirements: 'informal',
+    insuranceEsgQuestions: true,
+    updatedAt: new Date().toISOString(),
+  });
+
+  dataStore.setBuyerRequirements([
+    {
+      id: uuid(),
+      companyId,
+      buyerName: 'AutoMotion Group',
+      requirementType: 'questionnaire',
+      platform: 'EcoVadis',
+      frequency: 'annual',
+      deadline: '2026-09-30',
+      status: 'in_progress',
+      notes: 'Customer wants energy, waste, and supplier traceability data in one export.',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: uuid(),
+      companyId,
+      buyerName: 'Nordic Components AB',
+      requirementType: 'data_request',
+      frequency: 'ongoing',
+      deadline: '2026-06-15',
+      status: 'recurring',
+      notes: 'Quarterly supplier sustainability metrics requested with procurement reviews.',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+  ]);
+
   // ============================================
   // Energy Data
   // ============================================
@@ -168,6 +240,45 @@ export function seedMockData() {
   }));
 
   dataStore.setEnergyWater(waterData);
+
+  // ============================================
+  // Infrastructure
+  // ============================================
+
+  dataStore.setAssets([
+    {
+      id: uuid(),
+      siteId,
+      assetName: 'Compressed air system',
+      assetCategory: 'production_equipment',
+      assetType: 'compressor',
+      quantity: 2,
+      acquisitionYear: 2017,
+      expectedLifespanYears: 12,
+      criticality: 'high',
+      replacementCost: 65000,
+      energyConsumptionKwhYear: 118000,
+      maintenanceFrequency: 'quarterly',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: uuid(),
+      siteId,
+      assetName: 'Powder coating line',
+      assetCategory: 'production_equipment',
+      assetType: 'coating',
+      quantity: 1,
+      acquisitionYear: 2019,
+      expectedLifespanYears: 15,
+      criticality: 'critical',
+      replacementCost: 180000,
+      energyConsumptionKwhYear: 142000,
+      maintenanceFrequency: 'annual',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+  ]);
 
   // ============================================
   // Workforce Data
@@ -284,6 +395,21 @@ export function seedMockData() {
   ];
 
   dataStore.setWaste(wasteData);
+
+  dataStore.setProductOutputs([
+    {
+      id: uuid(),
+      siteId,
+      period: '2024',
+      productName: 'Structural assemblies',
+      quantity: 9200,
+      unit: 'units',
+      revenue: 1450000,
+      source: 'erp' as const,
+      confidence: 'high' as const,
+      lastUpdated: new Date().toISOString(),
+    },
+  ]);
 
   // ============================================
   // Materials Data
